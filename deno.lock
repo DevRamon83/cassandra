@@ -1,0 +1,49 @@
+{
+  "version": "5",
+  "specifiers": {
+    "jsr:@hono/hono@^4.13.8": "4.13.8"
+  },
+  "jsr": {
+    "@hono/hono@4.13.8": {
+      "integrity": "bbb566d9ebb81e74c0d7eeff1f9221ba9f3fda6f1832e5ca66cbddcecb2f7fec"
+    }
+  },
+  "workspace": {
+    "members": {
+      "backend": {
+        "dependencies": [
+          "jsr:@hono/hono@^4.13.8",
+          "jsr:@std/assert@1",
+          "jsr:@std/http@1"
+        ]
+      },
+      "frontend": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@babel/core@^7.29.7",
+            "npm:@eslint/js@^10.0.1",
+            "npm:@rolldown/plugin-babel@~0.2.3",
+            "npm:@supabase/supabase-js@^2.116.0",
+            "npm:@types/babel__core@^7.20.5",
+            "npm:@types/node@^24.13.3",
+            "npm:@types/react-dom@^19.2.7",
+            "npm:@types/react@^19.2.18",
+            "npm:@vitejs/plugin-react@^6.1.1",
+            "npm:babel-plugin-react-compiler@1",
+            "npm:eslint-plugin-react-hooks@^7.1.1",
+            "npm:eslint-plugin-react-refresh@~0.5.6",
+            "npm:eslint@^10.10.0",
+            "npm:globals@^17.12.0",
+            "npm:react-dom@^19.2.8",
+            "npm:react-router-dom@^7.18.4",
+            "npm:react@^19.2.8",
+            "npm:sass@^1.104.1",
+            "npm:typescript-eslint@^8.69.0",
+            "npm:typescript@~6.0.2",
+            "npm:vite@^8.3.0"
+          ]
+        }
+      }
+    }
+  }
+}

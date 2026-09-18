@@ -4,7 +4,7 @@
   "description": "",
   "workspaces": [
     "frontend",
-    "api"
+    "backend"
   ],
   "main": "index.js",
   "scripts": {
