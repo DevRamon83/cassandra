@@ -4,7 +4,8 @@
   "description": "",
   "workspaces": [
     "frontend",
-    "backend"
+    "backend",
+    "shared"
   ],
   "main": "index.js",
   "scripts": {
