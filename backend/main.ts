@@ -1,21 +1,25 @@
 import { Hono } from "@hono/hono";
-import { cors } from "@hono/hono/cors"; // Il middleware CORS è già dentro Hono!
+import { cors } from "@hono/hono/cors";
+import matchRouter from "./routes/matches.ts";
 
 const app = new Hono();
 
-// 1. ATTIVAZIONE DEL CORS (In una sola riga, accetta tutte le origini di default)
-app.use("/api/*", cors({ origin: "http://localhost:5173" }));
+const env = process.env.NODE_ENV;
+const ORIGIN = env === "DEV" ? process.env.ORIGIN_DEV : process.env.ORIGIN_PROD;
 
-// 2. LA TUA ROTTA DI TEST
-app.get("/api/test", (c) => {
-  return c.json({
-    status: "OK",
-    message: "Il backend del portfolio con Hono è attivo!",
-  });
-});
+app.use(
+  "/api/*",
+  cors({
+    origin: ORIGIN,
+    allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowHeaders: ["Content-Type", "Authorization"],
+    exposeHeaders: ["Content-Length"],
+    credentials: true,
+  }),
+);
 
-// 3. AVVIO DEL SERVER NATIVO
-// Deno.serve ha bisogno di app.fetch per agganciare il motore di Hono
+app.route("/api", matchRouter);
+
 if (import.meta.main) {
   Deno.serve(app.fetch);
 }
