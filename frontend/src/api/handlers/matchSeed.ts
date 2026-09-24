@@ -4,8 +4,8 @@ import { fetchData } from "../fetchData";
 import type { StandardResponse } from "../../interfaces/standardRespGeneric.ts";
 
 const matchSeed = async (data: Interfaces.GameWeek) => {
-  const { base, matchSeed } = API_URLS;
-  const apiUrl = base + matchSeed.newMatch;
+  const { base, apiFootball } = API_URLS;
+  const apiUrl = base + apiFootball.newMatch;
 
   const method = "POST";
   const credentials = "include";

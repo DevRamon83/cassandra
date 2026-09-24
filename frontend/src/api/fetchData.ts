@@ -17,7 +17,7 @@ export const fetchData: fetchInterface = async (
 ) => {
   const dataBody = myData !== undefined ? { ...myData } : {};
   const isFormData = myData instanceof FormData;
-  // Diciamo a TypeScript che body può essere testo, null O un oggetto FormData
+
   let body: string | null | FormData =
     method !== "GET" ? JSON.stringify(dataBody) : null;
 
