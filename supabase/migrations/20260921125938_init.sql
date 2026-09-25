@@ -64,3 +64,9 @@ CREATE TABLE predictions (
 CREATE INDEX idx_matches_league_season ON matches(league, season);
 CREATE INDEX idx_matches_home_team ON matches(home_team_id);
 CREATE INDEX idx_matches_away_team ON matches(away_team_id);
+
+ALTER TABLE public.teams ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.players ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.matches ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.match_events ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.predictions ENABLE ROW LEVEL SECURITY;
