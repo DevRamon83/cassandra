@@ -18,8 +18,7 @@ export async function apiFootball(data: Interfaces.GameWeek) {
   const baseUrl =
     "https://raw.githubusercontent.com/openfootball/football.json/master";
   const endpoint = `${mySeason}/${myLeague}.json`;
-  const url = `${baseUrl}/${endpoint}`;
-  console.log(url);
+
   try {
     const response = await fetch(`${baseUrl}/${endpoint}`, {
       method: "GET",
