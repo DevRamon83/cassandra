@@ -3,7 +3,7 @@ interface TeamData {
   city: string;
 }
 
-export const TEAM_NAME_MAPPING: Record<string, TeamData> = {
+export const teamsData: Record<string, TeamData> = {
   "SS Lazio": { cleanName: "Lazio", city: "Roma" },
   "Cagliari Calcio": { cleanName: "Cagliari", city: "Cagliari" },
   "FC Internazionale Milano": { cleanName: "Inter", city: "Milano" },
@@ -27,5 +27,5 @@ export const TEAM_NAME_MAPPING: Record<string, TeamData> = {
 };
 
 export function getCleanTeamName(rawName: string): TeamData | null {
-  return TEAM_NAME_MAPPING[rawName] || null;
+  return teamsData[rawName] || null;
 }
