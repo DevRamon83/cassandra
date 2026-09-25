@@ -1,6 +1,7 @@
 import { Hono } from "@hono/hono";
 import { cors } from "@hono/hono/cors";
 import matchRouter from "./routes/matches.ts";
+import "./db.ts";
 
 const app = new Hono();
 
