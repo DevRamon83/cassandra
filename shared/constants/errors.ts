@@ -5,3 +5,6 @@ export const nullish = "You cannot send a null or undefined value to ";
 export const empty = "is an empty value";
 export const invalidTeam = "is not included in teams";
 export const invalidType = "type you checked is not allowed";
+export const bodyMissing = "body is missing";
+export const apiFootball = "error in apiFootball";
+export const teamsPopulation = "teams population failed";
