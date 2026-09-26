@@ -29,20 +29,6 @@ export const getTeams = (seasonData: GithubSeasonData): string[] | null => {
       return null;
     }
 
-    if (guards.emptyData(match.team1, "string", scopes.backend.getTeams)) {
-      console.error(
-        `${scopes.backend.getTeams}: ${match.team1} ${errors.empty}`,
-      );
-      return null;
-    }
-
-    if (guards.emptyData(match.team2, "string", scopes.backend.getTeams)) {
-      console.error(
-        `${scopes.backend.getTeams}: ${match.team2} ${errors.empty}`,
-      );
-      return null;
-    }
-
     teamsSet.add(match.team1);
     teamsSet.add(match.team2);
   }
