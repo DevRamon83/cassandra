@@ -6,7 +6,7 @@ export const guards = {
   emptyData,
 };
 
-export { teams } from "./maps/index.ts";
+export * as serieA from "./dictionaries/serieA.ts";
 
 export * from "./constants/atomics.ts";
 export * as errors from "./constants/errors.ts";

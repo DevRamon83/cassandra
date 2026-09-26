@@ -3,7 +3,7 @@ interface TeamData {
   city: string;
 }
 
-export const teamsData: Record<string, TeamData> = {
+export const serieA: Record<string, TeamData> = {
   "SS Lazio": { cleanName: "Lazio", city: "Roma" },
   "Cagliari Calcio": { cleanName: "Cagliari", city: "Cagliari" },
   "FC Internazionale Milano": { cleanName: "Inter", city: "Milano" },
@@ -26,6 +26,6 @@ export const teamsData: Record<string, TeamData> = {
   "US Sassuolo Calcio": { cleanName: "Sassuolo", city: "Sassuolo" },
 };
 
-export function getCleanTeamName(rawName: string): TeamData | null {
-  return teamsData[rawName] || null;
+export function getSerieATeamName(rawName: string): TeamData | null {
+  return serieA[rawName] || null;
 }
