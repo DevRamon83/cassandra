@@ -8,3 +8,4 @@ export const invalidType = "type you checked is not allowed";
 export const bodyMissing = "body is missing";
 export const apiFootball = "error in apiFootball";
 export const teamsPopulation = "teams population failed";
+export const matchesPopulation = "matches population failed";
