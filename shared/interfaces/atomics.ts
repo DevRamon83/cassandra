@@ -1,3 +1,3 @@
-import { teams } from "../../shared/index.ts";
+import { serieA } from "../../shared/index.ts";
 
-export type Team = keyof typeof teams;
+export type Team = keyof typeof serieA;

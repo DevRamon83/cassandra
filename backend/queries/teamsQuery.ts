@@ -1,8 +1,9 @@
-import { teams } from "../../shared/index.ts";
+import { serieA as teams } from "../../shared/index.ts";
 import { Interfaces } from "../../shared/index.ts";
 
 const prepareTeamsData = (teamsArray: Interfaces.TeamKey[]) => {
-  const myTeams = teams.teamsData;
+  const myTeams = teams.serieA;
+
   return teamsArray.map((key) => [myTeams[key].cleanName, myTeams[key].city]);
 };
 
