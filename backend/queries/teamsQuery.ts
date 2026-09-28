@@ -20,8 +20,6 @@ export const teamsQuery = (teamsArray: Interfaces.TeamKey[]) => {
 INSERT INTO teams (team_name, city) 
 VALUES ${placeholders}
 ON CONFLICT (team_name) DO NOTHING;
-
-SELECT id, team_name FROM teams;
 `;
 
   return {
@@ -29,3 +27,5 @@ SELECT id, team_name FROM teams;
     values: data.flat(),
   };
 };
+
+export const teamsTable = "SELECT id, team_name FROM teams";
