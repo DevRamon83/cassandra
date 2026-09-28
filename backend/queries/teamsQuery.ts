@@ -17,11 +17,12 @@ export const teamsQuery = (teamsArray: Interfaces.TeamKey[]) => {
     .join(", ");
 
   const sqlQuery = `
-    INSERT INTO teams (team_name, city) 
-    VALUES ${placeholders}
-    ON CONFLICT (team_name) DO NOTHING
-    RETURNING *;
-  `;
+INSERT INTO teams (team_name, city) 
+VALUES ${placeholders}
+ON CONFLICT (team_name) DO NOTHING;
+
+SELECT id, team_name FROM teams;
+`;
 
   return {
     text: sqlQuery,
