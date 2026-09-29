@@ -20,24 +20,23 @@ const prepareMatchesData = (
   for (let i = 0; i < seasonData.matches.length; i++) {
     const match = seasonData.matches[i];
 
-    const match_date = getMatchTime(match, league);
+    const match_date = getMatchTime(match, league) || null;
     const { home_team_id, away_team_id } = getAwayHomeTeams(
       match,
       league,
       teamsMap,
     );
 
-    if (!match_date) {
-      return [];
-    }
-
     if (!home_team_id || !away_team_id) {
+      console.error("team missing", match.round);
       return [];
     }
 
     const game_week = getGameWeek(match);
 
     if (!game_week) {
+      console.error("game_week missing", match.round);
+
       return [];
     }
 
@@ -50,7 +49,6 @@ const prepareMatchesData = (
       game_week,
     ]);
   }
-
   return matrix;
 };
 
