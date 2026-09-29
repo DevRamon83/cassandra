@@ -3,6 +3,7 @@ import { getBody } from "../helpers/getBody.ts";
 import { apiFootball } from "../services/apiFootball.ts";
 import { populateTeams } from "../pipelines/populateTeams.ts";
 import { errors, messages } from "../../shared/index.ts";
+import { populateMatches } from "../pipelines/populateMatches.ts";
 
 export const newSeason = async (c: Context) => {
   try {
@@ -23,10 +24,18 @@ export const newSeason = async (c: Context) => {
       );
     }
 
-    const response = await populateTeams(seasonData.data);
+    const response = await populateTeams(seasonData.data, body);
 
-    if (!response)
+    if (response.error)
       return c.json({ error: true, errorMsg: errors.teamsPopulation }, 500);
+
+    const complete = await populateMatches(
+      seasonData.data,
+      body,
+      response.resp,
+    );
+    if (complete.error)
+      return c.json({ error: true, errorMsg: errors.matchesPopulation }, 500);
 
     return c.json({ error: false, data: messages.seasonSeeding }, 200);
   } catch (err) {
