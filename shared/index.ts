@@ -14,7 +14,6 @@ export * as messages from "./constants/messages.ts";
 export * as scopes from "./constants/scopes.ts";
 
 import type MatchSeedRaw from "./typings/MatchSeed.ts";
-import type GameWeekRaw from "./typings/GameWeek.ts";
 import type {
   Team,
   SeasonSeeding,
@@ -23,7 +22,6 @@ import type {
 
 export namespace Interfaces {
   export type MatchSeed = MatchSeedRaw;
-  export type GameWeek = GameWeekRaw;
   export type TeamKey = Team;
   export type SeasonSeed = SeasonSeeding;
   export type NewMatchSeed = NewMatchSeeding;
