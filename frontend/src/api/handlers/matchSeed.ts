@@ -3,7 +3,7 @@ import { API_URLS } from "../../constants/apiUrls.ts";
 import { fetchData } from "../fetchData";
 import type { StandardResponse } from "../../interfaces/standardRespGeneric.ts";
 
-const matchSeed = async (data: Interfaces.GameWeek) => {
+const matchSeed = async (data: Interfaces.NewMatchSeed) => {
   const { base, apiFootball } = API_URLS;
   const apiUrl = base + apiFootball.newMatch;
 
