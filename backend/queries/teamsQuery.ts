@@ -1,5 +1,6 @@
 import { serieA as teams } from "../../shared/index.ts";
 import { Interfaces } from "../../shared/index.ts";
+import { getPlaceholder } from "../helpers/getPlaceholder.ts";
 
 const prepareTeamsData = (teamsArray: Interfaces.TeamKey[]) => {
   const myTeams = teams.serieA;
@@ -12,9 +13,7 @@ export const teamsQuery = (teamsArray: Interfaces.TeamKey[]) => {
 
   const data = prepareTeamsData(teamsArray);
 
-  const placeholders = data
-    .map((_, index) => `($${index * 2 + 1}, $${index * 2 + 2})`)
-    .join(", ");
+  const placeholders = getPlaceholder(data);
 
   const sqlQuery = `
 INSERT INTO teams (team_name, city) 

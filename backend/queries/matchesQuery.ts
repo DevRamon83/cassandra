@@ -5,6 +5,7 @@ import {
   getGameWeek,
   getMatchTime,
 } from "../helpers/getMatchData.ts";
+import { getPlaceholder } from "../helpers/getPlaceholder.ts";
 
 const prepareMatchesData = (
   seasonData: GithubSeasonData,
@@ -65,12 +66,7 @@ export const matchesQuery = (
     return { error: true, errorMessage: "Match data missing" };
   }
 
-  const placeholders = data
-    .map((_, index) => {
-      const base = index * 6;
-      return `($${base + 1}, $${base + 2}, $${base + 3}, $${base + 4}, $${base + 5}, $${base + 6})`;
-    })
-    .join(",\n");
+  const placeholders = getPlaceholder(data);
 
   const sqlQuery = `
 INSERT INTO matches (league, season, match_date, home_team_id, away_team_id, game_week) 
