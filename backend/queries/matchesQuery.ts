@@ -8,7 +8,7 @@ import {
 
 const prepareMatchesData = (
   seasonData: GithubSeasonData,
-  body: Interfaces.GameWeek,
+  body: Interfaces.SeasonSeed,
   teamsMap: {
     id: string;
     team_name: string;
@@ -54,7 +54,7 @@ const prepareMatchesData = (
 
 export const matchesQuery = (
   seasonData: GithubSeasonData,
-  body: Interfaces.GameWeek,
+  body: Interfaces.SeasonSeed,
   teamsMap: {
     id: string;
     team_name: string;

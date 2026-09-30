@@ -10,7 +10,7 @@ const defineLeague = (league: string) => {
   }
 };
 
-export async function apiFootball(data: Interfaces.GameWeek) {
+export async function apiFootball(data: Interfaces.SeasonSeed) {
   const { league, season } = data;
   const mySeason = season.substring(0, 4) + "-" + season.substring(7, 9);
 

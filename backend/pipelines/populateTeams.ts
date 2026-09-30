@@ -10,7 +10,7 @@ export type resp =
 
 export const populateTeams = async (
   seasonData: GithubSeasonData,
-  body: Interfaces.GameWeek,
+  body: Interfaces.SeasonSeed,
 ): Promise<resp> => {
   const teams = getTeams(seasonData, body) as Interfaces.TeamKey[];
   const query = teamsQuery(teams);

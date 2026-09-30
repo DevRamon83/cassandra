@@ -10,7 +10,7 @@ interface resp {
 
 export const populateMatches = async (
   seasonData: GithubSeasonData,
-  body: Interfaces.GameWeek,
+  body: Interfaces.SeasonSeed,
   teamsMap: {
     id: string;
     team_name: string;

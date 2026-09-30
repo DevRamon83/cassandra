@@ -14,7 +14,7 @@ export const getTeamsOfLeague = (league: string) => {
 
 export const getTeams = (
   seasonData: GithubSeasonData,
-  body: Interfaces.GameWeek,
+  body: Interfaces.SeasonSeed,
 ): string[] | null => {
   const teamsSet = new Set<string>();
 
