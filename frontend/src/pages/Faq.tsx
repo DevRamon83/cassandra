@@ -1,9 +1,9 @@
-import GameWeek from "../components/GameWeek";
+import UpdateSeason from "../components/UpdateSeason";
 
 export default function Faq() {
   return (
     <>
-      <GameWeek />
+      <UpdateSeason />
     </>
   );
 }

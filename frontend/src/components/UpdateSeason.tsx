@@ -1,15 +1,14 @@
-import seasonSeed from "../api/handlers/seasonSeed.ts";
+import update from "../api/handlers/update.ts";
 
-export default function GameWeek() {
+export default function UpdateSeason() {
   const realData = {
     league: "serieA",
     season: "2026/2027",
-    game_week: 1,
   };
 
   const sendData = async () => {
-    const update = await seasonSeed(realData);
-    console.log(update);
+    const resp = await update(realData);
+    console.log(resp);
   };
 
   return (
