@@ -9,7 +9,7 @@ export const updateSeason = async (c: Context) => {
   try {
     const body = await getBody(c);
     if (!body) {
-      return c.json({ error: true, errorMsg: errors.bodyMissing }, 500);
+      return c.json({ error: true, errorMsg: errors.bodyMissing }, 400);
     }
 
     const seasonData = await apiFootball(body);
