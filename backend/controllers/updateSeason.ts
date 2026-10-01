@@ -5,7 +5,7 @@ import { populateTeams } from "../pipelines/populateTeams.ts";
 import { errors, messages } from "../../shared/index.ts";
 import { populateMatches } from "../pipelines/populateMatches.ts";
 
-export const newSeason = async (c: Context) => {
+export const updateSeason = async (c: Context) => {
   try {
     const body = await getBody(c);
     if (!body) {

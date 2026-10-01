@@ -3,9 +3,14 @@ import { Interfaces } from "../../shared/index.ts";
 import {
   getAwayHomeTeams,
   getGameWeek,
+  getScores,
+  getResults,
   getMatchTime,
+  getPoints,
 } from "../helpers/getMatchData.ts";
 import { getPlaceholder } from "../helpers/getPlaceholder.ts";
+import { matchesArray } from "../../shared/index.ts";
+import { getUpdateCondition } from "../helpers/queriesConditions.ts";
 
 const prepareMatchesData = (
   seasonData: GithubSeasonData,
@@ -41,12 +46,22 @@ const prepareMatchesData = (
       return [];
     }
 
+    const { home_score, away_score } = getScores(match);
+    const { home_result, away_result } = getResults(home_score, away_score);
+    const { home_points, away_points } = getPoints(home_result, away_result);
+
     matrix.push([
       league,
       season,
       match_date,
       home_team_id,
       away_team_id,
+      home_score,
+      home_result,
+      home_points,
+      away_score,
+      away_result,
+      away_points,
       game_week,
     ]);
   }
@@ -69,8 +84,25 @@ export const matchesQuery = (
   const placeholders = getPlaceholder(data);
 
   const sqlQuery = `
-INSERT INTO matches (league, season, match_date, home_team_id, away_team_id, game_week) 
+INSERT INTO matches (${matchesArray.join(", ")}) 
 VALUES ${placeholders}
+ON CONFLICT (season, game_week, home_team_id) 
+DO UPDATE SET
+  ${getUpdateCondition("matches", "league")},
+
+  ${getUpdateCondition("matches", "match_date")},
+
+  ${getUpdateCondition("matches", "home_score")},
+ 
+  ${getUpdateCondition("matches", "home_result")},
+
+  ${getUpdateCondition("matches", "home_points")},
+
+  ${getUpdateCondition("matches", "away_score")},
+
+  ${getUpdateCondition("matches", "away_result")},
+
+  ${getUpdateCondition("matches", "away_points")};
 `;
 
   return {

@@ -1,10 +1,8 @@
 import { Hono } from "@hono/hono";
-import { createMatch } from "../controllers/createMatch.ts";
-import { newSeason } from "../controllers/newSeason.ts";
+import { updateSeason } from "../controllers/updateSeason.ts";
 
 const matchRouter = new Hono();
 
-matchRouter.post("/newMatch", createMatch);
-matchRouter.post("/newSeason", newSeason);
+matchRouter.post("/update", updateSeason);
 
 export default matchRouter;
