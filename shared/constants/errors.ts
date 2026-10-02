@@ -10,3 +10,4 @@ export const apiFootball = "error in apiFootball";
 export const teamsPopulation = "teams population failed";
 export const matchesPopulation = "matches population failed";
 export const invalidURL = "missing URL parameters";
+export const leagueSeason = "missing league or season params";

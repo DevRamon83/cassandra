@@ -1,3 +1,4 @@
 export const backend = {
-  getTeams: "backend(getTeams)",
+  getTeams: "backend(getTeams): ",
+  getLeagueData: "backend(getLeagueData): ",
 };
