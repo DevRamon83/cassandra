@@ -1,5 +1,5 @@
 import { guards, errors, scopes, Interfaces } from "../../shared/index.ts";
-import type { GithubSeasonData } from "../interfaces/GithubSeasonData.ts";
+import type { GithubSeasonData } from "../typings/GithubSeasonData.ts";
 import { serieA } from "../../shared/index.ts";
 
 export const getTeamsOfLeague = (league: string) => {

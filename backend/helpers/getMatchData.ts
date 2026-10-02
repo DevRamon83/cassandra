@@ -1,4 +1,4 @@
-import type { SingleMatch } from "../interfaces/GithubSeasonData.ts";
+import type { SingleMatch } from "../typings/GithubSeasonData.ts";
 import { getTeamsOfLeague } from "./getTeams.ts";
 import { DateTime } from "luxon";
 

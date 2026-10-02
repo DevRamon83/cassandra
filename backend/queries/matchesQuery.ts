@@ -1,4 +1,4 @@
-import type { GithubSeasonData } from "../interfaces/GithubSeasonData.ts";
+import type { GithubSeasonData } from "../typings/GithubSeasonData.ts";
 import { Interfaces } from "../../shared/index.ts";
 import {
   getAwayHomeTeams,
