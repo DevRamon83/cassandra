@@ -1,5 +1,7 @@
 import pg from "pg";
 
+export const kv = await Deno.openKv();
+
 const databaseUrl = Deno.env.get("DATABASE_URL");
 
 if (!databaseUrl) {
@@ -8,7 +10,7 @@ if (!databaseUrl) {
 
 const caCertificate = await Deno.readTextFile("./prod-ca-2021.crt");
 
-const client = new pg.Client({
+export const client = new pg.Client({
   connectionString: databaseUrl,
   ssl: {
     rejectUnauthorized: true,
@@ -17,5 +19,3 @@ const client = new pg.Client({
 });
 
 await client.connect();
-
-export default client;
