@@ -1,12 +1,9 @@
 import type { GithubSeasonData } from "../typings/GithubSeasonData.ts";
-import client from "../db.ts";
+import { client } from "../db.ts";
 import { matchesQuery } from "../queries/matchesQuery.ts";
 import { Interfaces } from "../../shared/index.ts";
 
-interface resp {
-  error: boolean;
-  resp: string | null;
-}
+type resp = boolean;
 
 export const populateMatches = async (
   seasonData: GithubSeasonData,
@@ -17,15 +14,15 @@ export const populateMatches = async (
   }[],
 ): Promise<resp> => {
   const query = matchesQuery(seasonData, body, teamsMap);
-  if (query.error) return { error: true, resp: null };
+  if (query.error) return false;
 
   try {
     await client.query(query.text, query.values);
 
-    return { error: false, resp: "success" };
+    return true;
   } catch (err) {
     err as Error;
     console.error(err);
-    return { error: true, resp: null };
+    return false;
   }
 };
