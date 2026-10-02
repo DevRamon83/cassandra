@@ -4,38 +4,30 @@ import { apiFootball } from "../services/apiFootball.ts";
 import { populateTeams } from "../pipelines/populateTeams.ts";
 import { errors, messages } from "../../shared/index.ts";
 import { populateMatches } from "../pipelines/populateMatches.ts";
+import { cacheLeagueData } from "../services/cacheLeagueData.ts";
+import { handleErrorResponse } from "../helpers/handleErrorResponse.ts";
 
 export const updateSeason = async (c: Context) => {
   try {
     const body = await getBody(c);
-    if (!body) {
-      return c.json({ error: true, errorMsg: errors.bodyMissing }, 400);
-    }
+    if (!body) return handleErrorResponse(c, errors.bodyMissing, 400);
 
     const seasonData = await apiFootball(body);
 
     if (!seasonData || seasonData.error || !seasonData.data) {
-      return c.json(
-        {
-          error: true,
-          errorMsg: seasonData.errorMsg || errors.apiFootball,
-        },
-        500,
-      );
+      const errorMsg = seasonData.errorMsg || errors.apiFootball;
+      return handleErrorResponse(c, errorMsg, 500);
     }
 
-    const response = await populateTeams(seasonData.data, body);
+    const data = await populateTeams(seasonData.data, body);
 
-    if (response.error)
-      return c.json({ error: true, errorMsg: errors.teamsPopulation }, 500);
+    if (data.error) return handleErrorResponse(c, errors.teamsPopulation, 500);
 
-    const complete = await populateMatches(
-      seasonData.data,
-      body,
-      response.resp,
-    );
-    if (complete.error)
-      return c.json({ error: true, errorMsg: errors.matchesPopulation }, 500);
+    const success = await populateMatches(seasonData.data, body, data.resp);
+
+    if (!success) return handleErrorResponse(c, errors.matchesPopulation, 500);
+
+    await cacheLeagueData(body.league, body.season);
 
     return c.json({ error: false, data: messages.seasonSeeding }, 200);
   } catch (err) {
