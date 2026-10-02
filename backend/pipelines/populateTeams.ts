@@ -2,7 +2,7 @@ import { getTeams } from "../helpers/getTeams.ts";
 import { teamsQuery, teamsTable } from "../queries/teamsQuery.ts";
 import { Interfaces } from "../../shared/index.ts";
 import type { GithubSeasonData } from "../typings/GithubSeasonData.ts";
-import client from "../db.ts";
+import { client } from "../db.ts";
 
 export type resp =
   | { error: true; resp: null }
