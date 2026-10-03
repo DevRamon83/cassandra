@@ -4,7 +4,7 @@ import {
   Rounds,
   Standings,
   updateData,
-} from "../typings/AllMatches.ts";
+} from "../../shared/index.ts";
 
 const haveRound = (obj: Rounds, round: number): boolean => round in obj;
 
@@ -51,7 +51,8 @@ const updatePlayed = (data: updateData) => {
 const updatePoints = (data: updateData) => {
   const { homeTeam, awayTeam, standings, match } = data;
 
-  if (!match.home_points || !match.away_points) return;
+  if (match.home_points === null || match.away_points === null) return;
+
   standings[homeTeam].points += match.home_points;
   standings[awayTeam].points += match.away_points;
 };
