@@ -1,0 +1,43 @@
+.standings__main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.standings__container {
+  width: 80%;
+  border: 1px solid #000;
+  border-bottom: 0;
+}
+
+.standings__column {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  border-bottom: 1px solid #000;
+  padding: 10px 0;
+}
+
+.standings__column div:nth-child(1) {
+  min-width: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.standings__column div:nth-child(2) {
+  min-width: 20%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.standings__column div {
+  min-width: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
