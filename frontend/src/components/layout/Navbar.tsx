@@ -12,6 +12,9 @@ export default function Navbar() {
         <li>
           <NavLink to="/faq">Faq</NavLink>
         </li>
+        <li>
+          <NavLink to="/standings">standings</NavLink>
+        </li>
       </ol>
     </nav>
   );
