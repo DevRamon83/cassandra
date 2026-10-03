@@ -22,3 +22,5 @@ export const matchesArray: string[] = [
   "away_points",
   "game_week",
 ];
+
+export const leagues: string[] = ["serieA", "liga"];
