@@ -13,14 +13,16 @@ export * as errors from "./constants/errors.ts";
 export * as messages from "./constants/messages.ts";
 export * as scopes from "./constants/scopes.ts";
 
-import type {
-  Team,
-  SeasonSeeding,
-  NewMatchSeeding,
+export type {
+  Team as TeamKey,
+  SeasonSeeding as SeasonSeed,
+  NewMatchSeeding as NewMatchSeed,
 } from "./typings/atomics.ts";
-
-export namespace Interfaces {
-  export type TeamKey = Team;
-  export type SeasonSeed = SeasonSeeding;
-  export type NewMatchSeed = NewMatchSeeding;
-}
+export type {
+  MatchInterface as Match,
+  AllMatchesType as AllMatches,
+  TeamStandingsInterface as TeamStandings,
+  StandingsType as Standings,
+  RoundsType as Rounds,
+  updateDataInterface as updateData,
+} from "./typings/AllMatches.ts";
