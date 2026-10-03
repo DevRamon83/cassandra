@@ -1,6 +1,6 @@
 import { kv } from "../db.ts";
 import { decompressData } from "../helpers/compression.ts";
-import { Rounds, Standings } from "../typings/AllMatches.ts";
+import { Rounds, Standings } from "../../shared/index.ts";
 import { cacheLeagueData } from "./cacheLeagueData.ts";
 
 export const cacheHandler = async (league: string, season: string) => {
