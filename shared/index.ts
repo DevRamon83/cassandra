@@ -24,5 +24,6 @@ export type {
   TeamStandingsInterface as TeamStandings,
   StandingsType as Standings,
   RoundsType as Rounds,
-  updateDataInterface as updateData,
+  UpdateDataInterface as UpdateData,
+  LeagueDataInterface as LeagueData,
 } from "./typings/AllMatches.ts";
