@@ -32,9 +32,15 @@ export interface TeamStandingsInterface {
 export type RoundsType = Record<number, Record<string, MatchInterface>>;
 export type StandingsType = Record<string, TeamStandingsInterface>;
 
-export interface updateDataInterface {
+export interface UpdateDataInterface {
   homeTeam: string;
   awayTeam: string;
   standings: StandingsType;
   match: MatchInterface;
+}
+
+export interface LeagueDataInterface {
+  positions: string[];
+  rounds: RoundsType;
+  standings: StandingsType;
 }
