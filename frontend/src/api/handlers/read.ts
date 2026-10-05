@@ -1,7 +1,7 @@
 import type { SeasonSeed } from "../../../../shared/index.ts";
 import { API_URLS } from "../../constants/apiUrls.ts";
 import { fetchData } from "../fetchData.ts";
-import type { LeagueResponse } from "../../interfaces/standardRespGeneric.ts";
+import type { LeagueResponse } from "../../interfaces/generics.ts";
 
 const read = async (data: SeasonSeed, signal: AbortSignal) => {
   const { base, apiFootball } = API_URLS;
