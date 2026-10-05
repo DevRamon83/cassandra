@@ -3,7 +3,7 @@ import {
   Match,
   Rounds,
   Standings,
-  updateData,
+  UpdateData,
 } from "../../shared/index.ts";
 
 const haveRound = (obj: Rounds, round: number): boolean => round in obj;
@@ -42,13 +42,13 @@ const updateStandings = (match: Match, standings: Standings) => {
   }
 };
 
-const updatePlayed = (data: updateData) => {
+const updatePlayed = (data: UpdateData) => {
   const { homeTeam, awayTeam, standings } = data;
   standings[homeTeam].played += 1;
   standings[awayTeam].played += 1;
 };
 
-const updatePoints = (data: updateData) => {
+const updatePoints = (data: UpdateData) => {
   const { homeTeam, awayTeam, standings, match } = data;
 
   if (match.home_points === null || match.away_points === null) return;
@@ -73,7 +73,7 @@ const resultHandler = (result: string, standings: Standings, team: string) => {
   }
 };
 
-const updateResult = (data: updateData) => {
+const updateResult = (data: UpdateData) => {
   const { homeTeam, awayTeam, standings, match } = data;
 
   if (!match.home_result || !match.away_result) return;
@@ -81,7 +81,7 @@ const updateResult = (data: updateData) => {
   resultHandler(match.away_result, standings, awayTeam);
 };
 
-const updateGoals = (data: updateData) => {
+const updateGoals = (data: UpdateData) => {
   const { homeTeam, awayTeam, standings, match } = data;
   if (match.away_score === null || match.home_score === null) return;
   standings[homeTeam].scored += match.home_score;
