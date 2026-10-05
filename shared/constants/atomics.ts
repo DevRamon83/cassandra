@@ -24,3 +24,16 @@ export const matchesArray: string[] = [
 ];
 
 export const leagues: string[] = ["serieA", "liga"];
+
+export const columns = [
+  "#",
+  "Team",
+  "Pl",
+  "W",
+  "D",
+  "L",
+  "F",
+  "A",
+  "GD",
+  "Pts",
+];
