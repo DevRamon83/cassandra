@@ -1,0 +1,41 @@
+nav {
+  grid-column: 1 / 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 40px;
+  align-items: center;
+  padding: 4vh;
+}
+
+%basicIcon {
+  border: 1px solid black;
+  border-radius: 50%;
+  background-color: white;
+  padding: 1vh;
+  margin-left: -40px;
+  height: 3vh;
+  width: 3vh;
+}
+
+.nav__link-logo img {
+  @extend %basicIcon;
+  height: 5vh;
+  width: 5vh;
+}
+
+.nav__link-logoActive img {
+  @extend %basicIcon;
+  background-color: lime;
+}
+
+.nav__link-icon img {
+  @extend %basicIcon;
+  border-radius: 5px;
+}
+
+.nav__link-iconActive img {
+  @extend %basicIcon;
+  border-radius: 5px;
+  background-color: lime;
+}

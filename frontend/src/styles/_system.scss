@@ -1,0 +1,31 @@
+%system__btn {
+  padding: 5px 15px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: fit-content;
+  border: 1px solid black;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.system__update {
+  @extend %system__btn;
+  background-color: aliceblue;
+}
+
+.system__wait {
+  @extend %system__btn;
+  background-color: yellow;
+}
+
+.system__success {
+  @extend %system__btn;
+  background-color: lime;
+}
+
+.system__error {
+  @extend %system__btn;
+  background-color: red;
+}

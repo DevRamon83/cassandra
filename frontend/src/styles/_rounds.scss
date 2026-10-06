@@ -1,19 +1,23 @@
 .rounds__main {
   display: flex;
-  width: 100%;
+  width: 80%;
+  margin: 5vh 0 -1px 10%;
+  border-bottom: 1px solid dimgray;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-end;
   flex-direction: row;
-  padding: 10px 0;
+  gap: 20px;
 }
 
 .rounds__wrapper {
   position: relative;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  border: 1px solid black;
+  border-right-width: 0;
   background-color: dimgray;
   height: 222px;
   margin-bottom: 25px;
+  border-radius: 10px 0 0 10px;
+  overflow: hidden;
 }
 
 .rounds__container {
@@ -67,10 +71,12 @@
   width: 100%;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
+  border-radius: 5px 5px 0 0;
   border: 1px solid black;
+  border-bottom-width: 0;
   height: 25px;
-  width: 25px;
+  width: 40px;
+  font-weight: bold;
   cursor: pointer;
 }
 
@@ -78,12 +84,10 @@
   @extend .tabs;
   background-color: white;
   color: black;
-  height: 30px;
-  width: 30px;
 }
 
 .rounds__tabs {
   @extend .tabs;
-  background-color: black;
+  background-color: dimgray;
   color: white;
 }
