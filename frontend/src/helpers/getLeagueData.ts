@@ -25,10 +25,9 @@ export const getCurrentSeason = () => {
 export const getMatchDate = (myDate: string | null) => {
   if (!myDate) return { matchDate: "-", time: "-" };
   const date = new Date(myDate);
-  const matchDate = date.toLocaleDateString(undefined, {
+  const matchDate = date.toLocaleDateString("en-US", {
     day: "numeric",
     month: "long",
-    year: "numeric",
   });
 
   const time = date.toLocaleTimeString(undefined, {
