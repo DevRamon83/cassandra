@@ -3,11 +3,8 @@ import UseUpdateContext from "../hooks/UseUpdateContext.tsx";
 import { LeaguesCache } from "../App";
 import LeagueStandings from "../ui/LeagueStandings.tsx";
 import Matches from "./Matches.tsx";
-
-interface LeagueProps {
-  league: string;
-  season: string;
-}
+import UpdateSeason from "./UpdateSeason.tsx";
+import type { LeagueProps } from "../../../shared/index.ts";
 
 export default function League({ league, season }: LeagueProps) {
   const { cache, setCache } = useContext(LeaguesCache);
@@ -18,9 +15,10 @@ export default function League({ league, season }: LeagueProps) {
 
   return (
     <>
+      <UpdateSeason league={league} season={season} />
       {myLeague && (
         <>
-          <Matches positions={positions} myLeague={myLeague} />
+          <Matches positions={positions} myLeague={myLeague} league={league} />
           <LeagueStandings positions={positions} myLeague={myLeague} />
         </>
       )}
