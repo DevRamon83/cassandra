@@ -10,3 +10,8 @@ export interface SeasonSeeding {
 export interface NewMatchSeeding extends SeasonSeeding {
   game_week: number;
 }
+
+export interface LeaguePropsInterface {
+  league: string;
+  season: string;
+}
