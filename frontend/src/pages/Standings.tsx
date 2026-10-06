@@ -16,7 +16,6 @@ export default function Standings() {
 
   return (
     <>
-      <p>standings</p>
       {leagues.map((league) => (
         <button
           key={league}
