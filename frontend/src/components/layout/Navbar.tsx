@@ -1,21 +1,38 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom"; // Rimosso useLocation!
+import { pages, tags } from "../../constants/pages";
+
+interface PagesInterface {
+  url: string;
+  alt: string;
+  title: string;
+  className: string;
+  src: string;
+  end: boolean;
+}
+
+export type PagesType = Record<string, PagesInterface>;
 
 export default function Navbar() {
+  const pagesConfig = pages as PagesType;
+
   return (
     <nav>
-      <ol>
-        <li>
-          <NavLink to="/" end>
-            Home
+      {tags.map((tag) => {
+        const page = pagesConfig[tag];
+
+        return (
+          <NavLink
+            key={`page-${tag}`}
+            to={page.url}
+            end={page.end}
+            className={({ isActive }) =>
+              isActive ? `${page.className}Active` : page.className
+            }
+          >
+            <img alt={page.alt} title={page.title} src={page.src} />
           </NavLink>
-        </li>
-        <li>
-          <NavLink to="/faq">Faq</NavLink>
-        </li>
-        <li>
-          <NavLink to="/standings">standings</NavLink>
-        </li>
-      </ol>
+        );
+      })}
     </nav>
   );
 }
