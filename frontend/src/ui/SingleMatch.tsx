@@ -1,4 +1,5 @@
 import type { Match } from "../../../shared";
+import { classes } from "../constants/classes";
 import { getMatchDate } from "../helpers/getLeagueData";
 import SingleMatchRow from "./SingleMatchRow";
 
@@ -12,18 +13,16 @@ export default function SingleMatch({ match }: SingleMatchProps) {
 
   const aGoal = away_score === null ? "-" : away_score;
   const hGoal = home_score === null ? "-" : home_score;
-  const homeLogo = `/teams/${home_team_name}.jpg`;
-  const awayLogo = `/teams/${away_team_name}.jpg`;
 
   const { matchDate, time } = getMatchDate(match_date);
 
   return (
-    <div className="match__container">
-      <div className="match__result">
-        <SingleMatchRow logo={homeLogo} team={home_team_name} goal={hGoal} />
-        <SingleMatchRow logo={awayLogo} team={away_team_name} goal={aGoal} />
+    <div className={classes.match.container}>
+      <div className={classes.match.result}>
+        <SingleMatchRow team={home_team_name} goal={hGoal} />
+        <SingleMatchRow team={away_team_name} goal={aGoal} />
       </div>
-      <div className="match__date">
+      <div className={classes.match.date}>
         <p>{matchDate}</p>
         <p>{time}</p>
       </div>

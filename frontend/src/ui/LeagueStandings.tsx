@@ -1,4 +1,5 @@
 import { columns, type LeagueData } from "../../../shared/index";
+import { classes } from "../constants/classes";
 
 interface LeagueStandingsProps {
   positions: string[];
@@ -9,16 +10,17 @@ export default function LeagueStandings({
   positions,
   myLeague,
 }: LeagueStandingsProps) {
+  const { standings } = classes;
   return (
-    <div className="standings__main">
-      <div className="standings__container">
-        <div className="standings__column">
+    <div className={standings.main}>
+      <div className={standings.container}>
+        <div className={standings.column}>
           {columns.map((value) => (
             <div key={value}>{value}</div>
           ))}
         </div>
         {positions.map((team: string, index: number) => (
-          <div className="standings__column" key={team}>
+          <div className={standings.column} key={team}>
             <div>{index + 1}</div>
             <div>{team}</div>
             <div>{myLeague.standings[team].played}</div>

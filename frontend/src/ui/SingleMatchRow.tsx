@@ -1,12 +1,14 @@
+import { classes } from "../constants/classes";
+
 interface rowProps {
-  logo: string;
   team: string;
   goal: number | string;
 }
 
-export default function SingleMatchRow({ logo, team, goal }: rowProps) {
+export default function SingleMatchRow({ team, goal }: rowProps) {
+  const logo = `/teams/${team}.jpg`;
   return (
-    <div className="match__row">
+    <div className={classes.match.row}>
       <img src={logo} /> {team} {goal}
     </div>
   );

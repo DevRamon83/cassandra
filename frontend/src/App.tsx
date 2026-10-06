@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Faq from "./pages/Faq";
 import Standings from "./pages/Standings";
 import { createContext, useState } from "react";
+import { classes } from "./constants/classes";
 
 export const LeaguesCache = createContext<any>(null);
 
@@ -13,13 +14,17 @@ export default function App() {
 
   return (
     <LeaguesCache.Provider value={{ cache, setCache }}>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/faq" element={<Faq />} />
-        <Route path="/standings" element={<Standings />} />
-      </Routes>
-      <Footer />
+      <main>
+        <Navbar />
+        <div className={classes.main}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/faq" element={<Faq />} />
+            <Route path="/standings" element={<Standings />} />
+          </Routes>
+        </div>
+        <Footer />
+      </main>
     </LeaguesCache.Provider>
   );
 }
