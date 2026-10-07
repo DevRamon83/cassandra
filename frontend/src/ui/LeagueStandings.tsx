@@ -20,7 +20,10 @@ export default function LeagueStandings({
           ))}
         </div>
         {positions.map((team: string, index: number) => (
-          <div className={standings.column} key={team}>
+          <div
+            className={index % 2 === 0 ? standings.evenRow : standings.oddRow}
+            key={team}
+          >
             <div>{index + 1}</div>
             <div>{team}</div>
             <div>{myLeague.standings[team].played}</div>
