@@ -23,7 +23,13 @@ export const matchesArray: string[] = [
   "game_week",
 ];
 
-export const leagues: string[] = ["serieA", "liga"];
+export const leagues: string[] = [
+  "serieA",
+  "liga",
+  "ligue1",
+  "premier",
+  "bundesliga",
+];
 
 export const columns = [
   "#",
