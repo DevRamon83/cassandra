@@ -21,16 +21,18 @@
   position: relative;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  background-color: dimgray;
-  height: 222px;
-  margin-bottom: 25px;
+  background-color: #ececec;
+  height: 160px;
   border-radius: 0;
   overflow: hidden;
   width: 100%;
 
   @include breakpoints.medium {
-    border-radius: 10px 0 0 10px;
+    border-radius: 10px 10px 0 0;
     border-left: 1px solid black;
+    background-color: dimgray;
+    height: 180px;
+    padding-left: 57px;
   }
 }
 
@@ -41,34 +43,40 @@
   align-items: center;
   flex-direction: row;
   overflow: auto;
-  margin: 35px 0;
   padding: 0 25px;
-  &::-webkit-scrollbar {
-    display: none;
+  height: inherit;
+
+  @include breakpoints.medium {
+    border-radius: 10px 0 0 10px;
+    background-color: dimgray;
+    overflow: hidden;
+    align-items: flex-start;
+    margin: 35px 0;
   }
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 
 .rounds__scroller {
-  position: absolute;
-  bottom: 0;
-  height: 25%;
-  width: 15%;
-  font-size: 75px;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 0 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+  display: none;
+
+  @include breakpoints.medium {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    width: 5%;
+    font-size: 75px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
 }
 
 .rounds__scroller-right {
   @extend .rounds__scroller;
   right: 0;
-  border-radius: 5px 0 0 0;
 }
 
 .rounds__scroller-right::before {
@@ -78,7 +86,6 @@
 .rounds__scroller-left {
   @extend .rounds__scroller;
   left: 0;
-  border-radius: 0 5px 0 0;
 }
 
 .rounds__scroller-left::before {

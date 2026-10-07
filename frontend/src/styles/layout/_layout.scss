@@ -17,6 +17,6 @@ main {
   max-width: 100vw;
 
   @include breakpoints.medium {
-    grid-column: 2 / -1;
+    grid-column: 2 / 9;
   }
 }

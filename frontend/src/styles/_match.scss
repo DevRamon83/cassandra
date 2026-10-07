@@ -2,15 +2,16 @@
 
 .match__container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   border: 1px solid black;
   background-color: white;
   border-radius: 10px;
   margin-bottom: 10px;
   margin-right: 25px;
-  width: 100%;
+  width: 94%;
   flex-shrink: 0;
+  overflow: hidden;
 
   @include breakpoints.medium {
     width: 333px;
@@ -23,6 +24,7 @@
   align-items: center;
   flex-direction: column;
   width: 45%;
+  padding-left: 5px;
 }
 
 .match__row {
@@ -40,11 +42,18 @@
   margin: 10px 15px 10px 5px;
 
   @include breakpoints.medium {
-    height: 25px;
-    width: 25px;
+    height: 22px;
+    width: 22px;
   }
 }
 
 .match__date {
-  width: 45%;
+  width: 49%;
+  border-left: 1px solid dimgray;
+  padding: 5px 15px;
+  background-color: aliceblue;
+
+  @include breakpoints.medium {
+    width: 45%;
+  }
 }
