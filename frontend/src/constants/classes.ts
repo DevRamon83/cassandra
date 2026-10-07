@@ -16,6 +16,12 @@ export const classes = {
     main: "standings__main",
     container: "standings__container",
     column: "standings__column",
+    evenRow: "standings__evenRow",
+    oddRow: "standings__oddRow",
+    leagues: "standings__leaguesContainer",
+    flag: "standings__flag",
+    btn: "standings__leagueBtn",
+    btnActive: "standings__leagueBtn-active",
   },
   match: {
     container: "match__container",

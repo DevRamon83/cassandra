@@ -7,14 +7,59 @@
   align-items: center;
 }
 
-.standings__container {
-  width: 100%;
-  border-top: 1px solid #000;
+.standings__leaguesContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 70px;
+  background-color: #f7f8fa;
+  border-bottom: 1px solid black;
+  margin-top: -2px;
 
   @include breakpoints.medium {
-    width: 80%;
+    height: unset;
+    position: fixed;
+    flex-direction: column;
+    width: 10%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: unset;
+    border: 0;
+  }
+}
+
+.standings__flag {
+  border-radius: 5px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.standings__leagueBtn {
+  width: auto;
+  height: 25px;
+
+  @include breakpoints.medium {
+    height: 40px;
+  }
+}
+
+.standings__leagueBtn-active {
+  @extend .standings__leagueBtn;
+  filter: grayscale(100%);
+}
+
+.standings__container {
+  width: 100%;
+
+  @include breakpoints.medium {
     border: 1px solid #000;
     border-bottom: 0;
+    border-top: 0;
   }
 }
 
@@ -26,6 +71,23 @@
   flex-direction: row;
   border-bottom: 1px solid #000;
   padding: 10px 0;
+
+  @include breakpoints.medium {
+    color: white;
+    background-color: dimgray;
+  }
+}
+
+.standings__evenRow {
+  @extend .standings__column;
+  background-color: aliceblue;
+  color: black;
+}
+
+.standings__oddRow {
+  @extend .standings__column;
+  background-color: #ececec;
+  color: black;
 }
 
 .standings__column div:nth-child(1) {
