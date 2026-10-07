@@ -1,3 +1,5 @@
+@use "./layout/breakpoints";
+
 .standings__main {
   width: 100%;
   display: flex;
@@ -6,9 +8,14 @@
 }
 
 .standings__container {
-  width: 80%;
-  border: 1px solid #000;
-  border-bottom: 0;
+  width: 100%;
+  border-top: 1px solid #000;
+
+  @include breakpoints.medium {
+    width: 80%;
+    border: 1px solid #000;
+    border-bottom: 0;
+  }
 }
 
 .standings__column {
@@ -22,10 +29,14 @@
 }
 
 .standings__column div:nth-child(1) {
-  min-width: 2%;
+  min-width: 4%;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include breakpoints.medium {
+    min-width: 2%;
+  }
 }
 
 .standings__column div:nth-child(2) {
@@ -36,8 +47,12 @@
 }
 
 .standings__column div {
-  min-width: 5%;
+  min-width: 4%;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include breakpoints.medium {
+    min-width: 5%;
+  }
 }

@@ -1,12 +1,20 @@
+@use "./layout/breakpoints";
+
 .rounds__main {
   display: flex;
-  width: 80%;
-  margin: 5vh 0 -1px 10%;
+  width: 100%;
+  margin: 5vh 0 -1px 0;
   border-bottom: 1px solid dimgray;
   justify-content: space-around;
   align-items: flex-end;
   flex-direction: row;
-  gap: 20px;
+  gap: 10px;
+
+  @include breakpoints.medium {
+    width: 80%;
+    margin: 5vh 0 -1px 10%;
+    gap: 20px;
+  }
 }
 
 .rounds__wrapper {
@@ -16,8 +24,13 @@
   background-color: dimgray;
   height: 222px;
   margin-bottom: 25px;
-  border-radius: 10px 0 0 10px;
+  border-radius: 0;
   overflow: hidden;
+  width: 100%;
+
+  @include breakpoints.medium {
+    border-radius: 10px 0 0 10px;
+  }
 }
 
 .rounds__container {
@@ -26,9 +39,14 @@
   justify-content: space-around;
   align-items: center;
   flex-direction: row;
-  overflow: hidden;
+  overflow: auto;
   margin: 35px 0;
   padding: 0 25px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .rounds__scroller {
@@ -75,9 +93,13 @@
   border: 1px solid black;
   border-bottom-width: 0;
   height: 25px;
-  width: 40px;
+  width: 20px;
   font-weight: bold;
   cursor: pointer;
+
+  @include breakpoints.medium {
+    width: 40px;
+  }
 }
 
 .rounds__current {

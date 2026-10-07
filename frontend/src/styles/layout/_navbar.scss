@@ -1,11 +1,29 @@
+@use "./breakpoints";
+
 nav {
-  grid-column: 1 / 2;
+  grid-column: 1 / -1;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
-  gap: 40px;
+  gap: 20px;
   align-items: center;
   padding: 4vh;
+  background-color: rebeccapurple;
+  position: fixed;
+  z-index: 100;
+  border-bottom: 1px solid #000;
+  top: 0;
+  width: 100%;
+
+  @include breakpoints.medium {
+    grid-column: 1 / 2;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    position: unset;
+    gap: 40px;
+    border-bottom: 0;
+  }
 }
 
 %basicIcon {
@@ -13,9 +31,14 @@ nav {
   border-radius: 50%;
   background-color: white;
   padding: 1vh;
-  margin-left: -40px;
-  height: 3vh;
-  width: 3vh;
+  height: 5vh;
+  width: 5vh;
+
+  @include breakpoints.medium {
+    margin-left: -40px;
+    height: 3vh;
+    width: 3vh;
+  }
 }
 
 .nav__link-logo img {
@@ -31,11 +54,18 @@ nav {
 
 .nav__link-icon img {
   @extend %basicIcon;
-  border-radius: 5px;
+
+  @include breakpoints.medium {
+    border-radius: 5px;
+  }
 }
 
 .nav__link-iconActive img {
   @extend %basicIcon;
-  border-radius: 5px;
   background-color: lime;
+
+  @include breakpoints.medium {
+    border-radius: 5px;
+    background-color: lime;
+  }
 }
