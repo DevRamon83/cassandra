@@ -1,12 +1,22 @@
-import { guards, errors, scopes, Interfaces } from "../../shared/index.ts";
-import type { GithubSeasonData } from "../typings/GithubSeasonData.ts";
-import { serieA } from "../../shared/index.ts";
+import {
+  guards,
+  errors,
+  scopes,
+  serieA,
+  liga,
+  SeasonSeed,
+} from "../../shared/index.ts";
+import type {
+  GithubSeasonData,
+  SingleMatch,
+} from "../typings/GithubSeasonData.ts";
 
 export const getTeamsOfLeague = (league: string) => {
   switch (league) {
     case "serieA":
       return serieA;
-
+    case "liga":
+      return liga;
     default:
       return null;
   }
@@ -14,18 +24,19 @@ export const getTeamsOfLeague = (league: string) => {
 
 export const getTeams = (
   seasonData: GithubSeasonData,
-  body: Interfaces.SeasonSeed,
+  updateData: SeasonSeed,
 ): string[] | null => {
   const teamsSet = new Set<string>();
 
   const allMatches = seasonData.matches || [];
+  const firstTenMatches = allMatches.filter(
+    (match: SingleMatch) => match.round === "Matchday 1",
+  );
 
-  const firstTenMatches = allMatches.slice(0, 10);
-  const teams = getTeamsOfLeague(body.league);
-
+  const teams = getTeamsOfLeague(updateData.league);
   if (!teams) return null;
 
-  const keys = Object.keys(teams.serieA);
+  const keys = Object.keys(teams[updateData.league as keyof typeof teams]);
 
   for (const match of firstTenMatches) {
     if (guards.notAString(match.team1, errors.seasonSeeding)) return null;
