@@ -1,17 +1,24 @@
-import { serieA as teams } from "../../shared/index.ts";
-import { Interfaces } from "../../shared/index.ts";
+import { TeamKey } from "../../shared/index.ts";
+import { dictionaryLeagueDefiner } from "../helpers/defineLeague.ts";
 import { getPlaceholder } from "../helpers/getPlaceholder.ts";
+import type { TeamDetails } from "../typings/atomics.ts";
 
-const prepareTeamsData = (teamsArray: Interfaces.TeamKey[]) => {
-  const myTeams = teams.serieA;
+const prepareTeamsData = (teamsArray: TeamKey[], league: string) => {
+  const teams = dictionaryLeagueDefiner(league);
+  if (!teams) return null;
+  const myTeams = teams[league as keyof typeof teams] as Record<
+    string,
+    TeamDetails
+  >;
 
   return teamsArray.map((key) => [myTeams[key].cleanName, myTeams[key].city]);
 };
 
-export const teamsQuery = (teamsArray: Interfaces.TeamKey[]) => {
+export const teamsQuery = (teamsArray: TeamKey[], league: string) => {
   if (teamsArray.length === 0) return null;
 
-  const data = prepareTeamsData(teamsArray);
+  const data = prepareTeamsData(teamsArray, league);
+  if (!data) return null;
 
   const placeholders = getPlaceholder(data);
 
