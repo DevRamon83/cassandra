@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { leagues } from "../../../shared";
+import { getCurrentSeason, leagues } from "../../../shared";
 import League from "../components/League";
-import { getCurrentSeason } from "../helpers/getLeagueData";
 import { classes } from "../constants/classes";
 
 const season = getCurrentSeason();
