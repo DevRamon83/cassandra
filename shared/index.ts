@@ -7,11 +7,13 @@ export const guards = {
 };
 
 export * as serieA from "./dictionaries/serieA.ts";
+export * as liga from "./dictionaries/liga.ts";
 
 export * from "./constants/atomics.ts";
 export * as errors from "./constants/errors.ts";
 export * as messages from "./constants/messages.ts";
 export * as scopes from "./constants/scopes.ts";
+export * from "./helpers.ts";
 
 export type {
   Team as TeamKey,
