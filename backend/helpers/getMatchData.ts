@@ -1,12 +1,14 @@
 import type { SingleMatch } from "../typings/GithubSeasonData.ts";
 import { getTeamsOfLeague } from "./getTeams.ts";
 import { DateTime } from "luxon";
+import type { TeamDetails } from "../typings/atomics.ts";
 
 const getZone = (league: string) => {
   switch (league) {
     case "serieA":
       return "Europe/Rome";
-
+    case "liga":
+      return "Europe/Madrid";
     default:
       break;
   }
@@ -35,8 +37,13 @@ export const getAwayHomeTeams = (
 
   if (!teams) return { home_team_id: null, away_team_id: null };
 
-  const team1Name = teams.serieA[match.team1].cleanName;
-  const team2Name = teams.serieA[match.team2].cleanName;
+  const myTeams = teams[league as keyof typeof teams] as Record<
+    string,
+    TeamDetails
+  >;
+
+  const team1Name = myTeams[match.team1].cleanName;
+  const team2Name = myTeams[match.team2].cleanName;
 
   const home_team_id = map.get(team1Name);
   const away_team_id = map.get(team2Name);
@@ -52,8 +59,17 @@ export const getGameWeek = (match: SingleMatch) => {
 export const getScores = (match: SingleMatch) => {
   if (!match.score) return { home_score: null, away_score: null };
 
-  const home_score = match.score?.ft[0];
-  const away_score = match.score?.ft[1];
+  const rawScore = match.score as unknown;
+
+  if (Array.isArray(rawScore)) {
+    return {
+      home_score: rawScore[0],
+      away_score: rawScore[1],
+    };
+  }
+
+  const home_score = match.score.ft[0];
+  const away_score = match.score.ft[1];
 
   return {
     home_score,
