@@ -36,7 +36,7 @@ const UseUpdateContext = (
     }
 
     return () => controller.abort();
-  }, []);
+  }, [league]);
 };
 
 export default UseUpdateContext;
