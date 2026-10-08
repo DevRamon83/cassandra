@@ -1,5 +1,5 @@
 import type { GithubSeasonData } from "../typings/GithubSeasonData.ts";
-import { Interfaces } from "../../shared/index.ts";
+import { SeasonSeed } from "../../shared/index.ts";
 import {
   getAwayHomeTeams,
   getGameWeek,
@@ -14,19 +14,20 @@ import { getUpdateCondition } from "../helpers/queriesConditions.ts";
 
 const prepareMatchesData = (
   seasonData: GithubSeasonData,
-  body: Interfaces.SeasonSeed,
+  updateData: SeasonSeed,
   teamsMap: {
     id: string;
     team_name: string;
   }[],
 ) => {
-  const { season, league } = body;
+  const { season, league } = updateData;
   const matrix = [];
 
   for (let i = 0; i < seasonData.matches.length; i++) {
     const match = seasonData.matches[i];
 
     const match_date = getMatchTime(match, league) || null;
+
     const { home_team_id, away_team_id } = getAwayHomeTeams(
       match,
       league,
@@ -70,13 +71,14 @@ const prepareMatchesData = (
 
 export const matchesQuery = (
   seasonData: GithubSeasonData,
-  body: Interfaces.SeasonSeed,
+  updateData: SeasonSeed,
   teamsMap: {
     id: string;
     team_name: string;
   }[],
 ) => {
-  const data = prepareMatchesData(seasonData, body, teamsMap);
+  const data = prepareMatchesData(seasonData, updateData, teamsMap);
+
   if (data.length === 0) {
     return { error: true, errorMessage: "Match data missing" };
   }

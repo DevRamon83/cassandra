@@ -1,6 +1,6 @@
 import { getTeams } from "../helpers/getTeams.ts";
 import { teamsQuery, teamsTable } from "../queries/teamsQuery.ts";
-import { Interfaces } from "../../shared/index.ts";
+import { SeasonSeed, TeamKey } from "../../shared/index.ts";
 import type { GithubSeasonData } from "../typings/GithubSeasonData.ts";
 import { client } from "../db.ts";
 
@@ -10,10 +10,11 @@ export type resp =
 
 export const populateTeams = async (
   seasonData: GithubSeasonData,
-  body: Interfaces.SeasonSeed,
+  updateData: SeasonSeed,
 ): Promise<resp> => {
-  const teams = getTeams(seasonData, body) as Interfaces.TeamKey[];
-  const query = teamsQuery(teams);
+  const teams = getTeams(seasonData, updateData) as TeamKey[];
+
+  const query = teamsQuery(teams, updateData.league);
 
   if (!query) return { error: true, resp: null };
 
