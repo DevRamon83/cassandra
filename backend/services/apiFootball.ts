@@ -1,20 +1,11 @@
-import type { Interfaces } from "../../shared/index.ts";
+import type { SeasonSeed } from "../../shared/index.ts";
+import { apiFootballLeagueDefiner } from "../helpers/defineLeague.ts";
 
-const defineLeague = (league: string) => {
-  switch (league) {
-    case "serieA":
-      return "it.1";
-
-    default:
-      return null;
-  }
-};
-
-export async function apiFootball(data: Interfaces.SeasonSeed) {
+export async function apiFootball(data: SeasonSeed) {
   const { league, season } = data;
   const mySeason = season.substring(0, 4) + "-" + season.substring(7, 9);
 
-  const myLeague = defineLeague(league);
+  const myLeague = apiFootballLeagueDefiner(league);
   const baseUrl =
     "https://raw.githubusercontent.com/openfootball/football.json/master";
   const endpoint = `${mySeason}/${myLeague}.json`;
