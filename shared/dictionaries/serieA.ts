@@ -1,9 +1,6 @@
-interface TeamData {
-  cleanName: string;
-  city: string;
-}
+import type { TeamDetailsInterface } from "../typings/atomics";
 
-export const serieA: Record<string, TeamData> = {
+export const serieA: Record<string, TeamDetailsInterface> = {
   "SS Lazio": { cleanName: "Lazio", city: "Roma" },
   "Cagliari Calcio": { cleanName: "Cagliari", city: "Cagliari" },
   "FC Internazionale Milano": { cleanName: "Inter", city: "Milano" },
@@ -25,7 +22,3 @@ export const serieA: Record<string, TeamData> = {
   "US Lecce": { cleanName: "Lecce", city: "Lecce" },
   "US Sassuolo Calcio": { cleanName: "Sassuolo", city: "Sassuolo" },
 };
-
-export function getSerieATeamName(rawName: string): TeamData | null {
-  return serieA[rawName] || null;
-}

@@ -1,7 +1,6 @@
-import { TeamKey } from "../../shared/index.ts";
+import type { TeamDetails, TeamKey } from "../../shared/index.ts";
 import { dictionaryLeagueDefiner } from "../helpers/defineLeague.ts";
 import { getPlaceholder } from "../helpers/getPlaceholder.ts";
-import type { TeamDetails } from "../typings/atomics.ts";
 
 const prepareTeamsData = (teamsArray: TeamKey[], league: string) => {
   const teams = dictionaryLeagueDefiner(league);

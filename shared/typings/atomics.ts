@@ -15,3 +15,8 @@ export interface LeaguePropsInterface {
   league: string;
   season: string;
 }
+
+export interface TeamDetailsInterface {
+  cleanName: string;
+  city: string;
+}

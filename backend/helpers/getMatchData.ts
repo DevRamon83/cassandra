@@ -1,7 +1,7 @@
+import type { TeamDetails } from "../../shared/index.ts";
 import type { SingleMatch } from "../typings/GithubSeasonData.ts";
 import { getTeamsOfLeague } from "./getTeams.ts";
 import { DateTime } from "luxon";
-import type { TeamDetails } from "../typings/atomics.ts";
 
 const getZone = (league: string) => {
   switch (league) {

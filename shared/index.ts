@@ -20,6 +20,7 @@ export type {
   SeasonSeeding as SeasonSeed,
   NewMatchSeeding as NewMatchSeed,
   LeaguePropsInterface as LeagueProps,
+  TeamDetailsInterface as TeamDetails,
 } from "./typings/atomics.ts";
 export type {
   MatchInterface as Match,

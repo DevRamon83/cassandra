@@ -1,9 +1,6 @@
-interface TeamData {
-  cleanName: string;
-  city: string;
-}
+import type { TeamDetailsInterface } from "../typings/atomics";
 
-export const liga: Record<string, TeamData> = {
+export const liga: Record<string, TeamDetailsInterface> = {
   "Rayo Vallecano de Madrid": { cleanName: "Rayo Vallecano", city: "Madrid" },
   "Deportivo Alavés": { cleanName: "Alavés", city: "Vitoria-Gasteiz" },
   "Real Betis Balompié": { cleanName: "Real Betis", city: "Sevilla" },
@@ -34,7 +31,3 @@ export const liga: Record<string, TeamData> = {
     city: "A Coruña",
   },
 };
-
-export function getLigaTeamName(rawName: string): TeamData | null {
-  return liga[rawName] || null;
-}
