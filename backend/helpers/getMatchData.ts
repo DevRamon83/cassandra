@@ -9,8 +9,14 @@ const getZone = (league: string) => {
       return "Europe/Rome";
     case "liga":
       return "Europe/Madrid";
+    case "premier":
+      return "Europe/London";
+    case "ligue1":
+      return "Europe/Paris";
+    case "bundesliga":
+      return "Europe/Berlin";
     default:
-      break;
+      return "UTC";
   }
 };
 
