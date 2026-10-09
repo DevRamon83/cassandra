@@ -1,5 +1,7 @@
-import { columns, type LeagueData } from "../../../shared/index";
+import type { LeagueData } from "../../../shared/index";
 import { classes } from "../constants/classes";
+import { getRowClass } from "../helpers/atomics";
+import LeagueStandingsColumn from "./LeagueStandingsColumns";
 
 interface LeagueStandingsProps {
   positions: string[];
@@ -11,19 +13,16 @@ export default function LeagueStandings({
   myLeague,
 }: LeagueStandingsProps) {
   const { standings } = classes;
+  const evenClass = standings.evenRow;
+  const oddClass = standings.oddRow;
+
   return (
     <div className={standings.main}>
       <div className={standings.container}>
-        <div className={standings.column}>
-          {columns.map((value) => (
-            <div key={value}>{value}</div>
-          ))}
-        </div>
+        <LeagueStandingsColumn classColumn={standings.column} />
+
         {positions.map((team: string, index: number) => (
-          <div
-            className={index % 2 === 0 ? standings.evenRow : standings.oddRow}
-            key={team}
-          >
+          <div className={getRowClass(index, evenClass, oddClass)} key={team}>
             <div>{index + 1}</div>
             <div>{team}</div>
             <div>{myLeague.standings[team].played}</div>
