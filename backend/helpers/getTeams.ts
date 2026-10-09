@@ -1,26 +1,9 @@
-import {
-  guards,
-  errors,
-  scopes,
-  serieA,
-  liga,
-  SeasonSeed,
-} from "../../shared/index.ts";
+import { guards, errors, scopes, SeasonSeed } from "../../shared/index.ts";
 import type {
   GithubSeasonData,
   SingleMatch,
 } from "../typings/GithubSeasonData.ts";
-
-export const getTeamsOfLeague = (league: string) => {
-  switch (league) {
-    case "serieA":
-      return serieA;
-    case "liga":
-      return liga;
-    default:
-      return null;
-  }
-};
+import { dictionaryLeagueDefiner } from "./defineLeague.ts";
 
 export const getTeams = (
   seasonData: GithubSeasonData,
@@ -33,7 +16,7 @@ export const getTeams = (
     (match: SingleMatch) => match.round === "Matchday 1",
   );
 
-  const teams = getTeamsOfLeague(updateData.league);
+  const teams = dictionaryLeagueDefiner(updateData.league);
   if (!teams) return null;
 
   const keys = Object.keys(teams[updateData.league as keyof typeof teams]);

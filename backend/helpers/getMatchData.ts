@@ -1,6 +1,6 @@
 import type { TeamDetails } from "../../shared/index.ts";
 import type { SingleMatch } from "../typings/GithubSeasonData.ts";
-import { getTeamsOfLeague } from "./getTeams.ts";
+import { dictionaryLeagueDefiner } from "./defineLeague.ts";
 import { DateTime } from "luxon";
 
 const getZone = (league: string) => {
@@ -33,7 +33,7 @@ export const getAwayHomeTeams = (
   }[],
 ) => {
   const map = new Map(teamsMap.map((team) => [team.team_name, team.id]));
-  const teams = getTeamsOfLeague(league);
+  const teams = dictionaryLeagueDefiner(league);
 
   if (!teams) return { home_team_id: null, away_team_id: null };
 
