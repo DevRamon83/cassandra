@@ -23,15 +23,22 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  width: 45%;
+  width: 52%;
   padding-left: 5px;
 }
 
 .match__row {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+
+.match__team {
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .match__row img {
@@ -39,7 +46,7 @@
   height: 20px;
   width: 20px;
   border-radius: 50%;
-  margin: 10px 15px 10px 5px;
+  margin: 10px 8px 10px 5px;
 
   @include breakpoints.medium {
     height: 22px;

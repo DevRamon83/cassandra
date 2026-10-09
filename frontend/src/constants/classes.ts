@@ -28,6 +28,7 @@ export const classes = {
     result: "match__result",
     date: "match__date",
     row: "match__row",
+    team: "match__team",
   },
   system: {
     update: "system__update",
