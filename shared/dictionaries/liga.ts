@@ -11,7 +11,7 @@ export const liga: Record<string, TeamData> = {
     cleanName: "Real Sociedad",
     city: "San Sebastián",
   },
-  "Athletic Club": { cleanName: "Athletic", city: "Bilbao" },
+  "Athletic Club": { cleanName: "Athletic Bilbao", city: "Bilbao" },
   "Sevilla FC": { cleanName: "Sevilla", city: "Sevilla" },
   "Valencia CF": { cleanName: "Valencia", city: "Valencia" },
   "RC Celta de Vigo": { cleanName: "Celta Vigo", city: "Vigo" },
