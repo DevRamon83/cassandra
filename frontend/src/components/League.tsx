@@ -16,7 +16,7 @@ export default function League({ league, season }: LeagueProps) {
   return (
     <>
       <UpdateSeason league={league} season={season} />
-      {myLeague && (
+      {myLeague && positions.length !== 0 && (
         <>
           <Matches positions={positions} myLeague={myLeague} league={league} />
           <LeagueStandings positions={positions} myLeague={myLeague} />
