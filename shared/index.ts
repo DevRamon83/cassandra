@@ -9,6 +9,8 @@ export const guards = {
 export * as serieA from "./dictionaries/serieA.ts";
 export * as liga from "./dictionaries/liga.ts";
 export * as premier from "./dictionaries/premier.ts";
+export * as ligue1 from "./dictionaries/ligue1.ts";
+export * as bundesliga from "./dictionaries/bundesliga.ts";
 
 export * from "./constants/atomics.ts";
 export * as errors from "./constants/errors.ts";

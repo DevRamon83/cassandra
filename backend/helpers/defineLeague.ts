@@ -1,4 +1,10 @@
-import { serieA, liga, premier } from "../../shared/index.ts";
+import {
+  serieA,
+  liga,
+  premier,
+  ligue1,
+  bundesliga,
+} from "../../shared/index.ts";
 
 export const apiFootballLeagueDefiner = (league: string) => {
   switch (league) {
@@ -8,6 +14,10 @@ export const apiFootballLeagueDefiner = (league: string) => {
       return "es.1";
     case "premier":
       return "en.1";
+    case "ligue1":
+      return "fr.1";
+    case "bundesliga":
+      return "de.1";
     default:
       return null;
   }
@@ -21,6 +31,10 @@ export const dictionaryLeagueDefiner = (league: string) => {
       return liga;
     case "premier":
       return premier;
+    case "ligue1":
+      return ligue1;
+    case "bundesliga":
+      return bundesliga;
     default:
       return null;
   }
