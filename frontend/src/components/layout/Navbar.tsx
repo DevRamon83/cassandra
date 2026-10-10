@@ -1,5 +1,6 @@
-import { NavLink } from "react-router-dom"; // Rimosso useLocation!
+import { NavLink } from "react-router-dom";
 import { pages, tags } from "../../constants/pages";
+import AuthBtn from "./AuthBtn";
 
 interface PagesInterface {
   url: string;
@@ -33,6 +34,8 @@ export default function Navbar() {
           </NavLink>
         );
       })}
+
+      <AuthBtn />
     </nav>
   );
 }
