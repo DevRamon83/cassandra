@@ -4,4 +4,9 @@ export const API_URLS = {
     update: "/update",
     leagueData: "/leagueData",
   },
+  auth: {
+    login: "/login",
+    signup: "/signup",
+    logout: "/logout",
+  },
 };
