@@ -20,3 +20,8 @@ export interface TeamDetailsInterface {
   cleanName: string;
   city: string;
 }
+
+export interface AuthInterface {
+  username: string;
+  psw: string;
+}
