@@ -1,6 +1,7 @@
 import { Hono } from "@hono/hono";
 import { cors } from "@hono/hono/cors";
 import matchRouter from "./routes/matches.ts";
+import authRouter from "./routes/auth.ts";
 import "./db.ts";
 
 const app = new Hono();
@@ -20,6 +21,7 @@ app.use(
 );
 
 app.route("/api", matchRouter);
+app.route("/api", authRouter);
 
 if (import.meta.main) {
   Deno.serve(app.fetch);
