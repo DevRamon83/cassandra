@@ -15,3 +15,9 @@ export interface LeagueResponse {
   rounds: RoundsType;
   aborted: true;
 }
+
+export interface AuthResponse {
+  status: number;
+  error: boolean;
+  username: string;
+}
