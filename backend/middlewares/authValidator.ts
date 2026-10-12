@@ -1,0 +1,17 @@
+import { Context, Next } from "@hono/hono";
+import { getBody } from "../helpers/getBody.ts";
+import { handleErrorResponse } from "../helpers/handleErrorResponse.ts";
+import { authSchema, errors } from "../../shared/index.ts";
+
+export const authValidator = async (c: Context, next: Next) => {
+  const body = await getBody(c);
+  if (!body) return handleErrorResponse(c, errors.bodyMissing, 400);
+
+  const result = authSchema.safeParse(body);
+  if (!result.success)
+    return handleErrorResponse(c, errors.invalidStandard, 400);
+
+  c.set("updateData", body);
+
+  await next();
+};
