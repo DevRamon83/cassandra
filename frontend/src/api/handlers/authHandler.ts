@@ -3,9 +3,9 @@ import { API_URLS } from "../../constants/apiUrls.ts";
 import { fetchData } from "../fetchData.ts";
 import type { AuthResponse } from "../../interfaces/generics.ts";
 
-const authHandler = async (data: AuthInterface, endpoint: string) => {
+const authHandler = async (data: AuthInterface) => {
   const { base, auth } = API_URLS;
-  const apiUrl = base + auth[endpoint as keyof typeof auth];
+  const apiUrl = base + auth[data.endpoint as keyof typeof auth];
 
   const method = "POST";
   const credentials = "include";
