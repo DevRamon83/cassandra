@@ -23,6 +23,7 @@
     "npm:@types/react-dom@^19.2.7": "19.3.0_@types+react@19.3.0",
     "npm:@types/react@^19.2.18": "19.3.0",
     "npm:@vitejs/plugin-react@^6.1.1": "6.1.1_@rolldown+plugin-babel@0.2.4_babel-plugin-react-compiler@1.0.0_vite@8.3.0_@babel+core@7.29.7_@types+node@24.13.6_rolldown@1.2.10_sass@1.105.0",
+    "npm:argon2@~0.45.1": "0.45.1",
     "npm:babel-plugin-react-compiler@1": "1.0.0",
     "npm:eslint-plugin-react-hooks@^7.1.1": "7.1.1_eslint@10.11.0",
     "npm:eslint-plugin-react-refresh@~0.5.6": "0.5.7_eslint@10.11.0",
@@ -238,6 +239,9 @@
         "keyv"
       ]
     },
+    "@epic-web/invariant@1.0.0": {
+      "integrity": "sha512-lrTPqgvfFQtR/eY/qkIzp98OGdNJu0m5ji3q/nJI8v3SXkRKEnWiOxMmbvcSoAIzv/cGiuvRy57k4suKQSAdwA=="
+    },
     "@eslint-community/eslint-utils@4.10.1_eslint@10.11.0": {
       "integrity": "sha512-cuadcxVFE8sDK6iWJbs8Sn0av2Nrh2QSGQhVlBW9AaAHqHwjWsZHT8LJ4hFGPh7ASBV2deFdM7H/DPjulmh8rg==",
       "dependencies": [
@@ -416,7 +420,7 @@
       "dependencies": [
         "detect-libc",
         "is-glob",
-        "node-addon-api",
+        "node-addon-api@7.1.1",
         "picomatch"
       ],
       "optionalDependencies": [
@@ -434,6 +438,9 @@
         "@parcel/watcher-win32-x64"
       ],
       "scripts": true
+    },
+    "@phc/format@1.0.0": {
+      "integrity": "sha512-m7X9U6BG2+J+R1lSOdCiITLLrxm+cWlNI3HUFA92oLO77ObGNzaKdh8pMLqdZcshtkKuV84olNNXDfMc4FezBQ=="
     },
     "@rolldown/binding-android-arm-eabi@1.2.10": {
       "integrity": "sha512-bp9svZb+QurZeh+8H4BhrZkifEB0YBNvTVzNSJnJQkj4NrRwmQoDUCGP0vSN7PbvLeM7l1tK6GXL8mrTiH2myg==",
@@ -711,6 +718,16 @@
         "uri-js"
       ]
     },
+    "argon2@0.45.1": {
+      "integrity": "sha512-skm+/WCjkGqCQxF7FG1LuZXM5yvbFjgbfiCGsud2oLgaDhh6b6dbH0b1EkghbM+xx4Bj8Ape+KKgixoIlWZicQ==",
+      "dependencies": [
+        "@phc/format",
+        "cross-env",
+        "node-addon-api@8.9.2",
+        "node-gyp-build"
+      ],
+      "scripts": true
+    },
     "babel-plugin-react-compiler@1.0.0": {
       "integrity": "sha512-Ixm8tFfoKKIPYdCCKYTsqv+Fd4IJ0DQqMyEimo+pxUOMUR9cVPlwTrFt9Avu+3cb6Zp3mAzl+t1MrG2fxxKsxw==",
       "dependencies": [
@@ -765,6 +782,14 @@
     },
     "cookie@1.1.1": {
       "integrity": "sha512-ei8Aos7ja0weRpFzJnEA9UHJ/7XQmqglbRwnf2ATjcB9Wq874VKH9kfjjirM6UhU2/E5fFYadylyhFldcqSidQ=="
+    },
+    "cross-env@10.1.0": {
+      "integrity": "sha512-GsYosgnACZTADcmEyJctkJIoqAhHjttw7RsFrVoJNXbsWWqaq6Ym+7kZjq6mS45O0jij6vtiReppKQEtqWy6Dw==",
+      "dependencies": [
+        "@epic-web/invariant",
+        "cross-spawn"
+      ],
+      "bin": true
     },
     "cross-spawn@7.0.6": {
       "integrity": "sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==",
@@ -1134,6 +1159,13 @@
     "node-addon-api@7.1.1": {
       "integrity": "sha512-5m3bsyrjFWE1xf7nz7YXdN4udnVtXK6/Yfgn5qnahL6bCkf2yKt4k3nuTKAtT4r3IG8JNR2ncsIMdZuAzJjHQQ=="
     },
+    "node-addon-api@8.9.2": {
+      "integrity": "sha512-VijLXbi3UACN69I0JVXJsX4tjACjNoQDgv2gTF6sx2wWEi8tkSg2eX8p5gSIFi8z2+DL3oHmY6OyKce38SDolg=="
+    },
+    "node-gyp-build@4.8.4": {
+      "integrity": "sha512-LA4ZjwlnUblHVgq0oBF3Jl/6h/Nvs5fzBLwdEF4nuxnFdsfajde4WfxtJr3CaiH+F6ewcIB/q4jQ4UzPyid+CQ==",
+      "bin": true
+    },
     "node-releases@2.0.57": {
       "integrity": "sha512-kQK9LGGFiHtrWiNhZtA7Qbw17AQz+dmsEKODRIVTXA9+e5MS/2gZEBhYJt13GrAz5/IOZKddH/0Z3TP/Zgo+yw=="
     },
@@ -1461,11 +1493,13 @@
           "jsr:@hono/hono@^4.13.8",
           "jsr:@std/assert@1",
           "jsr:@std/http@1",
+          "npm:argon2@~0.45.1",
           "npm:luxon@3.5.0",
           "npm:pg@^8.11.0"
         ],
         "packageJson": {
           "dependencies": [
+            "npm:argon2@~0.45.1",
             "npm:pg@^8.23.0"
           ]
         }
