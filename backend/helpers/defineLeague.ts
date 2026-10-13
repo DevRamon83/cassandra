@@ -4,6 +4,7 @@ import {
   premier,
   ligue1,
   bundesliga,
+  TeamDetails,
 } from "../../shared/index.ts";
 
 export const apiFootballLeagueDefiner = (league: string) => {
@@ -23,7 +24,9 @@ export const apiFootballLeagueDefiner = (league: string) => {
   }
 };
 
-export const dictionaryLeagueDefiner = (league: string) => {
+export const dictionaryLeagueDefiner = (
+  league: string,
+): Record<string, TeamDetails> | null => {
   switch (league) {
     case "serieA":
       return serieA;

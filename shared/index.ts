@@ -1,25 +1,27 @@
 import { notAString } from "./guards/typeCheckers.ts";
 import { emptyData } from "./guards/emptyData.ts";
+import { z } from "zod";
 
 export const guards = {
   notAString,
   emptyData,
 };
 
-export * as serieA from "./dictionaries/serieA.ts";
-export * as liga from "./dictionaries/liga.ts";
-export * as premier from "./dictionaries/premier.ts";
-export * as ligue1 from "./dictionaries/ligue1.ts";
-export * as bundesliga from "./dictionaries/bundesliga.ts";
+export { serieA } from "./dictionaries/serieA.ts";
+export { liga } from "./dictionaries/liga.ts";
+export { premier } from "./dictionaries/premier.ts";
+export { ligue1 } from "./dictionaries/ligue1.ts";
+export { bundesliga } from "./dictionaries/bundesliga.ts";
 
 export * from "./constants/atomics.ts";
 export * as errors from "./constants/errors.ts";
 export * as messages from "./constants/messages.ts";
 export * as scopes from "./constants/scopes.ts";
 export * from "./helpers.ts";
+export * from "./schemas/authSchema.ts";
+export { z };
 
 export type {
-  Team as TeamKey,
   SeasonSeeding as SeasonSeed,
   NewMatchSeeding as NewMatchSeed,
   LeaguePropsInterface as LeagueProps,

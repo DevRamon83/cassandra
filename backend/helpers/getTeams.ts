@@ -18,8 +18,7 @@ export const getTeams = (
 
   const teams = dictionaryLeagueDefiner(updateData.league);
   if (!teams) return null;
-
-  const keys = Object.keys(teams[updateData.league as keyof typeof teams]);
+  const keys = Object.keys(teams);
 
   for (const match of firstTenMatches) {
     if (guards.notAString(match.team1, errors.seasonSeeding)) return null;
