@@ -8,5 +8,6 @@ export const API_URLS = {
     login: "/login",
     signup: "/signup",
     logout: "/logout",
+    check: "/check",
   },
 };
