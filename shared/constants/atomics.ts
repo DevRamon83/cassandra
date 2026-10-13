@@ -43,3 +43,5 @@ export const columns = [
   "GD",
   "Pts",
 ];
+
+export const endpoints = ["signup", "login"];
