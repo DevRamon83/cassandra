@@ -1,6 +1,5 @@
-import { serieA } from "../index.ts";
-
-export type Team = keyof typeof serieA;
+import { z } from "zod";
+import type { authSchema } from "../schemas/authSchema";
 
 export interface SeasonSeeding {
   league: string;
@@ -21,7 +20,4 @@ export interface TeamDetailsInterface {
   city: string;
 }
 
-export interface AuthInterface {
-  username: string;
-  psw: string;
-}
+export type AuthInterface = z.infer<typeof authSchema>;
