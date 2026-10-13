@@ -1,4 +1,3 @@
-import type { TeamDetails } from "../../shared/index.ts";
 import type { SingleMatch } from "../typings/GithubSeasonData.ts";
 import { dictionaryLeagueDefiner } from "./defineLeague.ts";
 import { DateTime } from "luxon";
@@ -43,13 +42,8 @@ export const getAwayHomeTeams = (
 
   if (!teams) return { home_team_id: null, away_team_id: null };
 
-  const myTeams = teams[league as keyof typeof teams] as Record<
-    string,
-    TeamDetails
-  >;
-
-  const team1Name = myTeams[match.team1].cleanName;
-  const team2Name = myTeams[match.team2].cleanName;
+  const team1Name = teams[match.team1].cleanName;
+  const team2Name = teams[match.team2].cleanName;
 
   const home_team_id = map.get(team1Name);
   const away_team_id = map.get(team2Name);

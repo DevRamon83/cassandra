@@ -1,19 +1,14 @@
-import type { TeamDetails, TeamKey } from "../../shared/index.ts";
 import { dictionaryLeagueDefiner } from "../helpers/defineLeague.ts";
 import { getPlaceholder } from "../helpers/getPlaceholder.ts";
 
-const prepareTeamsData = (teamsArray: TeamKey[], league: string) => {
+const prepareTeamsData = (teamsArray: string[], league: string) => {
   const teams = dictionaryLeagueDefiner(league);
   if (!teams) return null;
-  const myTeams = teams[league as keyof typeof teams] as Record<
-    string,
-    TeamDetails
-  >;
 
-  return teamsArray.map((key) => [myTeams[key].cleanName, myTeams[key].city]);
+  return teamsArray.map((key) => [teams[key].cleanName, teams[key].city]);
 };
 
-export const teamsQuery = (teamsArray: TeamKey[], league: string) => {
+export const teamsQuery = (teamsArray: string[], league: string) => {
   if (teamsArray.length === 0) return null;
 
   const data = prepareTeamsData(teamsArray, league);
