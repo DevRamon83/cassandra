@@ -16,7 +16,11 @@ const parseExpiresIn = (timeStr: string): number => {
   }
 };
 
-export const createToken = (username: string, expiresIn: string) => {
+export const createToken = (
+  username: string,
+  id: string,
+  expiresIn: string,
+) => {
   const secret = Deno.env.get("SECRET");
   if (!secret) {
     console.error(scopes.backend.createToken, errors.missingSecret);
@@ -26,6 +30,7 @@ export const createToken = (username: string, expiresIn: string) => {
   const seconds = parseExpiresIn(expiresIn);
   const payload = {
     username,
+    id,
     exp: Math.floor(Date.now() / 1000) + seconds,
   };
 

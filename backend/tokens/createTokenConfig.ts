@@ -1,4 +1,4 @@
-const createTokenConfigs = (username: string) => {
+const createTokenConfigs = (username: string, id: string) => {
   const access = Deno.env.get("ACCESS_TOKEN");
   const refresh = Deno.env.get("REFRESH_TOKEN");
 
@@ -6,6 +6,7 @@ const createTokenConfigs = (username: string) => {
 
   const accessConfig = {
     username,
+    id,
     expiresIn: "5m",
     maxAge: null,
     tokenName: access,
@@ -13,6 +14,7 @@ const createTokenConfigs = (username: string) => {
 
   const refreshConfig = {
     username,
+    id,
     expiresIn: "255m",
     maxAge: null,
     tokenName: refresh,

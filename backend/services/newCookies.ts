@@ -4,8 +4,8 @@ import { handleErrorResponse } from "../helpers/handleErrorResponse.ts";
 import createTokenConfigs from "../tokens/createTokenConfig.ts";
 import setTokenAndCookie from "../tokens/setTokenAndCookie.ts";
 
-export const newCookies = async (c: Context, username: string) => {
-  const { accessConfig, refreshConfig } = createTokenConfigs(username);
+export const newCookies = async (c: Context, username: string, id: string) => {
+  const { accessConfig, refreshConfig } = createTokenConfigs(username, id);
 
   if (!accessConfig || !refreshConfig) {
     return handleErrorResponse(c, errors.invalidStandard, 500);

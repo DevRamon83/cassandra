@@ -9,14 +9,17 @@ const checkToken = async (
   token: string | undefined,
 ): Promise<CheckTokenResult> => {
   const secret = Deno.env.get("SECRET");
-  if (!secret || !token) return { error: ".envMissing", username: null };
+  if (!secret || !token)
+    return { error: ".envMissing", username: null, id: null };
 
   try {
     const payload = await verify(token, secret, "HS256");
-    return { error: false, username: payload.username as string };
+    const user = payload.username as string;
+    const userID = payload.id as string;
+    return { error: false, username: user, id: userID };
   } catch (err) {
     const error = err as Error;
-    return { error: error.name, username: null };
+    return { error: error.name, username: null, id: null };
   }
 };
 
@@ -27,11 +30,12 @@ const analyzeToken = async (
 ) => {
   const myToken = await checkToken(token);
 
-  if (!myToken.username) {
+  if (!myToken.username || !myToken.id) {
     tokensData[tokenName] = `${myToken.error}`;
   } else {
     tokensData[tokenName] = "valid";
     tokensData.username = myToken.username;
+    tokensData.id = myToken.id;
   }
 };
 
@@ -42,6 +46,7 @@ export const tokensValidator = async (c: Context, next: Next) => {
     access: "",
     refresh: "",
     username: "",
+    id: "",
   };
 
   if (!accessKey || !refreshKey)

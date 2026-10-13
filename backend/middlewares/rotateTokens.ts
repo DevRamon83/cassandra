@@ -10,7 +10,11 @@ export const rotateToken = async (c: Context, next: Next) => {
     return next();
   }
 
-  const createdCookies = await newCookies(c, tokensData.username);
+  const createdCookies = await newCookies(
+    c,
+    tokensData.username,
+    tokensData.id,
+  );
 
   if (!createdCookies)
     return handleErrorResponse(c, errors.invalidStandard, 400);

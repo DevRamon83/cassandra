@@ -17,7 +17,7 @@ export const signup = async (c: Context) => {
     if (resp.rowCount === 0)
       return handleErrorResponse(c, errors.userExists, 400);
 
-    const createdCookies = await newCookies(c, username);
+    const createdCookies = await newCookies(c, username, resp.rows[0].id);
 
     if (!createdCookies)
       return handleErrorResponse(c, errors.invalidStandard, 400);

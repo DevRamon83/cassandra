@@ -13,19 +13,20 @@ export const cookieSettings = {
 
 interface config {
   username: string;
+  id: string;
   expiresIn: string;
   tokenName: string;
   maxAge: number | null;
 }
 
 const setTokenAndCookie = async (c: Context, dataConfig: config) => {
-  const { username, expiresIn, tokenName } = dataConfig;
+  const { username, id, expiresIn, tokenName } = dataConfig;
 
   if (dataConfig.maxAge !== null) {
     cookieSettings.maxAge = dataConfig.maxAge;
   }
 
-  const token = await createToken(username, expiresIn);
+  const token = await createToken(username, id, expiresIn);
 
   if (!token) return false;
   setCookie(c, tokenName, token, cookieSettings);
