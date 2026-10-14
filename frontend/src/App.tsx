@@ -7,6 +7,7 @@ import Standings from "./pages/Standings";
 import { createContext, useState } from "react";
 import { classes } from "./constants/classes";
 import Auth from "./pages/Auth";
+import Dashboard from "./pages/Dashboard";
 
 export const LeaguesCache = createContext<any>(null);
 export const AuthContext = createContext<any>(null);
@@ -26,6 +27,7 @@ export default function App() {
               <Route path="/faq" element={<Faq />} />
               <Route path="/standings" element={<Standings />} />
               <Route path="/auth" element={<Auth />} />
+              <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
           </div>
           <Footer />
