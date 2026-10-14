@@ -20,6 +20,7 @@ export interface AuthResponse {
   status: number;
   error: boolean;
   username: string;
+  errorMessage: string;
 }
 
 export interface LogoutResponse {
