@@ -1,20 +1,28 @@
 import { NavLink } from "react-router-dom";
 import { pages, tags } from "../../constants/pages";
 import AuthBtn from "./AuthBtn";
-
-interface PagesInterface {
-  url: string;
-  alt: string;
-  title: string;
-  className: string;
-  src: string;
-  end: boolean;
-}
+import { useContext, useEffect } from "react";
+import checkAuth from "../../api/handlers/checkAuth";
+import { AuthContext } from "../../App";
+import type { PagesInterface } from "../../typings/interfaces";
+import DashboardBtn from "./DashboardBtn";
 
 export type PagesType = Record<string, PagesInterface>;
 
 export default function Navbar() {
   const pagesConfig = pages as PagesType;
+  const { logged, setLogged } = useContext(AuthContext);
+
+  const checkHandler = async () => {
+    const resp = await checkAuth();
+    if (resp.error) return;
+
+    setLogged(resp.username);
+  };
+
+  useEffect(() => {
+    checkHandler();
+  }, []);
 
   return (
     <nav>
@@ -34,6 +42,8 @@ export default function Navbar() {
           </NavLink>
         );
       })}
+
+      {logged && <DashboardBtn dashConfig={pagesConfig.dashboard} />}
 
       <AuthBtn />
     </nav>
