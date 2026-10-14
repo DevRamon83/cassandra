@@ -25,6 +25,14 @@ export const pages = {
     src: "/icons/faq.svg",
     end: false,
   },
+  dashboard: {
+    url: "/dashboard",
+    alt: "Go to dashboard page",
+    title: "dashboard",
+    className: classes.navbar.icon,
+    src: "/icons/dashboard.svg",
+    end: false,
+  },
 };
 
 export const tags = ["homepage", "standings", "faq"];
