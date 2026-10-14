@@ -7,7 +7,7 @@ export const handleErrorResponse = <T extends number>(
 ) => {
   console.error(message);
   return c.json(
-    { error: true, errorMsg: message },
+    { error: true, message },
     status as Parameters<typeof c.json>[1],
   );
 };
