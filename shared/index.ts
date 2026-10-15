@@ -26,6 +26,7 @@ export type {
   NewMatchSeeding as NewMatchSeed,
   LeaguePropsInterface as LeagueProps,
   TeamDetailsInterface as TeamDetails,
+  overrideInterface as Override,
   AuthInterface,
 } from "./typings/atomics.ts";
 export type {
