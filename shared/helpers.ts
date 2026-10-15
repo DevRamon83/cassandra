@@ -8,3 +8,8 @@ export const getCurrentSeason = () => {
   }
   return `${currentYear - 1}/${currentYear}`;
 };
+
+export const totalMatches = (league: string) => {
+  if (league === "ligue1" || league === "bundesliga") return 34;
+  return 38;
+};
