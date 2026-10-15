@@ -1,7 +1,7 @@
 import { useState } from "react";
-import type { LeagueProps } from "../../../shared/index.ts";
-import update from "../api/handlers/update.ts";
-import { classes } from "../constants/classes.ts";
+import type { LeagueProps } from "../../../../shared/index.ts";
+import update from "../../api/handlers/update.ts";
+import { classes } from "../../constants/classes.ts";
 
 export default function UpdateSeason({ league, season }: LeagueProps) {
   const { system } = classes;

@@ -3,7 +3,7 @@ import UseUpdateContext from "../hooks/UseUpdateContext.tsx";
 import { AuthContext, LeaguesCache } from "../App";
 import LeagueStandings from "../ui/LeagueStandings.tsx";
 import Matches from "./Matches.tsx";
-import UpdateSeason from "./UpdateSeason.tsx";
+import UpdateSeason from "./admin/UpdateSeason.tsx";
 import type { LeagueProps } from "../../../shared/index.ts";
 
 export default function League({ league, season }: LeagueProps) {
