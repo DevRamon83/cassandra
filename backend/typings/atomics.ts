@@ -6,7 +6,7 @@ export interface tokensInterface {
 }
 
 export interface CheckTokenResult {
-  error: string | boolean;
+  status: string;
   username: string | null;
   id: string | null;
 }
