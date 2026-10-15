@@ -5,11 +5,11 @@ import { authSchema, errors } from "../../shared/index.ts";
 
 export const authValidator = async (c: Context, next: Next) => {
   const body = await getBody(c);
-  if (!body) return handleErrorResponse(c, errors.bodyMissing, 400);
+  if (!body) return handleErrorResponse(c, errors.bodyMissing, 400, true);
 
   const result = authSchema.safeParse(body);
   if (!result.success)
-    return handleErrorResponse(c, errors.invalidStandard, 400);
+    return handleErrorResponse(c, errors.invalidStandard, 400, true);
 
   c.set("updateData", body);
 

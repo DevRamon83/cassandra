@@ -9,7 +9,7 @@ export const logout = (c: Context) => {
     const refreshKey = Deno.env.get("REFRESH_TOKEN");
 
     if (!accessKey || !refreshKey) {
-      return handleErrorResponse(c, errors.invalidStandard, 500);
+      return handleErrorResponse(c, errors.invalidStandard, 500, true);
     }
 
     const deleteOptions = { path: "/" };

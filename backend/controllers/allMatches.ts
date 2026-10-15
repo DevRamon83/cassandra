@@ -9,10 +9,10 @@ export const allMatches = async (c: Context) => {
     const season = c.req.query("season");
 
     if (!league || !season)
-      return handleErrorResponse(c, errors.invalidURL, 400);
+      return handleErrorResponse(c, errors.invalidURL, 400, true);
 
     const { error, standings, rounds } = await cacheHandler(league, season);
-    if (error) return handleErrorResponse(c, "noData", 500);
+    if (error) return handleErrorResponse(c, "noData", 500, true);
 
     return c.json({ error: false, standings, rounds }, 200);
   } catch (err) {

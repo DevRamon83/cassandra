@@ -8,7 +8,7 @@ export const newCookies = async (c: Context, username: string, id: string) => {
   const { accessConfig, refreshConfig } = createTokenConfigs(username, id);
 
   if (!accessConfig || !refreshConfig) {
-    return handleErrorResponse(c, errors.invalidStandard, 500);
+    return handleErrorResponse(c, errors.invalidStandard, 500, true);
   }
 
   try {

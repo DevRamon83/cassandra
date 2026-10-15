@@ -14,12 +14,13 @@ export const updateSeason = async (c: Context) => {
 
     if (!seasonData || seasonData.error || !seasonData.data) {
       const errorMsg = seasonData.errorMsg || errors.apiFootball;
-      return handleErrorResponse(c, errorMsg, 500);
+      return handleErrorResponse(c, errorMsg, 500, true);
     }
 
     const data = await populateTeams(seasonData.data, updateData);
 
-    if (data.error) return handleErrorResponse(c, errors.teamsPopulation, 500);
+    if (data.error)
+      return handleErrorResponse(c, errors.teamsPopulation, 500, true);
 
     const success = await populateMatches(
       seasonData.data,
@@ -27,7 +28,8 @@ export const updateSeason = async (c: Context) => {
       data.resp,
     );
 
-    if (!success) return handleErrorResponse(c, errors.matchesPopulation, 500);
+    if (!success)
+      return handleErrorResponse(c, errors.matchesPopulation, 500, true);
 
     await cacheLeagueData(updateData.league, updateData.season);
 

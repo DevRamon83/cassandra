@@ -50,10 +50,11 @@ export const tokensValidator = async (c: Context, next: Next) => {
   };
 
   if (!accessKey || !refreshKey)
-    return handleErrorResponse(c, errors.invalidStandard, 400);
+    return handleErrorResponse(c, errors.invalidStandard, 400, true);
 
   const access = getCookie(c, accessKey);
-  if (!access) return handleErrorResponse(c, errors.invalidStandard, 400);
+  if (!access)
+    return handleErrorResponse(c, errors.invalidStandard, 400, false);
 
   await analyzeToken("access", access, tokensData);
 
@@ -63,13 +64,12 @@ export const tokensValidator = async (c: Context, next: Next) => {
   }
 
   if (tokensData.access === "JwtTokenInvalid") {
-    // must have a log system
-    console.error("malformed token");
-    return handleErrorResponse(c, errors.invalidStandard, 400);
+    return handleErrorResponse(c, errors.invalidToken, 400, true);
   }
 
   const refresh = getCookie(c, refreshKey);
-  if (!refresh) return handleErrorResponse(c, errors.invalidStandard, 400);
+  if (!refresh)
+    return handleErrorResponse(c, errors.invalidStandard, 400, false);
 
   await analyzeToken("refresh", refresh, tokensData);
 
@@ -79,9 +79,9 @@ export const tokensValidator = async (c: Context, next: Next) => {
   }
 
   if (tokensData.refresh === "JwtTokenExpired") {
-    return handleErrorResponse(c, errors.sessionExpired, 400);
+    return handleErrorResponse(c, errors.sessionExpired, 400, false);
   } else {
     console.error("malformed token");
-    return handleErrorResponse(c, errors.invalidStandard, 400);
+    return handleErrorResponse(c, errors.invalidToken, 400, true);
   }
 };

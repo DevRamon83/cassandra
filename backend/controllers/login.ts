@@ -12,16 +12,17 @@ export const login = async (c: Context) => {
     const { text, value } = findUserQuery(username);
     const { rows } = await client.query(text, value);
 
-    if (rows.length === 0) return handleErrorResponse(c, errors.user404, 404);
+    if (rows.length === 0)
+      return handleErrorResponse(c, errors.user404, 404, false);
 
     const match = await verify(rows[0].psw, psw);
 
-    if (!match) return handleErrorResponse(c, errors.wrongPsw, 400);
+    if (!match) return handleErrorResponse(c, errors.wrongPsw, 400, false);
 
     const createdCookies = await newCookies(c, username, rows[0].id);
 
     if (!createdCookies)
-      return handleErrorResponse(c, errors.invalidStandard, 400);
+      return handleErrorResponse(c, errors.invalidStandard, 400, true);
 
     return c.json({ error: false, username }, 200);
   } catch (err) {

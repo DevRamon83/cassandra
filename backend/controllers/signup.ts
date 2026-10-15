@@ -15,12 +15,12 @@ export const signup = async (c: Context) => {
     const resp = await client.query(query.text, query.values);
 
     if (resp.rowCount === 0)
-      return handleErrorResponse(c, errors.userExists, 400);
+      return handleErrorResponse(c, errors.userExists, 400, false);
 
     const createdCookies = await newCookies(c, username, resp.rows[0].id);
 
     if (!createdCookies)
-      return handleErrorResponse(c, errors.invalidStandard, 400);
+      return handleErrorResponse(c, errors.invalidStandard, 400, true);
 
     return c.json({ error: false, username }, 200);
   } catch (err) {

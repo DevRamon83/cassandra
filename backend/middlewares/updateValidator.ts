@@ -6,14 +6,14 @@ import { errors, leagues, getCurrentSeason } from "../../shared/index.ts";
 export const updateValidator = async (c: Context, next: Next) => {
   const body = await getBody(c);
   if (!body || !body.league || !body.season)
-    return handleErrorResponse(c, errors.bodyMissing, 400);
+    return handleErrorResponse(c, errors.bodyMissing, 400, true);
 
   if (!leagues.includes(body.league))
-    return handleErrorResponse(c, errors.invalidLeague, 400);
+    return handleErrorResponse(c, errors.invalidLeague, 400, true);
 
   const currentSeason = getCurrentSeason();
   if (currentSeason !== body.season)
-    return handleErrorResponse(c, errors.invalidSeason, 400);
+    return handleErrorResponse(c, errors.invalidSeason, 400, true);
   c.set("updateData", body);
 
   await next();
