@@ -45,3 +45,6 @@ export const columns = [
 ];
 
 export const endpoints = ["signup", "login"];
+
+export const matchResult = ["w", "d", "l"];
+export const matchPoints = [0, 1, 3];
