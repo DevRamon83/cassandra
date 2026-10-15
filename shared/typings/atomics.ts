@@ -1,9 +1,14 @@
 import { z } from "zod";
 import type { authSchema } from "../schemas/authSchema";
+import type { RoundsType } from "./AllMatches";
 
 export interface SeasonSeeding {
   league: string;
   season: string;
+}
+
+export interface overrideInterface extends SeasonSeeding {
+  matchday: RoundsType;
 }
 
 export interface NewMatchSeeding extends SeasonSeeding {
