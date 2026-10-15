@@ -3,6 +3,7 @@ export const API_URLS = {
   apiFootball: {
     update: "/update",
     leagueData: "/leagueData",
+    override: "/override",
   },
   auth: {
     login: "/login",
