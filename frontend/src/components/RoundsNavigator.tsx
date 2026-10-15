@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import type { Dispatch, SetStateAction } from "react";
 import { classes } from "../constants/classes";
-import { defineFirstMatch, totalMatches } from "../helpers/roundsNavData";
+import { defineFirstMatch } from "../helpers/roundsNavData";
+import { totalMatches } from "../../../shared/index";
 
 interface RoundsNavigatorProps {
   show: number;
