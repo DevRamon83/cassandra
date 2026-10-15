@@ -16,7 +16,7 @@ const checkToken = async (
     const payload = await verify(token, secret, "HS256");
     const user = payload.username as string;
     const userID = payload.id as string;
-    return { status: "invalid", username: user, id: userID };
+    return { status: "valid", username: user, id: userID };
   } catch (err) {
     const error = err as Error;
     return { status: error.name, username: null, id: null };
