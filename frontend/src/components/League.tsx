@@ -5,6 +5,7 @@ import LeagueStandings from "../ui/LeagueStandings.tsx";
 import Matches from "./Matches.tsx";
 import UpdateSeason from "./admin/UpdateSeason.tsx";
 import type { LeagueProps } from "../../../shared/index.ts";
+import OverrideUpdate from "./admin/OverrideUpdate.tsx";
 
 export default function League({ league, season }: LeagueProps) {
   const { cache, setCache } = useContext(LeaguesCache);
@@ -17,7 +18,13 @@ export default function League({ league, season }: LeagueProps) {
 
   return (
     <>
-      {isAdmin && <UpdateSeason league={league} season={season} />}
+      {isAdmin && (
+        <>
+          <UpdateSeason league={league} season={season} />
+          <OverrideUpdate league={league} season={season} myLeague={myLeague} />
+        </>
+      )}
+
       {myLeague && positions.length !== 0 && (
         <>
           <Matches positions={positions} myLeague={myLeague} league={league} />
