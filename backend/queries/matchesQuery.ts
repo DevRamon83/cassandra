@@ -48,6 +48,13 @@ const prepareMatchesData = (
     }
 
     const { home_score, away_score } = getScores(match);
+
+    if (home_score === null || away_score === null) {
+      console.error("scores missing", match.round);
+
+      return [];
+    }
+
     const { home_result, away_result } = getResults(home_score, away_score);
     const { home_points, away_points } = getPoints(home_result, away_result);
 
