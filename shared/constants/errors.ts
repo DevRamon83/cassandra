@@ -24,3 +24,4 @@ export const invalidId = "invalid id";
 export const invalidResult = "result doesn't match";
 export const invalidPoints = "invalid value for points";
 export const invalidGameWeek = "invalid game week";
+export const notAdmin = "is not admin";
