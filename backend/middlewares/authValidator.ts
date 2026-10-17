@@ -1,4 +1,4 @@
-import { Context, Next } from "@hono/hono";
+import type { Context, Next } from "hono";
 import { getBody } from "../helpers/getBody.ts";
 import { handleErrorResponse } from "../helpers/handleErrorResponse.ts";
 import { authSchema, errors } from "../../shared/index.ts";

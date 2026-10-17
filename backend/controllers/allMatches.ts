@@ -1,4 +1,4 @@
-import { Context } from "@hono/hono";
+import type { Context } from "hono";
 import { errors } from "../../shared/index.ts";
 import { cacheHandler } from "../services/cacheHandler.ts";
 import { handleErrorResponse } from "../helpers/handleErrorResponse.ts";

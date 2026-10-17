@@ -1,14 +1,14 @@
-import { getCookie } from "@hono/hono/cookie";
-import { Context, Next } from "@hono/hono";
+import { getCookie } from "hono/cookie";
+import type { Next, Context } from "hono";
 import { handleErrorResponse } from "../helpers/handleErrorResponse.ts";
 import { errors } from "../../shared/index.ts";
-import { verify } from "@hono/hono/jwt";
-import { CheckTokenResult, tokensInterface } from "../typings/atomics.ts";
+import { verify } from "hono/jwt";
+import type { CheckTokenResult, tokensInterface } from "../typings/atomics.ts";
 
 const checkToken = async (
   token: string | undefined,
 ): Promise<CheckTokenResult> => {
-  const secret = Deno.env.get("SECRET");
+  const secret = Bun.env.SECRET;
   if (!secret || !token)
     return { status: ".envMissing", username: null, id: null };
 
@@ -40,8 +40,8 @@ const analyzeToken = async (
 };
 
 export const tokensValidator = async (c: Context, next: Next) => {
-  const accessKey = Deno.env.get("ACCESS_TOKEN");
-  const refreshKey = Deno.env.get("REFRESH_TOKEN");
+  const accessKey = Bun.env.ACCESS_TOKEN;
+  const refreshKey = Bun.env.REFRESH_TOKEN;
   const tokensData = {
     access: "",
     refresh: "",

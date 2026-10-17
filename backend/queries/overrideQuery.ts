@@ -1,5 +1,5 @@
 import { getPlaceholder } from "../helpers/getPlaceholder.ts";
-import { OverrideBody } from "../typings/atomics.ts";
+import type { OverrideBody } from "../typings/atomics.ts";
 
 const prepareMatchesData = (data: OverrideBody) => {
   const matrix = [];
@@ -28,9 +28,7 @@ const prepareMatchesData = (data: OverrideBody) => {
 
 export const overrideQuery = (body: OverrideBody) => {
   const data = prepareMatchesData(body);
-  if (data.length === 0) {
-    return { error: true, errorMessage: "Match data missing" };
-  }
+  if (data.length === 0) return null;
 
   const placeholders = getPlaceholder(data);
 

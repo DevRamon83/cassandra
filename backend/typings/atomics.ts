@@ -1,4 +1,4 @@
-import { Match } from "../../shared/index.ts";
+import type { Match } from "../../shared/index.ts";
 
 export interface tokensInterface {
   access: string;

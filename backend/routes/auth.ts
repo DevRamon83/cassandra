@@ -1,4 +1,4 @@
-import { Hono } from "@hono/hono";
+import { Hono } from "hono";
 import { authValidator } from "../middlewares/authValidator.ts";
 import { signup } from "../controllers/signup.ts";
 import { logout } from "../controllers/logout.ts";

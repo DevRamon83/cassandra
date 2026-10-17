@@ -1,4 +1,4 @@
-import { guards, errors, scopes, SeasonSeed } from "../../shared/index.ts";
+import { guards, errors, scopes, type SeasonSeed } from "../../shared/index.ts";
 import type {
   GithubSeasonData,
   SingleMatch,

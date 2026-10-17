@@ -1,7 +1,7 @@
 import type { GithubSeasonData } from "../typings/GithubSeasonData.ts";
 import { client } from "../db.ts";
 import { matchesQuery } from "../queries/matchesQuery.ts";
-import { SeasonSeed } from "../../shared/index.ts";
+import type { SeasonSeed } from "../../shared/index.ts";
 
 type resp = boolean;
 
@@ -14,7 +14,7 @@ export const populateMatches = async (
   }[],
 ): Promise<resp> => {
   const query = matchesQuery(seasonData, updateData, teamsMap);
-  if (query.error) return false;
+  if (!query) return false;
 
   try {
     await client.query(query.text, query.values);

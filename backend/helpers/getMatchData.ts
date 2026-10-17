@@ -2,7 +2,7 @@ import type { SingleMatch } from "../typings/GithubSeasonData.ts";
 import { dictionaryLeagueDefiner } from "./defineLeague.ts";
 import { DateTime } from "luxon";
 
-const getZone = (league: string) => {
+const getZone = (league: string) =>  {
   switch (league) {
     case "serieA":
       return "Europe/Rome";

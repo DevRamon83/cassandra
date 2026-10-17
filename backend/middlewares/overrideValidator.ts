@@ -1,4 +1,4 @@
-import { Context, Next } from "@hono/hono";
+import type { Context, Next } from "hono";
 import { handleErrorResponse } from "../helpers/handleErrorResponse.ts";
 import { errors } from "../../shared/index.ts";
 import { dictionaryLeagueDefiner } from "../helpers/defineLeague.ts";

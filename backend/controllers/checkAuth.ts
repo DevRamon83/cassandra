@@ -1,4 +1,4 @@
-import { Context } from "@hono/hono";
+import type { Context } from "hono";
 
 export const checkAuth = (c: Context) => {
   const tokensData = c.get("tokensData");

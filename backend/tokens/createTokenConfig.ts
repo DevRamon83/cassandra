@@ -1,6 +1,6 @@
 const createTokenConfigs = (username: string, id: string) => {
-  const access = Deno.env.get("ACCESS_TOKEN");
-  const refresh = Deno.env.get("REFRESH_TOKEN");
+  const access = Bun.env.ACCESS_TOKEN;
+  const refresh = Bun.env.REFRESH_TOKEN;
 
   if (!access || !refresh) return { accessConfig: null, refreshConfig: null };
 

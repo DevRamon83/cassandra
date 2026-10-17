@@ -1,4 +1,4 @@
-import { Context } from "@hono/hono";
+import type { Context } from "hono";
 
 export async function getBody(c: Context) {
   try {

@@ -1,12 +1,11 @@
 import { createToken } from "./createToken.ts";
-import { Context } from "@hono/hono";
-import { setCookie } from "@hono/hono/cookie";
+import type { Context } from "hono";
+import { setCookie } from "hono/cookie";
 
 export const cookieSettings = {
   httpOnly: true,
-  secure:
-    process.env.NODE_ENV === "prod" || Deno.env.get("DENO_ENV") === "prod",
-  sameSite: "Strict" as const,
+  secure: Bun.env.NODE_ENV === "PROD",
+  sameSite: "strict" as const,
   path: "/",
   maxAge: 3600,
 };

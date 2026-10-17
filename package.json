@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/DevRamon83/cassandra/issues"
   },
-  "homepage": "https://github.com/DevRamon83/cassandra#readme"
+  "homepage": "https://github.com/DevRamon83/cassandra#readme",
+  "trustedDependencies": [
+    "@parcel/watcher"
+  ]
 }

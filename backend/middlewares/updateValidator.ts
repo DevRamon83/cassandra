@@ -1,4 +1,4 @@
-import { Context, Next } from "@hono/hono";
+import type { Context, Next } from "hono";
 import { getBody } from "../helpers/getBody.ts";
 import { handleErrorResponse } from "../helpers/handleErrorResponse.ts";
 import { errors, leagues, getCurrentSeason } from "../../shared/index.ts";

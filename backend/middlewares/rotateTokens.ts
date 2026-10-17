@@ -1,4 +1,4 @@
-import { Context, Next } from "@hono/hono";
+import type { Context, Next } from "hono";
 import { handleErrorResponse } from "../helpers/handleErrorResponse.ts";
 import { newCookies } from "../services/newCookies.ts";
 import { errors } from "../../shared/index.ts";

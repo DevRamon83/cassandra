@@ -1,4 +1,4 @@
-import { Context } from "@hono/hono";
+import type { Context } from "hono";
 import { errors } from "../../shared/index.ts";
 import { handleErrorResponse } from "../helpers/handleErrorResponse.ts";
 import createTokenConfigs from "../tokens/createTokenConfig.ts";

@@ -2,8 +2,21 @@
   "name": "backend",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "dev": "bun --watch main.ts",
+    "typecheck": "bun check"
+  },
   "dependencies": {
+    "@deno/kv": "^0.14.0",
     "argon2": "^0.45.1",
-    "pg": "^8.23.0"
+    "hono": "^4.13.13",
+    "luxon": "^3.7.2",
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "@types/argon2": "^0.15.4",
+    "@types/bun": "latest",
+    "@types/luxon": "^3.7.6",
+    "@types/pg": "^8.23.1"
   }
 }

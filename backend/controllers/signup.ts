@@ -1,4 +1,4 @@
-import { Context } from "@hono/hono";
+import type { Context } from "hono";
 import { hash } from "argon2";
 import { authQuery } from "../queries/authQuery.ts";
 import { client } from "../db.ts";

@@ -1,4 +1,4 @@
-import { sign } from "@hono/hono/jwt";
+import { sign } from "hono/jwt";
 import { errors, scopes } from "../../shared/index.ts";
 
 const parseExpiresIn = (timeStr: string): number => {
@@ -21,7 +21,7 @@ export const createToken = (
   id: string,
   expiresIn: string,
 ) => {
-  const secret = Deno.env.get("SECRET");
+  const secret = Bun.env.SECRET;
   if (!secret) {
     console.error(scopes.backend.createToken, errors.missingSecret);
     return null;

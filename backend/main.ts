@@ -1,13 +1,13 @@
-import { Hono } from "@hono/hono";
-import { cors } from "@hono/hono/cors";
+import { Hono } from "hono";
+import { cors } from "hono/cors";
 import matchRouter from "./routes/matches.ts";
 import authRouter from "./routes/auth.ts";
 import "./db.ts";
 
 const app = new Hono();
 
-const env = process.env.NODE_ENV;
-const ORIGIN = env === "DEV" ? process.env.ORIGIN_DEV : process.env.ORIGIN_PROD;
+const env = Bun.env.NODE_ENV;
+const ORIGIN = env === "DEV" ? Bun.env.ORIGIN_DEV : Bun.env.ORIGIN_PROD;
 
 app.use(
   "/api/*",
@@ -23,6 +23,8 @@ app.use(
 app.route("/api", matchRouter);
 app.route("/api", authRouter);
 
-if (import.meta.main) {
-  Deno.serve(app.fetch);
-}
+// Configurazione nativa del server per Bun
+export default {
+  port: Bun.env.PORT || 3000,
+  fetch: app.fetch,
+};

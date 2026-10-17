@@ -4,7 +4,7 @@ import {
   premier,
   ligue1,
   bundesliga,
-  TeamDetails,
+  type TeamDetails,
 } from "../../shared/index.ts";
 
 export const apiFootballLeagueDefiner = (league: string) => {

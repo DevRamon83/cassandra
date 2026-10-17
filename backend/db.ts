@@ -1,14 +1,15 @@
 import pg from "pg";
+import { openKv } from "@deno/kv";
 
-export const kv = await Deno.openKv();
+export const kv = await openKv();
 
-const databaseUrl = Deno.env.get("DATABASE_URL");
+const databaseUrl = Bun.env.DATABASE_URL;
 
 if (!databaseUrl) {
   throw new Error("DATABASE_URL is missing into .env");
 }
 
-const caCertificate = await Deno.readTextFile("./prod-ca-2021.crt");
+const caCertificate = await Bun.file("./prod-ca-2021.crt").text();
 
 export const client = new pg.Client({
   connectionString: databaseUrl,

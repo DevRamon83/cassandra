@@ -1,4 +1,4 @@
-import { Context } from "@hono/hono";
+import type { Context } from "hono";
 
 export const handleErrorResponse = <T extends number>(
   c: Context,

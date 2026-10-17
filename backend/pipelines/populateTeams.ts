@@ -1,6 +1,6 @@
 import { getTeams } from "../helpers/getTeams.ts";
 import { teamsQuery, teamsTable } from "../queries/teamsQuery.ts";
-import { SeasonSeed } from "../../shared/index.ts";
+import type { SeasonSeed } from "../../shared/index.ts";
 import type { GithubSeasonData } from "../typings/GithubSeasonData.ts";
 import { client } from "../db.ts";
 

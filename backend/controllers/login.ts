@@ -1,4 +1,4 @@
-import { Context } from "@hono/hono";
+import type { Context } from "hono";
 import { verify } from "argon2";
 import { client } from "../db.ts";
 import { findUserQuery } from "../queries/findUserQuery.ts";

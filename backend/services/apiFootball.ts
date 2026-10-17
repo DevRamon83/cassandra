@@ -1,5 +1,6 @@
 import type { SeasonSeed } from "../../shared/index.ts";
 import { apiFootballLeagueDefiner } from "../helpers/defineLeague.ts";
+import type { GithubSeasonData } from "../typings/GithubSeasonData.ts";
 
 export async function apiFootball(data: SeasonSeed) {
   const { league, season } = data;
@@ -22,11 +23,12 @@ export async function apiFootball(data: SeasonSeed) {
       return { error: true, errorMsg: "noResponse" };
     }
 
-    const data = await response.json();
+    const rawJson = await response.json();
+    const data = rawJson as GithubSeasonData;
 
-    return { error: false, data };
+    return { error: false, errorMsg: undefined, data };
   } catch (err) {
     const error = err as Error;
-    return { error: true, errorMsg: error.message };
+    return { error: true, errorMsg: error.message, data: undefined };
   }
 }

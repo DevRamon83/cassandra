@@ -1,4 +1,4 @@
-import { Context } from "@hono/hono";
+import type { Context } from "hono";
 import { apiFootball } from "../services/apiFootball.ts";
 import { populateTeams } from "../pipelines/populateTeams.ts";
 import { errors, messages } from "../../shared/index.ts";

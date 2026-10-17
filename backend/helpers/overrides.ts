@@ -6,7 +6,7 @@ import {
   type TeamDetails,
   totalMatches,
 } from "../../shared/index.ts";
-import { Status } from "../typings/atomics.ts";
+import type { Status } from "../typings/atomics.ts";
 
 export const validIds = (array: string[], status: Status) => {
   for (const value of array) {

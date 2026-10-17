@@ -1,4 +1,4 @@
-import { Hono } from "@hono/hono";
+import { Hono } from "hono";
 import { updateSeason } from "../controllers/updateSeason.ts";
 import { allMatches } from "../controllers/allMatches.ts";
 import { override } from "../controllers/override.ts";
