@@ -35,7 +35,7 @@ export const cacheHandler = async (league: string, season: string) => {
     }
 
     return {
-      error: true,
+      error: false,
       standings: response.data.standings,
       rounds: response.data.rounds,
     };
