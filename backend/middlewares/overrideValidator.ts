@@ -26,8 +26,6 @@ export const overrideValidator = async (c: Context, next: Next) => {
   const status = { success: true, error: "" };
 
   for (const id of ids) {
-    delete matchday[id].match_date;
-
     const { home_team_id, away_team_id } = matchday[id];
     const idsToCheck = [id, matchday[id].id, home_team_id, away_team_id];
     if (!validIds(idsToCheck, status)) break;
@@ -53,5 +51,5 @@ export const overrideValidator = async (c: Context, next: Next) => {
 
   if (!status.success) return handleErrorResponse(c, status.error, 400, true);
 
-  await next();
+  return next();
 };

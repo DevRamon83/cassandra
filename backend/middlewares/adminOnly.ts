@@ -10,5 +10,5 @@ export const adminOnly = (c: Context, next: Next) => {
     return handleErrorResponse(c, errorMessage, 400, true);
   }
 
-  next();
+  return next();
 };

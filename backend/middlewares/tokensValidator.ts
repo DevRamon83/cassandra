@@ -81,7 +81,6 @@ export const tokensValidator = async (c: Context, next: Next) => {
   if (tokensData.refresh === "JwtTokenExpired") {
     return handleErrorResponse(c, errors.sessionExpired, 400, false);
   } else {
-    console.error("malformed token");
     return handleErrorResponse(c, errors.invalidToken, 400, true);
   }
 };

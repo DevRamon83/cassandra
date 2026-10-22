@@ -16,5 +16,5 @@ export const updateValidator = async (c: Context, next: Next) => {
     return handleErrorResponse(c, errors.invalidSeason, 400, true);
   c.set("updateData", body);
 
-  await next();
+  return next();
 };

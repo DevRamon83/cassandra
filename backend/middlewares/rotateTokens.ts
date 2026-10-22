@@ -19,5 +19,5 @@ export const rotateToken = async (c: Context, next: Next) => {
   if (!createdCookies)
     return handleErrorResponse(c, errors.invalidStandard, 400, true);
 
-  next();
+  return next();
 };

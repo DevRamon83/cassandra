@@ -13,5 +13,5 @@ export const authValidator = async (c: Context, next: Next) => {
 
   c.set("updateData", body);
 
-  await next();
+  return next();
 };
