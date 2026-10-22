@@ -23,7 +23,6 @@ app.use(
 app.route("/api", matchRouter);
 app.route("/api", authRouter);
 
-// Configurazione nativa del server per Bun
 export default {
   port: Bun.env.PORT || 3000,
   fetch: app.fetch,
