@@ -29,12 +29,16 @@ export const classes = {
     date: "match__date",
     row: "match__row",
     team: "match__team",
+    fixer: "match__fixer",
+    dispatch: "match__dispatch",
+    updateForm: "match__updateForm",
   },
   system: {
     update: "system__update",
     error: "system__error",
     success: "system__success",
     wait: "system__wait",
+    refresh: "system__update",
   },
   main: "main__content",
 };
