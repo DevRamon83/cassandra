@@ -1,4 +1,4 @@
-interface fetchInterface {
+interface FetchInterface {
   <T>(
     apiUrl: string,
     method: string,
@@ -8,7 +8,7 @@ interface fetchInterface {
   ): Promise<T>;
 }
 
-export const fetchData: fetchInterface = async (
+export const fetchData: FetchInterface = async (
   apiUrl,
   method,
   credentials,

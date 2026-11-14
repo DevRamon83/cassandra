@@ -1,11 +1,11 @@
 import { classes } from "../constants/classes";
 
-interface rowProps {
+interface RowProps {
   team: string;
   goal: number | string;
 }
 
-export default function SingleMatchRow({ team, goal }: rowProps) {
+export default function SingleMatchRow({ team, goal }: RowProps) {
   const logo = `/teams/${team}.jpg`;
   return (
     <div className={classes.match.row}>

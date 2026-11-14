@@ -1,4 +1,4 @@
-import type { LeagueData } from "../../../shared";
+import type { LeagueData, Match } from "../../../shared";
 
 export interface PagesInterface {
   url: string;
@@ -19,4 +19,8 @@ export interface OverrideUI {
   league: string;
   season: string;
   myLeague: LeagueData;
+}
+
+export interface SingleMatchProps {
+  match: Match;
 }

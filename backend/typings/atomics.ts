@@ -1,6 +1,6 @@
 import type { Match } from "../../shared/index.ts";
 
-export interface tokensInterface {
+export interface TokensInterface {
   access: string;
   refresh: string;
   username: string;

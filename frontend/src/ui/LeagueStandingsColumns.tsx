@@ -1,10 +1,10 @@
 import { columns } from "../../../shared/index";
 
-interface classInterface {
+interface ClassInterface {
   classColumn: string;
 }
 
-export default function LeagueStandingsColumn({ classColumn }: classInterface) {
+export default function LeagueStandingsColumn({ classColumn }: ClassInterface) {
   return (
     <div className={classColumn}>
       {columns.map((value) => (

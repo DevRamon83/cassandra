@@ -10,7 +10,7 @@ export const cookieSettings = {
   maxAge: 3600,
 };
 
-interface config {
+interface Config {
   username: string;
   id: string;
   expiresIn: string;
@@ -18,7 +18,7 @@ interface config {
   maxAge: number | null;
 }
 
-const setTokenAndCookie = async (c: Context, dataConfig: config) => {
+const setTokenAndCookie = async (c: Context, dataConfig: Config) => {
   const { username, id, expiresIn, tokenName } = dataConfig;
 
   if (dataConfig.maxAge !== null) {
