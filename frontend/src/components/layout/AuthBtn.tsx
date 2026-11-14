@@ -24,12 +24,9 @@ export default function AuthBtn() {
         }
       >
         {logged ? (
-          <img
-            onClick={logoutHandler}
-            alt="logout"
-            title="logout"
-            src="/logout.svg"
-          />
+          <button onClick={logoutHandler}>
+            <img alt="logout" title="logout" src="/logout.svg" />
+          </button>
         ) : (
           <img alt="login or signup" title="login or signup" src="/login.svg" />
         )}

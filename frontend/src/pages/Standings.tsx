@@ -22,7 +22,7 @@ export default function Standings() {
     <>
       <div className={standings.leagues}>
         {leagues.map((league) => (
-          <div className={standings.flag} key={league}>
+          <button className={standings.flag} key={league}>
             <img
               onClick={() => setCurrentLeague(league as LeagueKey)}
               src={`/${league}.svg`}
@@ -32,7 +32,7 @@ export default function Standings() {
               title={league}
               alt={league}
             />
-          </div>
+          </button>
         ))}
       </div>
       {LEAGUE_COMPONENTS[currentLeague]}

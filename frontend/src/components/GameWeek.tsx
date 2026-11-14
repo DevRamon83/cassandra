@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import type { Match } from "../../../shared";
-import SingleMatch from "../ui/SingleMatch";
+import SingleMatch from "./SingleMatch";
 import useHorizontalScroll from "../hooks/useHorizontalScroll";
 import { classes } from "../constants/classes";
 
@@ -20,14 +20,14 @@ export default function GameWeek({ allMatches }: GameWeekProps) {
 
   return (
     <div className={rounds.wrapper}>
-      <div className={rounds.leftScroll} onClick={scrollToLeft} />
+      <button className={rounds.leftScroll} onClick={scrollToLeft} />
 
       <div ref={refContainer} className={rounds.container}>
         {ids.map((id) => (
           <SingleMatch key={`matchId__${id}`} match={allMatches[id]} />
         ))}
       </div>
-      <div className={rounds.scrollRight} onClick={scrollToRight} />
+      <button className={rounds.scrollRight} onClick={scrollToRight} />
     </div>
   );
 }

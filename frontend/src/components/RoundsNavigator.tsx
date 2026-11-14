@@ -35,13 +35,13 @@ export default function RoundsNavigator({
   return (
     <div className={rounds.main}>
       {values.map((value) => (
-        <div
+        <button
           className={value === show ? rounds.current : rounds.tabs}
           key={value}
           onClick={() => setShow(value)}
         >
           {value}
-        </div>
+        </button>
       ))}
     </div>
   );

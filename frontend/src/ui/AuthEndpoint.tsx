@@ -9,7 +9,7 @@ export default function AuthEndpoint({ type, setType }: AuthEndpointProps) {
   return (
     <>
       {endpoints.map((endpoint) => (
-        <div
+        <button
           key={endpoint}
           className={
             type === endpoint ? "auth__endpoint-active" : "auth__endpoint"
@@ -17,7 +17,7 @@ export default function AuthEndpoint({ type, setType }: AuthEndpointProps) {
           onClick={() => setType(endpoint)}
         >
           {endpoint}
-        </div>
+        </button>
       ))}
     </>
   );
