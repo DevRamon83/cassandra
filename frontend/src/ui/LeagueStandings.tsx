@@ -27,8 +27,8 @@ export default function LeagueStandings({
             <div>{team}</div>
             <div>{myLeague.standings[team].played}</div>
             <div>{myLeague.standings[team].w}</div>
-            <div>{myLeague.standings[team].l}</div>
             <div>{myLeague.standings[team].d}</div>
+            <div>{myLeague.standings[team].l}</div>
             <div>{myLeague.standings[team].scored}</div>
             <div>{myLeague.standings[team].conceded}</div>
             <div>{myLeague.standings[team].gd}</div>
