@@ -36,7 +36,11 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  cursor: pointer;
+  height: 25px;
+
+  @include breakpoints.medium {
+    height: 40px;
+  }
 }
 
 .standings__leagueBtn {

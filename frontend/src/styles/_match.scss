@@ -64,3 +64,41 @@
     width: 45%;
   }
 }
+
+.match__dispatch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.match__fixer {
+  position: fixed;
+  background-color: white;
+  border: 1px solid black;
+  width: fit-content;
+  height: fit-content;
+  top: 150px;
+  left: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.match__fixer button {
+  border: 1px solid black;
+  margin: 15px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+.match__updateForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
