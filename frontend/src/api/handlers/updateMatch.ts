@@ -1,13 +1,13 @@
-import type { SeasonSeed } from "../../../../shared/index.ts";
+import type { Match } from "../../../../shared/index.ts";
 import { API_URLS } from "../../constants/apiUrls.ts";
 import { fetchData } from "../fetchData.ts";
 import type { StandardResponse } from "../../typings/generics.ts";
 
-const update = async (data: SeasonSeed) => {
+const updateMatch = async (data: Match) => {
   const { base, apiFootball } = API_URLS;
   const apiUrl = base + apiFootball.update;
 
-  const method = "POST";
+  const method = "PATCH";
   const credentials = "include";
   const response = await fetchData<StandardResponse>(
     apiUrl,
@@ -19,4 +19,4 @@ const update = async (data: SeasonSeed) => {
   return response;
 };
 
-export default update;
+export default updateMatch;
