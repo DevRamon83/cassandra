@@ -3,7 +3,7 @@ import { getBody } from "../helpers/getBody.ts";
 import { handleErrorResponse } from "../helpers/handleErrorResponse.ts";
 import { errors, leagues, getCurrentSeason } from "../../shared/index.ts";
 
-export const updateValidator = async (c: Context, next: Next) => {
+export const leagueSeasonValidator = async (c: Context, next: Next) => {
   const body = await getBody(c);
   if (!body || !body.league || !body.season)
     return handleErrorResponse(c, errors.bodyMissing, 400, true);
