@@ -1,9 +1,9 @@
 import { useState, type SubmitEvent } from "react";
-import type { Match } from "../../../shared";
-import Input from "../ui/Input";
-import { classes } from "../constants/classes";
-import updateMatch from "../api/handlers/updateMatch";
-import { definePoints, defineResult } from "../helpers/atomics";
+import type { Match } from "../../../../shared";
+import Input from "../../ui/Input";
+import { classes } from "../../constants/classes";
+import updateMatch from "../../api/handlers/updateMatch";
+import { definePoints, defineResult } from "../../helpers/atomics";
 
 interface Props {
   match: Match;
