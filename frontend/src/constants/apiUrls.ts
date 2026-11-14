@@ -1,9 +1,9 @@
 export const API_URLS = {
   base: "http://localhost:3000/api",
   apiFootball: {
-    update: "/update",
-    leagueData: "/leagueData",
-    override: "/override",
+    leagueData: "/league_data",
+    refresh: "/refresh_cache",
+    update: "/match",
   },
   auth: {
     login: "/login",
