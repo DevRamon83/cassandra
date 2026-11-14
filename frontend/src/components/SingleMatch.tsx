@@ -3,7 +3,7 @@ import { classes } from "../constants/classes";
 import { getMatchDate } from "../helpers/getLeagueData";
 import SingleMatchRow from "../ui/SingleMatchRow";
 import { AuthContext } from "../App";
-import UpdatePanel from "./UpdatePanel";
+import UpdatePanel from "./admin/UpdatePanel";
 import type { SingleMatchProps } from "../typings/interfaces";
 
 export default function SingleMatch({ match }: SingleMatchProps) {
