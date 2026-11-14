@@ -1,32 +1,41 @@
 import { Hono } from "hono";
 import { updateSeason } from "../controllers/updateSeason.ts";
 import { allMatches } from "../controllers/allMatches.ts";
-import { override } from "../controllers/override.ts";
-import { updateValidator } from "../middlewares/updateValidator.ts";
-import { overrideValidator } from "../middlewares/overrideValidator.ts";
+import { leagueSeasonValidator } from "../middlewares/leagueSeasonValidator.ts";
 import { tokensValidator } from "../middlewares/tokensValidator.ts";
 import { rotateToken } from "../middlewares/rotateTokens.ts";
 import { adminOnly } from "../middlewares/adminOnly.ts";
+import { updateMatch } from "../controllers/updateMatch.ts";
+import { matchValidator } from "../middlewares/matchValidator.ts";
+import { refreshCache } from "../controllers/refreshCache.ts";
 
 const matchRouter = new Hono();
 
 matchRouter.post(
-  "/update",
+  "/update_season",
   tokensValidator,
   rotateToken,
   adminOnly,
-  updateValidator,
+  leagueSeasonValidator,
   updateSeason,
 );
-matchRouter.get("/leagueData", allMatches);
+matchRouter.get("/league_data", allMatches);
 matchRouter.post(
-  "/override",
+  "/refresh_cache",
   tokensValidator,
   rotateToken,
   adminOnly,
-  updateValidator,
-  overrideValidator,
-  override,
+  leagueSeasonValidator,
+  refreshCache,
+);
+
+matchRouter.patch(
+  "/match",
+  tokensValidator,
+  rotateToken,
+  adminOnly,
+  matchValidator,
+  updateMatch,
 );
 
 export default matchRouter;
