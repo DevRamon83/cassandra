@@ -39,6 +39,7 @@ export const classes = {
     success: "system__success",
     wait: "system__wait",
     refresh: "system__update",
+    predictions: "system__update",
   },
   main: "main__content",
 };
