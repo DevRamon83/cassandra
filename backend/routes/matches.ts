@@ -8,6 +8,7 @@ import { adminOnly } from "../middlewares/adminOnly.ts";
 import { updateMatch } from "../controllers/updateMatch.ts";
 import { matchValidator } from "../middlewares/matchValidator.ts";
 import { refreshCache } from "../controllers/refreshCache.ts";
+import { updateDate } from "../controllers/updateDate.ts";
 
 const matchRouter = new Hono();
 
@@ -37,5 +38,7 @@ matchRouter.patch(
   matchValidator,
   updateMatch,
 );
+
+matchRouter.patch("/date", tokensValidator, rotateToken, adminOnly, updateDate);
 
 export default matchRouter;
