@@ -5,7 +5,7 @@ import type { StandardResponse } from "../../typings/generics.ts";
 
 const updateMatch = async (data: Match) => {
   const { base, apiFootball } = API_URLS;
-  const apiUrl = base + apiFootball.update;
+  const apiUrl = base + apiFootball.updateMatch;
 
   const method = "PATCH";
   const credentials = "include";
