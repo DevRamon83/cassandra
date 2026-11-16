@@ -11,12 +11,13 @@ if (!databaseUrl) {
 
 const caCertificate = await Bun.file("./prod-ca-2021.crt").text();
 
-export const client = new pg.Client({
+export const client = new pg.Pool({
   connectionString: databaseUrl,
   ssl: {
     rejectUnauthorized: true,
     ca: caCertificate,
   },
+  max: 10,
 });
 
 await client.connect();
