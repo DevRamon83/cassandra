@@ -25,7 +25,7 @@ export default function UpdateDispatch({
       {update === "match" ? (
         <UpdateMatch match={match} closeHandler={closeHandler} />
       ) : (
-        <UpdateDate match={match} />
+        <UpdateDate match={match} closeHandler={closeHandler} />
       )}
     </>
   );
