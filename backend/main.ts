@@ -2,7 +2,6 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import matchRouter from "./routes/matches.ts";
 import authRouter from "./routes/auth.ts";
-import "./db.ts";
 import betsRoute from "./routes/bets.ts";
 
 const app = new Hono();

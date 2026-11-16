@@ -19,5 +19,3 @@ export const client = new pg.Pool({
   },
   max: 10,
 });
-
-await client.connect();
