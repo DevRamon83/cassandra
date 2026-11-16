@@ -2,7 +2,7 @@ import type { SingleMatch } from "../typings/GithubSeasonData.ts";
 import { dictionaryLeagueDefiner } from "./defineLeague.ts";
 import { DateTime } from "luxon";
 
-const getZone = (league: string) =>  {
+const getZone = (league: string) => {
   switch (league) {
     case "serieA":
       return "Europe/Rome";
@@ -27,6 +27,12 @@ export const getMatchTime = (match: SingleMatch, league: string) => {
   const dt = DateTime.fromISO(`${date}T${time}`, { zone: zone });
 
   return dt.toISO();
+};
+
+export const getUpdatedMatchTime = (isoDateTime: string) => {
+  const dt = DateTime.fromISO(isoDateTime, { zone: "Europe/Rome" });
+
+  return dt.toUTC().toISO();
 };
 
 export const getAwayHomeTeams = (
