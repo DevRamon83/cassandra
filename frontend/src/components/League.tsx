@@ -5,6 +5,7 @@ import LeagueStandings from "../ui/LeagueStandings.tsx";
 import Matches from "./Matches.tsx";
 import RefreshCache from "./admin/RefreshCache.tsx";
 import type { LeagueProps } from "../../../shared/index.ts";
+import Predictions from "./admin/Predictions.tsx";
 
 export default function League({ league, season }: LeagueProps) {
   const { cache, setCache } = useContext(LeaguesCache);
@@ -20,6 +21,7 @@ export default function League({ league, season }: LeagueProps) {
       {isAdmin && (
         <>
           <RefreshCache league={league} season={season} />
+          <Predictions league={league} season={season} />
         </>
       )}
 
