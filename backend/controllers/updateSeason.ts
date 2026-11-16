@@ -8,7 +8,7 @@ import { handleErrorResponse } from "../helpers/handleErrorResponse.ts";
 
 export const updateSeason = async (c: Context) => {
   try {
-    const updateData = c.get("updateData");
+    const updateData = c.get("leagueData");
 
     const seasonData = await apiFootball(updateData);
 

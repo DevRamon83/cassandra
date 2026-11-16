@@ -3,7 +3,7 @@ import { cacheLeagueData } from "../services/cacheLeagueData.ts";
 
 export const refreshCache = async (c: Context) => {
   try {
-    const body = c.get("updateData");
+    const body = c.get("leagueData");
 
     await cacheLeagueData(body.league, body.season);
 
