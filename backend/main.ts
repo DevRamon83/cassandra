@@ -3,6 +3,7 @@ import { cors } from "hono/cors";
 import matchRouter from "./routes/matches.ts";
 import authRouter from "./routes/auth.ts";
 import "./db.ts";
+import betsRoute from "./routes/bets.ts";
 
 const app = new Hono();
 
@@ -22,6 +23,7 @@ app.use(
 
 app.route("/api", matchRouter);
 app.route("/api", authRouter);
+app.route("/api", betsRoute);
 
 export default {
   port: Bun.env.PORT || 3000,
