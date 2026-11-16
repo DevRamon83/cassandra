@@ -6,6 +6,9 @@ export const API_URLS = {
     updateMatch: "/match",
     updateDate: "/date",
   },
+  bet: {
+    predictions: "/predictions",
+  },
   auth: {
     login: "/login",
     signup: "/signup",
