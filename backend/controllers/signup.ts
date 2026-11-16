@@ -8,7 +8,7 @@ import { newCookies } from "../services/newCookies.ts";
 
 export const signup = async (c: Context) => {
   try {
-    const { username, psw } = c.get("updateData");
+    const { username, psw } = c.get("auth");
     const hashPsw = await hash(psw);
     const query = authQuery(username, hashPsw);
 

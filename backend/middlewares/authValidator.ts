@@ -11,7 +11,7 @@ export const authValidator = async (c: Context, next: Next) => {
   if (!result.success)
     return handleErrorResponse(c, errors.invalidStandard, 400, true);
 
-  c.set("updateData", body);
+  c.set("auth", body);
 
   return next();
 };
