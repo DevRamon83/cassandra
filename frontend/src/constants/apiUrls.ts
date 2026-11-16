@@ -3,7 +3,8 @@ export const API_URLS = {
   apiFootball: {
     leagueData: "/league_data",
     refresh: "/refresh_cache",
-    update: "/match",
+    updateMatch: "/match",
+    updateDate: "/date",
   },
   auth: {
     login: "/login",
