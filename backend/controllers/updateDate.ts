@@ -1,7 +1,6 @@
 import type { Context } from "hono";
 import { client } from "../db.ts";
 import { errors } from "../../shared/index.ts";
-import { updateMatchQuery } from "../queries/updateMatchQuery.ts";
 import { getBody } from "../helpers/getBody.ts";
 import { validIds } from "../helpers/overrides.ts";
 import { getUpdatedMatchTime } from "../helpers/getMatchData.ts";
