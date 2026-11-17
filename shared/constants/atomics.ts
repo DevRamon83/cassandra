@@ -23,6 +23,13 @@ export const matchesArray: string[] = [
   "game_week",
 ];
 
+export const predictionsArray: string[] = [
+  "match_id",
+  "prediction",
+  "prediction_result",
+  "prediction_accuracy",
+];
+
 export const leagues: string[] = [
   "serieA",
   "liga",
