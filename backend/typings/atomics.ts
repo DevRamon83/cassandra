@@ -23,3 +23,18 @@ export interface OverrideBody {
   season: string;
   matchday: Record<string, Match>;
 }
+
+export interface TeamStats {
+  home: boolean;
+  GNG: boolean[];
+  UO: boolean[];
+}
+
+export type TeamsMap = Map<string, TeamStats>;
+
+export type MatchPrediction = {
+  match_id: string;
+  prediction: string | null;
+  prediction_result: boolean | null;
+  prediction_accuracy: string | null;
+};

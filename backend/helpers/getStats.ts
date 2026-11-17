@@ -3,14 +3,7 @@ import type {
   RoundsType,
 } from "../../shared/typings/AllMatches";
 import { cacheHandler } from "../services/cacheHandler";
-
-interface TeamStats {
-  home: boolean;
-  GNG: boolean[];
-  UO: boolean[];
-}
-
-type TeamsMap = Map<string, TeamStats>;
+import type { TeamsMap } from "../typings/atomics";
 
 const workOnRound = (
   round: Record<string, MatchInterface>,
@@ -56,7 +49,8 @@ const statsMiner = (
 export const getStats = async (league: string, season: string) => {
   const { error, standings, rounds } = await cacheHandler(league, season);
 
-  if (error || !standings || !rounds) return { error: true, map: null };
+  if (error || !standings || !rounds)
+    return { error: true, map: null, roundToPredict: null };
 
   const teams = Object.keys(standings);
   const nextGameWeek = standings[teams[0]].played + 1;
@@ -73,5 +67,5 @@ export const getStats = async (league: string, season: string) => {
 
   statsMiner(rounds, nextGameWeek, teamsMap);
 
-  return { error: false, map: teamsMap };
+  return { error: false, map: teamsMap, roundToPredict };
 };
