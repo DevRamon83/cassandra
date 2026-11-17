@@ -25,9 +25,10 @@ CREATE TABLE items (
     won BOOLEAN DEFAULT NULL
 );
 
-CREATE INDEX idx_bets ON items(bet_id);
-CREATE INDEX idx_bets ON items(season);
-CREATE INDEX idx_match ON items(match_id);
+CREATE INDEX idx_items_bet_id ON items(bet_id);
+CREATE INDEX idx_bets_season ON bets(season);
+CREATE INDEX idx_items_match_id ON items(match_id);
+
 
 ALTER TABLE public.bankroll ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.bets ENABLE ROW LEVEL SECURITY;
