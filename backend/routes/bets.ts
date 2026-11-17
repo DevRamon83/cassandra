@@ -4,6 +4,7 @@ import { rotateToken } from "../middlewares/rotateTokens";
 import { adminOnly } from "../middlewares/adminOnly";
 import { leagueSeasonValidator } from "../middlewares/leagueSeasonValidator";
 import { predictions } from "../controllers/predictions";
+import { allPredictions } from "../controllers/allPredictions";
 
 const betsRoute = new Hono();
 
@@ -14,6 +15,14 @@ betsRoute.post(
   adminOnly,
   leagueSeasonValidator,
   predictions,
+);
+
+betsRoute.get(
+  "/predictions",
+  tokensValidator,
+  rotateToken,
+  adminOnly,
+  allPredictions,
 );
 
 export default betsRoute;
