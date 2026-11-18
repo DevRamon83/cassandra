@@ -41,5 +41,14 @@ export const classes = {
     refresh: "system__update",
     predictions: "system__update",
   },
+  predictions: {
+    accuracy: "predictions__",
+    accuracyContainer: "predictions__accuracyContainer",
+    cards: "predictions__cards",
+    card: "predictions__card",
+    reliability: "prediction__reliability",
+    view: "predictions__view",
+    viewBtn: "predictions__viewBtn",
+  },
   main: "main__content",
 };
