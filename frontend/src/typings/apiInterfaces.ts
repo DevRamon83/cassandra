@@ -28,3 +28,8 @@ export interface LogoutResponse {
   error: boolean;
   message: string;
 }
+
+export interface ErrorResponse {
+  aborted: boolean;
+  error: boolean;
+}

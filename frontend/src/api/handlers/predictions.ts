@@ -1,6 +1,6 @@
 import { API_URLS } from "../../constants/apiUrls.ts";
 import { fetchData } from "../fetchData.ts";
-import type { StandardResponse } from "../../typings/generics.ts";
+import type { StandardResponse } from "../../typings/apiInterfaces.ts";
 import type { LeagueProps } from "../../../../shared/index.ts";
 
 const predictions = async (data: LeagueProps) => {

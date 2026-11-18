@@ -1,6 +1,6 @@
 import { API_URLS } from "../../constants/apiUrls.ts";
 import { fetchData } from "../fetchData.ts";
-import type { AuthResponse } from "../../typings/generics.ts";
+import type { AuthResponse } from "../../typings/apiInterfaces.ts";
 
 const logout = async () => {
   const { base, auth } = API_URLS;

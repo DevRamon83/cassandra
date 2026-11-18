@@ -1,6 +1,6 @@
 import { API_URLS } from "../../constants/apiUrls.ts";
 import { fetchData } from "../fetchData.ts";
-import type { LeagueResponse } from "../../typings/generics.ts";
+import type { LeagueResponse } from "../../typings/apiInterfaces.ts";
 
 const getPredictions = async (signal: AbortSignal) => {
   const { base, bet } = API_URLS;
