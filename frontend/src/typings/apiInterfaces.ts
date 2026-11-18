@@ -1,7 +1,5 @@
-import type {
-  RoundsType,
-  StandingsType,
-} from "../../../shared/typings/AllMatches";
+import type { Rounds, Standings } from "../../../shared";
+import type { PredictionDB } from "./interfaces";
 
 export interface StandardResponse {
   status: number;
@@ -11,9 +9,9 @@ export interface StandardResponse {
 
 export interface LeagueResponse {
   error: boolean;
-  standings: StandingsType;
-  rounds: RoundsType;
-  aborted: true;
+  standings: Standings;
+  rounds: Rounds;
+  aborted: boolean;
 }
 
 export interface AuthResponse {
@@ -31,5 +29,10 @@ export interface LogoutResponse {
 
 export interface ErrorResponse {
   aborted: boolean;
+  error: boolean;
+}
+
+export interface PredictionsResponse {
+  data: PredictionDB[];
   error: boolean;
 }

@@ -1,33 +1,24 @@
 import { z } from "zod";
 import type { authSchema } from "../schemas/authSchema";
-import type { RoundsType } from "./AllMatches";
 
-export interface SeasonSeeding {
+export interface SeasonSeed {
   league: string;
   season: string;
 }
 
-export interface overrideInterface extends SeasonSeeding {
-  matchday: RoundsType;
-}
-
-export interface NewMatchSeeding extends SeasonSeeding {
-  game_week: number;
-}
-
-export interface LeaguePropsInterface {
+export interface LeagueProps {
   league: string;
   season: string;
 }
 
-export interface TeamDetailsInterface {
+export interface TeamDetails {
   cleanName: string;
   city: string;
 }
 
 export type AuthInterface = z.infer<typeof authSchema>;
 
-export type MatchPrediction = {
+export type PredictionData = {
   match_id: string;
   prediction: string | null;
   prediction_result: boolean | null;

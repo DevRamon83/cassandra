@@ -1,14 +1,8 @@
-import type {
-  MatchInterface,
-  RoundsType,
-} from "../../shared/typings/AllMatches";
+import type { Match, Rounds } from "../../shared";
 import { cacheHandler } from "../services/cacheHandler";
 import type { TeamsMap } from "../typings/atomics";
 
-const workOnRound = (
-  round: Record<string, MatchInterface>,
-  teamsMap: TeamsMap,
-) => {
+const workOnRound = (round: Record<string, Match>, teamsMap: TeamsMap) => {
   const keys = Object.keys(round);
   for (const key of keys) {
     const match = round[key];
@@ -33,11 +27,7 @@ const workOnRound = (
   }
 };
 
-const statsMiner = (
-  rounds: RoundsType,
-  gameWeek: number,
-  teamsMap: TeamsMap,
-) => {
+const statsMiner = (rounds: Rounds, gameWeek: number, teamsMap: TeamsMap) => {
   for (const value in rounds) {
     const matchRound = Number(value);
     if (matchRound >= gameWeek) continue;

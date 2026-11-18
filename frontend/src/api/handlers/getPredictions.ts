@@ -1,6 +1,6 @@
 import { API_URLS } from "../../constants/apiUrls.ts";
+import type { PredictionsResponse } from "../../typings/apiInterfaces.ts";
 import { fetchData } from "../fetchData.ts";
-import type { LeagueResponse } from "../../typings/apiInterfaces.ts";
 
 const getPredictions = async (signal: AbortSignal) => {
   const { base, bet } = API_URLS;
@@ -8,7 +8,7 @@ const getPredictions = async (signal: AbortSignal) => {
 
   const method = "GET";
   const credentials = "include";
-  const response = await fetchData<LeagueResponse>(
+  const response = await fetchData<PredictionsResponse>(
     apiUrl,
     method,
     credentials,

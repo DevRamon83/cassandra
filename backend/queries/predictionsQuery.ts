@@ -1,9 +1,8 @@
-import { predictionsArray } from "../../shared/index.ts";
-import type { MatchPrediction } from "../../shared/typings/atomics.ts";
+import { predictionsArray, type PredictionData } from "../../shared/index.ts";
 import { getPlaceholder } from "../helpers/getPlaceholder.ts";
 import { getUpdateCondition } from "../helpers/queriesConditions.ts";
 
-const preparePredictionsData = (predictions: MatchPrediction[]) => {
+const preparePredictionsData = (predictions: PredictionData[]) => {
   const matrix = [];
 
   for (let i = 0; i < predictions.length; i++) {
@@ -21,7 +20,7 @@ const preparePredictionsData = (predictions: MatchPrediction[]) => {
   return matrix;
 };
 
-export const predictionQuery = (predictions: MatchPrediction[]) => {
+export const predictionQuery = (predictions: PredictionData[]) => {
   const data = preparePredictionsData(predictions);
 
   if (data.length === 0) return null;

@@ -1,4 +1,4 @@
-export interface MatchInterface {
+export interface Match {
   away_points: number | null;
   away_result: string | null;
   away_score: number | null;
@@ -16,9 +16,9 @@ export interface MatchInterface {
   season: string;
 }
 
-export type AllMatchesType = MatchInterface[];
+export type AllMatches = Match[];
 
-export interface TeamStandingsInterface {
+export interface TeamStandings {
   played: number;
   w: number;
   l: number;
@@ -29,18 +29,18 @@ export interface TeamStandingsInterface {
   points: number;
 }
 
-export type RoundsType = Record<number, Record<string, MatchInterface>>;
-export type StandingsType = Record<string, TeamStandingsInterface>;
+export type Rounds = Record<number, Record<string, Match>>;
+export type Standings = Record<string, TeamStandings>;
 
-export interface UpdateDataInterface {
+export interface UpdateData {
   homeTeam: string;
   awayTeam: string;
-  standings: StandingsType;
-  match: MatchInterface;
+  standings: Standings;
+  match: Match;
 }
 
-export interface LeagueDataInterface {
+export interface LeagueData {
   positions: string[];
-  rounds: RoundsType;
-  standings: StandingsType;
+  rounds: Rounds;
+  standings: Standings;
 }

@@ -4,9 +4,13 @@ import { getMatchDate } from "../helpers/getLeagueData";
 import SingleMatchRow from "../ui/SingleMatchRow";
 import { AuthContext } from "../App";
 import UpdatePanel from "./admin/UpdatePanel";
-import type { SingleMatchProps } from "../typings/interfaces";
+import type { Match } from "../../../shared";
 
-export default function SingleMatch({ match }: SingleMatchProps) {
+export interface Props {
+  match: Match;
+}
+
+export default function SingleMatch({ match }: Props) {
   const { away_score, away_team_name, home_score, home_team_name, match_date } =
     match;
   const { logged } = useContext(AuthContext);

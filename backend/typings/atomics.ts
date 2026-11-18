@@ -1,6 +1,4 @@
-import type { Match } from "../../shared/index.ts";
-
-export interface TokensInterface {
+export interface Tokens {
   access: string;
   refresh: string;
   username: string;
@@ -16,12 +14,6 @@ export interface CheckTokenResult {
 export interface Status {
   success: boolean;
   error: string;
-}
-
-export interface OverrideBody {
-  league: string;
-  season: string;
-  matchday: Record<string, Match>;
 }
 
 export interface TeamStats {

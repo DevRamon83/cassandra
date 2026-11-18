@@ -1,4 +1,5 @@
-import type { LeagueData, Match } from "../../../shared";
+import type { Dispatch, SetStateAction } from "react";
+import type { PredictionData } from "../../../shared";
 
 export interface PagesInterface {
   url: string;
@@ -15,12 +16,17 @@ export interface AuthError {
   endpoint: string[] | undefined;
 }
 
-export interface OverrideUI {
-  league: string;
-  season: string;
-  myLeague: LeagueData;
+export interface PredictionDB extends PredictionData {
+  id: string;
 }
 
-export interface SingleMatchProps {
-  match: Match;
+export interface PredictionUI extends PredictionData {
+  id: string;
+  match: string;
+  league: string;
+}
+
+export interface PredictionContextType {
+  predictions: PredictionUI[];
+  setPredictions: Dispatch<SetStateAction<PredictionUI[]>>;
 }

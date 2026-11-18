@@ -21,20 +21,5 @@ export * from "./helpers.ts";
 export * from "./schemas/authSchema.ts";
 export { z };
 
-export type {
-  SeasonSeeding as SeasonSeed,
-  NewMatchSeeding as NewMatchSeed,
-  LeaguePropsInterface as LeagueProps,
-  TeamDetailsInterface as TeamDetails,
-  overrideInterface as Override,
-  AuthInterface,
-} from "./typings/atomics.ts";
-export type {
-  MatchInterface as Match,
-  AllMatchesType as AllMatches,
-  TeamStandingsInterface as TeamStandings,
-  StandingsType as Standings,
-  RoundsType as Rounds,
-  UpdateDataInterface as UpdateData,
-  LeagueDataInterface as LeagueData,
-} from "./typings/AllMatches.ts";
+export type * from "./typings/atomics.ts";
+export type * from "./typings/AllMatches.ts";

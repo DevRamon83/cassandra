@@ -1,11 +1,10 @@
-import type { MatchInterface } from "../../shared/typings/AllMatches";
-import type { MatchPrediction } from "../../shared/typings/atomics";
+import type { Match, PredictionData } from "../../shared";
 import type { TeamsMap, TeamStats } from "../typings/atomics";
 
 interface Data {
   error: boolean;
   map: TeamsMap;
-  roundToPredict: Record<string, MatchInterface>;
+  roundToPredict: Record<string, Match>;
 }
 
 type Outcome = {
@@ -184,11 +183,11 @@ const definePrediction = (homeData: TeamStats, awayData: TeamStats) => {
 export const getPredictions = (data: Data) => {
   const { map, roundToPredict } = data;
   const keys = Object.keys(roundToPredict);
-  const predictionArray: MatchPrediction[] = [];
+  const predictionArray: PredictionData[] = [];
 
   for (const key of keys) {
     const match = roundToPredict[key];
-    const predictionObj: MatchPrediction = {
+    const predictionObj: PredictionData = {
       match_id: key,
       prediction: null,
       prediction_result: null,

@@ -3,7 +3,7 @@ import type { Next, Context } from "hono";
 import { handleErrorResponse } from "../helpers/handleErrorResponse.ts";
 import { errors } from "../../shared/index.ts";
 import { verify } from "hono/jwt";
-import type { CheckTokenResult, TokensInterface } from "../typings/atomics.ts";
+import type { CheckTokenResult, Tokens } from "../typings/atomics.ts";
 
 const checkToken = async (
   token: string | undefined,
@@ -24,9 +24,9 @@ const checkToken = async (
 };
 
 const analyzeToken = async (
-  tokenName: keyof TokensInterface,
+  tokenName: keyof Tokens,
   token: string,
-  tokensData: TokensInterface,
+  tokensData: Tokens,
 ) => {
   const myToken = await checkToken(token);
 
