@@ -1,5 +1,6 @@
 import type { MatchInterface } from "../../shared/typings/AllMatches";
-import type { MatchPrediction, TeamsMap, TeamStats } from "../typings/atomics";
+import type { MatchPrediction } from "../../shared/typings/atomics";
+import type { TeamsMap, TeamStats } from "../typings/atomics";
 
 interface Data {
   error: boolean;

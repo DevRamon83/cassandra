@@ -31,10 +31,3 @@ export interface TeamStats {
 }
 
 export type TeamsMap = Map<string, TeamStats>;
-
-export type MatchPrediction = {
-  match_id: string;
-  prediction: string | null;
-  prediction_result: boolean | null;
-  prediction_accuracy: string | null;
-};

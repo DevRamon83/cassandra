@@ -1,7 +1,7 @@
 import { predictionsArray } from "../../shared/index.ts";
+import type { MatchPrediction } from "../../shared/typings/atomics.ts";
 import { getPlaceholder } from "../helpers/getPlaceholder.ts";
 import { getUpdateCondition } from "../helpers/queriesConditions.ts";
-import type { MatchPrediction } from "../typings/atomics.ts";
 
 const preparePredictionsData = (predictions: MatchPrediction[]) => {
   const matrix = [];

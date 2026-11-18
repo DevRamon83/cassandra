@@ -26,3 +26,10 @@ export interface TeamDetailsInterface {
 }
 
 export type AuthInterface = z.infer<typeof authSchema>;
+
+export type MatchPrediction = {
+  match_id: string;
+  prediction: string | null;
+  prediction_result: boolean | null;
+  prediction_accuracy: string | null;
+};
