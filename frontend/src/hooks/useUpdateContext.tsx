@@ -39,4 +39,4 @@ const useUpdateContext = (
   }, [league]);
 };
 
-export default UseUpdateContext;
+export default useUpdateContext;
