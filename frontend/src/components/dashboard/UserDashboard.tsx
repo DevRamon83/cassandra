@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import getPredictions from "../../api/handlers/getPredictions";
-import { LeaguesContext, PredictionCache } from "../../App";
+import { LeaguesContext, PredictionContext } from "../../App";
 import { retrieveLeagues } from "../../services/retrieveLeagues";
 import { leagues } from "../../../../shared";
 import { getPredictionsData } from "../../helpers/getPredictionsData";
 
 export default function UserDashboard({ username }: { username: string }) {
   const { cache, setCache } = useContext(LeaguesContext);
-  const { predictions, setPredictions } = useContext(PredictionCache);
+  const { predictions, setPredictions } = useContext(PredictionContext);
   const leaguesInCache: string[] = Object.keys(cache);
   const [retry, setRetry] = useState(0);
 

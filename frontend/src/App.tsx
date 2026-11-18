@@ -13,7 +13,7 @@ import type { PredictionInterface } from "../../shared/typings/atomics";
 
 export const LeaguesContext = createContext<any>(null);
 export const AuthContext = createContext<any>(null);
-export const PredictionCache = createContext<PredictionContextType>({
+export const PredictionContext = createContext<PredictionContextType>({
   predictions: [],
   setPredictions: () => {},
 });
@@ -26,7 +26,7 @@ export default function App() {
   return (
     <LeaguesContext.Provider value={{ cache, setCache }}>
       <AuthContext.Provider value={{ logged, setLogged }}>
-        <PredictionCache.Provider value={{ predictions, setPredictions }}>
+        <PredictionContext.Provider value={{ predictions, setPredictions }}>
           <main>
             <Navbar />
             <div className={classes.main}>
@@ -40,7 +40,7 @@ export default function App() {
             </div>
             <Footer />
           </main>
-        </PredictionCache.Provider>
+        </PredictionContext.Provider>
       </AuthContext.Provider>
     </LeaguesContext.Provider>
   );
