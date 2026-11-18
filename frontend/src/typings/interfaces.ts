@@ -24,6 +24,8 @@ export interface PredictionUI extends PredictionData {
   id: string;
   match: string;
   league: string;
+  gameWeek: number;
+  date: string;
 }
 
 export interface PredictionContextType {
