@@ -8,8 +8,7 @@ import { createContext, useState } from "react";
 import { classes } from "./constants/classes";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
-import type { PredictionContextType } from "./typings/interfaces";
-import type { PredictionInterface } from "../../shared/typings/atomics";
+import type { PredictionContextType, PredictionUI } from "./typings/interfaces";
 
 export const LeaguesContext = createContext<any>(null);
 export const AuthContext = createContext<any>(null);
@@ -21,7 +20,7 @@ export const PredictionContext = createContext<PredictionContextType>({
 export default function App() {
   const [cache, setCache] = useState<Record<string, any>>({});
   const [logged, setLogged] = useState<string | null>(null);
-  const [predictions, setPredictions] = useState<PredictionInterface[]>([]);
+  const [predictions, setPredictions] = useState<PredictionUI[]>([]);
 
   return (
     <LeaguesContext.Provider value={{ cache, setCache }}>
