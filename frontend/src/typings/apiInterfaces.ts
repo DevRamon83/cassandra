@@ -35,4 +35,5 @@ export interface ErrorResponse {
 export interface PredictionsResponse {
   data: PredictionDB[];
   error: boolean;
+  aborted: boolean;
 }
