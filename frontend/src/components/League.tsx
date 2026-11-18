@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import UseUpdateContext from "../hooks/UseUpdateContext.tsx";
+import useUpdateContext from "../hooks/useUpdateContext.tsx";
 import { AuthContext, LeaguesCache } from "../App";
 import LeagueStandings from "../ui/LeagueStandings.tsx";
 import Matches from "./Matches.tsx";
@@ -10,7 +10,7 @@ import Predictions from "./admin/Predictions.tsx";
 export default function League({ league, season }: LeagueProps) {
   const { cache, setCache } = useContext(LeaguesCache);
   const { logged } = useContext(AuthContext);
-  UseUpdateContext(league, season, cache, setCache);
+  useUpdateContext(league, season, cache, setCache);
   const myLeague = cache[league] || null;
 
   const positions = myLeague?.positions || [];

@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import read from "../api/handlers/read";
+import read from "../api/handlers/read.ts";
 import { getPositions } from "../helpers/getLeagueData.ts";
 import type { Dispatch, SetStateAction } from "react";
 
-const UseUpdateContext = (
+const useUpdateContext = (
   league: string,
   season: string,
   cache: Record<string, any>,
