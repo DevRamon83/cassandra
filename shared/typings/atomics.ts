@@ -24,3 +24,12 @@ export type PredictionData = {
   prediction_result: boolean | null;
   prediction_accuracy: string | null;
 };
+
+export interface User {
+  id: string;
+  username: string;
+  bankroll_id: string | null;
+  initial_budget: number | null;
+  current_budget: number | null;
+  season: string | null;
+}
