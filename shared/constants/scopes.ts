@@ -3,4 +3,5 @@ export const backend = {
   getLeagueData: "backend(getLeagueData): ",
   createToken: "backend(createToken): ",
   override: "backend(overrideValidator): ",
+  bankroll: "backend(bankroll): ",
 };

@@ -25,3 +25,6 @@ export const invalidResult = "result doesn't match";
 export const invalidPoints = "invalid value for points";
 export const invalidGameWeek = "invalid game week";
 export const notAdmin = "is not admin";
+export const login = "You must logged in";
+export const authAttack = "Identity mismatch";
+export const notANum = "not a number";
