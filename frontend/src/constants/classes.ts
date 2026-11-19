@@ -50,5 +50,8 @@ export const classes = {
     view: "predictions__view",
     viewBtn: "predictions__viewBtn",
   },
+  bankroll: {
+    initialize: "bankroll__initialize",
+  },
   main: "main__content",
 };
