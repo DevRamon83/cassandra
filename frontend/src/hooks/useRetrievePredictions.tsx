@@ -21,9 +21,13 @@ export const useRetrievePredictions = () => {
 
       if (res.error && !res.aborted) {
         retry < 3 && setRetry((prev) => prev + 1);
+        return;
       }
 
-      getPredictionsData(cache, res.data, setPredictions);
+      if (res.aborted) return;
+
+      const context = getPredictionsData(cache, res.data);
+      setPredictions(context);
     };
 
     predictions();

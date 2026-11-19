@@ -1,4 +1,3 @@
-import type { Dispatch, SetStateAction } from "react";
 import { leagues } from "../../../shared";
 import type { Match } from "../../../shared";
 import type { PredictionDB, PredictionUI } from "../typings/interfaces";
@@ -6,7 +5,6 @@ import type { PredictionDB, PredictionUI } from "../typings/interfaces";
 export const getPredictionsData = (
   leaguesContext: Record<string, any>,
   predictions: PredictionDB[],
-  setPredictions: Dispatch<SetStateAction<PredictionUI[]>>,
 ) => {
   const cacheMap = new Map<string, Match>();
   const predictionContext: PredictionUI[] = [];
@@ -37,5 +35,5 @@ export const getPredictionsData = (
     };
     predictionContext.push({ ...prediction, ...matchData });
   }
-  setPredictions(predictionContext);
+  return predictionContext;
 };
