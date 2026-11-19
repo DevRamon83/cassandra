@@ -11,8 +11,8 @@ import AuthEndpoint from "../ui/AuthEndpoint";
 export default function Auth() {
   const [type, setType] = useState("login");
   const [button, setButton] = useState("send");
-  const { errorHandler, errors, errorResp, setErrorResp } = useAuthErrors();
-  const { setLogged } = useContext(AuthContext);
+  const { errorHandler, errors, errorRes, setErrorRes } = useAuthErrors();
+  const { setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handler = async (e: SubmitEvent<HTMLFormElement>) => {
@@ -30,16 +30,16 @@ export default function Auth() {
       return;
     }
 
-    const resp = await authHandler(result.data);
+    const res = await authHandler(result.data);
 
-    if (resp.error) {
+    if (res.error) {
       setButton("send");
-      setErrorResp(resp.errorMessage);
+      setErrorRes(res.errorMessage);
       return;
     }
 
     setButton("success");
-    setLogged(resp.username);
+    setAuth(res.data);
     navigate("/dashboard");
   };
   return (
@@ -54,7 +54,7 @@ export default function Auth() {
         {errors.psw && errors.psw[0]}
         <button type="submit">{button}</button>
       </form>
-      {errorResp}
+      {errorRes}
     </>
   );
 }

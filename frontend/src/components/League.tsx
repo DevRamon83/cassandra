@@ -9,12 +9,12 @@ import Predictions from "./admin/Predictions.tsx";
 
 export default function League({ league, season }: LeagueProps) {
   const { cache, setCache } = useContext(LeaguesContext);
-  const { logged } = useContext(AuthContext);
+  const { auth } = useContext(AuthContext);
   useUpdateContext(league, season, cache, setCache);
   const myLeague = cache[league] || null;
 
   const positions = myLeague?.positions || [];
-  const isAdmin = logged === "admin";
+  const isAdmin = auth?.username === "admin";
 
   return (
     <>

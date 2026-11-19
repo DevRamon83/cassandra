@@ -1,5 +1,5 @@
 import type { Dispatch, SetStateAction } from "react";
-import type { PredictionData } from "../../../shared";
+import type { PredictionData, User } from "../../../shared";
 
 export interface PagesInterface {
   url: string;
@@ -29,6 +29,11 @@ export interface PredictionUI extends PredictionData {
 }
 
 export interface PredictionContextType {
-  predictions: PredictionUI[];
-  setPredictions: Dispatch<SetStateAction<PredictionUI[]>>;
+  predictions: PredictionUI[] | null;
+  setPredictions: Dispatch<SetStateAction<PredictionUI[] | null>>;
+}
+
+export interface AuthContextType {
+  auth: User | null;
+  setAuth: React.Dispatch<React.SetStateAction<User | null>>;
 }

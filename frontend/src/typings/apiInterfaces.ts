@@ -1,4 +1,4 @@
-import type { Rounds, Standings } from "../../../shared";
+import type { Rounds, Standings, User } from "../../../shared";
 import type { PredictionDB } from "./interfaces";
 
 export interface StandardResponse {
@@ -17,8 +17,8 @@ export interface LeagueResponse {
 export interface AuthResponse {
   status: number;
   error: boolean;
-  username: string;
   errorMessage: string;
+  data: User;
 }
 
 export interface LogoutResponse {

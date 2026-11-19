@@ -11,13 +11,12 @@ export type PagesType = Record<string, PagesInterface>;
 
 export default function Navbar() {
   const pagesConfig = pages as PagesType;
-  const { logged, setLogged } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
 
   const checkHandler = async () => {
-    const resp = await checkAuth();
-    if (resp.error) return;
-
-    setLogged(resp.username);
+    const res = await checkAuth();
+    if (res.error) return;
+    setAuth(res.data);
   };
 
   useEffect(() => {
@@ -43,7 +42,7 @@ export default function Navbar() {
         );
       })}
 
-      {logged && <DashboardBtn dashConfig={pagesConfig.dashboard} />}
+      {auth?.username && <DashboardBtn dashConfig={pagesConfig.dashboard} />}
 
       <AuthBtn />
     </nav>

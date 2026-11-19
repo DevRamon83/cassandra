@@ -7,11 +7,11 @@ export const useAuthErrors = () => {
     psw: undefined,
     endpoint: undefined,
   });
-  const [errorResp, setErrorResp] = useState<null | string>(null);
+  const [errorRes, setErrorRes] = useState<null | string>(null);
 
   const errorHandler = (errorsData: AuthError) => {
     setErrors(errorsData);
   };
 
-  return { errorHandler, errors, errorResp, setErrorResp };
+  return { errorHandler, errors, errorRes, setErrorRes };
 };

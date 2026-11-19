@@ -5,7 +5,7 @@ import { classes } from "../../constants/classes";
 import logout from "../../api/handlers/logout";
 
 export default function AuthBtn() {
-  const { logged, setLogged } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
 
   const logoutHandler = async () => {
     const success = await logout();
@@ -13,7 +13,7 @@ export default function AuthBtn() {
       // error handler
       return;
     }
-    setLogged(null);
+    setAuth(null);
   };
   return (
     <>
@@ -23,7 +23,7 @@ export default function AuthBtn() {
           isActive ? `${classes.navbar.icon}Active` : classes.navbar.icon
         }
       >
-        {logged ? (
+        {auth ? (
           <button onClick={logoutHandler}>
             <img alt="logout" title="logout" src="/logout.svg" />
           </button>

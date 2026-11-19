@@ -8,23 +8,31 @@ import { createContext, useState } from "react";
 import { classes } from "./constants/classes";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
-import type { PredictionContextType, PredictionUI } from "./typings/interfaces";
+import type {
+  AuthContextType,
+  PredictionContextType,
+  PredictionUI,
+} from "./typings/interfaces";
+import type { User } from "../../shared";
 
 export const LeaguesContext = createContext<any>(null);
-export const AuthContext = createContext<any>(null);
+export const AuthContext = createContext<AuthContextType>({
+  auth: null,
+  setAuth: () => {},
+});
 export const PredictionContext = createContext<PredictionContextType>({
-  predictions: [],
+  predictions: null,
   setPredictions: () => {},
 });
 
 export default function App() {
   const [cache, setCache] = useState<Record<string, any>>({});
-  const [logged, setLogged] = useState<string | null>(null);
-  const [predictions, setPredictions] = useState<PredictionUI[]>([]);
+  const [auth, setAuth] = useState<User | null>(null);
+  const [predictions, setPredictions] = useState<PredictionUI[] | null>(null);
 
   return (
     <LeaguesContext.Provider value={{ cache, setCache }}>
-      <AuthContext.Provider value={{ logged, setLogged }}>
+      <AuthContext.Provider value={{ auth, setAuth }}>
         <PredictionContext.Provider value={{ predictions, setPredictions }}>
           <main>
             <Navbar />
