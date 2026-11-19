@@ -8,6 +8,7 @@ export const API_URLS = {
   },
   bet: {
     predictions: "/predictions",
+    bankroll: "/bankroll",
   },
   auth: {
     login: "/login",
