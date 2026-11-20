@@ -3,7 +3,7 @@ import type { TeamDetailsInterface } from "../typings/atomics";
 export const premier: Record<string, TeamDetailsInterface> = {
   "Arsenal FC": { cleanName: "Arsenal", city: "London" },
   "Coventry City FC": { cleanName: "Coventry", city: "Coventry" },
-  "Hull City AFC": { cleanName: "Hull", city: "Coventry" },
+  "Hull City AFC": { cleanName: "Hull", city: "Hull" },
   "Manchester United FC": { cleanName: "Manchester Utd", city: "Manchester" },
   "Ipswich Town FC": { cleanName: "Ipswich", city: "Ipswich" },
   "Sunderland AFC": { cleanName: "Sunderland", city: "Sunderland" },
