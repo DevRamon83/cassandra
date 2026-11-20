@@ -1,0 +1,112 @@
+.bets__container {
+  background-color: white;
+  border-top: 1px solid black;
+  margin-top: 25px;
+  display: flex;
+}
+
+.bets__selection {
+  width: 50%;
+  border-right: 1px solid black;
+  height: 500px;
+  overflow: scroll;
+}
+
+.bets__flagsContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  padding: 15px 0;
+}
+
+.bets__flag {
+  width: 34px;
+  height: 24px;
+  border: 1px solid black;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.bets__flag-active {
+  @extend .bets__flag;
+  filter: grayscale(100%);
+}
+
+.bets__flag img,
+.bets__flag-active img {
+  height: 100%;
+  max-width: none;
+}
+
+%bets__matchContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px solid black;
+}
+
+.bets__matchContainer-even {
+  @extend %bets__matchContainer;
+  background-color: ivory;
+}
+
+.bets__matchContainer-odd {
+  @extend %bets__matchContainer;
+  background-color: oldlace;
+}
+
+.bets__outcomeContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 25px;
+}
+
+.bets__outcome {
+  border: 1px solid black;
+  width: fit-content;
+  padding: 0 10px;
+  background-color: ghostwhite;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.bets__outcome-active {
+  @extend .bets__outcome;
+  background-color: lime;
+}
+
+.bets__betSlip {
+  display: flex;
+  justify-content: flex-start;
+  width: 50%;
+  flex-direction: column;
+}
+
+.bets__betSlipsRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid black;
+  padding: 15px 0;
+  gap: 15px;
+}
+
+.bets__rowElement {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 14px;
+  width: fit-content;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.bets__rowElement input {
+  margin-right: 25px;
+}

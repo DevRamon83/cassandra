@@ -1,0 +1,38 @@
+.tracker__main {
+  border: 1px solid black;
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+  padding-top: 25px;
+  overflow: hidden;
+}
+
+.tracker__menuContainer {
+  border: 1px solid black;
+  border-radius: 25px;
+  width: 80%;
+  margin-left: 10%;
+  display: flex;
+  height: 35px;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+
+.tracker__btnMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 50%;
+  background-color: black;
+  color: white;
+  height: 100%;
+}
+
+.tracker__btnMenu-active {
+  @extend .tracker__btnMenu;
+  color: black;
+  background-color: white;
+}

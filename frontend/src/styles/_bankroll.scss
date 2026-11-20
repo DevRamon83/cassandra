@@ -22,3 +22,26 @@
 .bankroll__initialize p {
   padding: 0 25px;
 }
+
+.bankroll__account {
+  border: 1px solid black;
+  border-top: 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.bankroll__row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33%;
+  height: 35px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.bankroll__row:nth-of-type(2) {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
