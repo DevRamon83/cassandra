@@ -52,6 +52,25 @@ export const classes = {
   },
   bankroll: {
     initialize: "bankroll__initialize",
+    account: "bankroll__account",
+    row: "bankroll__row",
+  },
+  tracker: {
+    main: "tracker__main",
+    menu: "tracker__menuContainer",
+    btnMenu: "tracker__btnMenu",
+  },
+  bets: {
+    container: "bets__container",
+    selection: "bets__selection",
+    flag: "bets__flag",
+    flagContainer: "bets__flagsContainer",
+    outcome: "bets__outcome",
+    match: "bets__matchContainer",
+    outcomeContainer: "bets__outcomeContainer",
+    betSlip: "bets__betSlip",
+    row: "bets__betSlipsRow",
+    rowElement: "bets__rowElement",
   },
   main: "main__content",
 };
