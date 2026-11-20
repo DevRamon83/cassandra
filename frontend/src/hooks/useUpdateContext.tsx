@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import read from "../api/handlers/read.ts";
 import { getPositions } from "../helpers/getLeagueData.ts";
 import type { Dispatch, SetStateAction } from "react";
+import { getNextRound } from "../../../shared/helpers.ts";
 
 const useUpdateContext = (
   league: string,
@@ -11,20 +12,23 @@ const useUpdateContext = (
 ) => {
   useEffect(() => {
     const getData = async (signal: AbortSignal) => {
-      const resp = await read({ league, season }, signal);
+      const res = await read({ league, season }, signal);
 
-      if (!resp || resp.error || resp.aborted) {
+      if (!res || res.error || res.aborted) {
         return;
       }
 
-      const positions = getPositions(resp.standings);
+      const positions = getPositions(res.standings);
+
+      const nextRound = getNextRound(res.standings);
 
       setCache((prev: Record<string, any>) => ({
         ...prev,
         [league]: {
           positions,
-          standings: resp.standings,
-          rounds: resp.rounds,
+          standings: res.standings,
+          rounds: res.rounds,
+          nextRound,
         },
       }));
     };

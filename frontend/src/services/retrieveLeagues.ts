@@ -1,5 +1,5 @@
 import type { Dispatch, SetStateAction } from "react";
-import { getCurrentSeason, leagues } from "../../../shared";
+import { getCurrentSeason, getNextRound, leagues } from "../../../shared";
 import read from "../api/handlers/read";
 import { getPositions } from "../helpers/getLeagueData";
 import type { ErrorResponse } from "../typings/apiInterfaces";
@@ -15,22 +15,24 @@ export const retrieveLeagues = async (
 
   for (const league of leagues) {
     if (leaguesInCache.includes(league)) continue;
-    const resp = await read({ league, season }, signal);
+    const res = await read({ league, season }, signal);
 
-    if (resp.error || resp.aborted) {
+    if (res.error || res.aborted) {
       error = true;
-      aborted = aborted ? aborted : resp?.aborted;
+      aborted = aborted ? aborted : res?.aborted;
       continue;
     }
 
-    const positions = getPositions(resp.standings);
+    const positions = getPositions(res.standings);
+    const nextRound = getNextRound(res.standings);
 
     setCache((prev: Record<string, any>) => ({
       ...prev,
       [league]: {
         positions,
-        standings: resp.standings,
-        rounds: resp.rounds,
+        standings: res.standings,
+        rounds: res.rounds,
+        nextRound,
       },
     }));
   }

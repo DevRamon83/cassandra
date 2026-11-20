@@ -1,4 +1,4 @@
-import type { Match, Rounds } from "../../shared";
+import { getNextRound, type Match, type Rounds } from "../../shared";
 import { cacheHandler } from "../services/cacheHandler";
 import type { TeamsMap } from "../typings/atomics";
 
@@ -42,8 +42,7 @@ export const getStats = async (league: string, season: string) => {
   if (error || !standings || !rounds)
     return { error: true, map: null, roundToPredict: null };
 
-  const teams = Object.keys(standings);
-  const nextGameWeek = standings[teams[0]].played + 1;
+  const nextGameWeek = getNextRound(standings);
   const roundToPredict = rounds[nextGameWeek];
   const matchIds = Object.keys(roundToPredict);
   const teamsMap: TeamsMap = new Map();

@@ -4,14 +4,12 @@ import GameWeek from "./GameWeek.tsx";
 import RoundsNavigator from "./RoundsNavigator.tsx";
 
 interface MatchesProps {
-  positions: string[];
   myLeague: LeagueData;
   league: string;
 }
 
-export default function Matches({ positions, myLeague, league }: MatchesProps) {
-  const randomTeam: string = positions[0];
-  const lastGame = myLeague.standings[randomTeam].played;
+export default function Matches({ myLeague, league }: MatchesProps) {
+  const lastGame = myLeague.nextRound - 1;
   const [show, setShow] = useState(lastGame);
 
   useEffect(() => {

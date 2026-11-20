@@ -43,4 +43,5 @@ export interface LeagueData {
   positions: string[];
   rounds: Rounds;
   standings: Standings;
+  nextRound: number;
 }
