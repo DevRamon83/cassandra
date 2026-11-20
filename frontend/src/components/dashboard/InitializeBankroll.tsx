@@ -1,4 +1,4 @@
-import { errors } from "../../../../shared";
+import { errors, getSeasonLength } from "../../../../shared";
 import { AuthContext, LeaguesContext } from "../../App";
 import { classes } from "../../constants/classes";
 import BankrollText from "../../ui/BankrollText";
@@ -13,9 +13,8 @@ export default function InitializeBankroll() {
   const { auth, setAuth } = useContext(AuthContext);
   const { bankroll } = classes;
   const standing = cache.serieA.standings;
-  const randomTeam = Object.keys(standing)[0];
-  const played = standing[randomTeam].played;
-  const seasonLength = 38 - played;
+  const { seasonLength } = getSeasonLength(standing);
+
   const label = "WEEKLY BUDGET";
   const tooMuch =
     "Really? Do you earn ten thousand euro in a month? C'mon dude!";
@@ -28,7 +27,8 @@ export default function InitializeBankroll() {
     const formData = new FormData(e.target);
     const budget = Number(formData.get("budget"));
 
-    if (played === 38) return setError("Season is over. See you next year!");
+    if (seasonLength === 0)
+      return setError("Season is over. See you next year!");
 
     if (!budget || budget <= 0) return setError("Define your budget");
 
