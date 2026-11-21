@@ -1,17 +1,13 @@
-import { notAString } from "./guards/typeCheckers.ts";
-import { emptyData } from "./guards/emptyData.ts";
 import { z } from "zod";
 
-export const guards = {
-  notAString,
-  emptyData,
-};
+export * from "./guards/atomics.ts";
 
 export { serieA } from "./dictionaries/serieA.ts";
 export { liga } from "./dictionaries/liga.ts";
 export { premier } from "./dictionaries/premier.ts";
 export { ligue1 } from "./dictionaries/ligue1.ts";
 export { bundesliga } from "./dictionaries/bundesliga.ts";
+export { validateBet } from "./validators/validateBet.ts";
 
 export * from "./constants/atomics.ts";
 export * as errors from "./constants/errors.ts";
