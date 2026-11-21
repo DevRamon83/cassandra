@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { leagues } from "../../../shared";
 import getPredictions from "../api/handlers/getPredictions";
 import { getPredictionsData } from "../helpers/getPredictionsData";
-import { LeaguesContext, PredictionContext } from "../App";
+import { LeaguesContext, PredictionContext } from "../context";
 
 export const useRetrievePredictions = () => {
   const [retry, setRetry] = useState(0);

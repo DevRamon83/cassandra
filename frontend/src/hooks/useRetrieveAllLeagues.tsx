@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { retrieveLeagues } from "../services/retrieveLeagues";
 import { leagues } from "../../../shared";
-import { LeaguesContext } from "../App";
+import { LeaguesContext } from "../context";
 
 export const useRetrieveAllLeague = () => {
   const [retry, setRetry] = useState(0);

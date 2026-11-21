@@ -1,10 +1,10 @@
 import { errors, getSeasonLength } from "../../../../shared";
-import { AuthContext, LeaguesContext } from "../../App";
 import { classes } from "../../constants/classes";
 import BankrollText from "../../ui/BankrollText";
 import Input from "../../ui/Input";
 import { useContext, useState, type SubmitEvent } from "react";
 import bankrollApiHandler from "../../api/handlers/bankroll";
+import { AuthContext, LeaguesContext } from "../../context";
 
 export default function InitializeBankroll() {
   const [error, setError] = useState("");

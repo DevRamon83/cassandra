@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import useUpdateContext from "../hooks/useUpdateContext.tsx";
-import { AuthContext, LeaguesContext } from "../App";
 import LeagueStandings from "../ui/LeagueStandings.tsx";
 import Matches from "./Matches.tsx";
 import RefreshCache from "./admin/RefreshCache.tsx";
 import type { LeagueProps } from "../../../shared/index.ts";
 import Predictions from "./admin/Predictions.tsx";
+import { AuthContext, LeaguesContext } from "../context/index.ts";
 
 export default function League({ league, season }: LeagueProps) {
   const { cache, setCache } = useContext(LeaguesContext);

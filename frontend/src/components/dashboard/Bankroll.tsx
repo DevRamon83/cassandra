@@ -1,23 +1,24 @@
 import { useContext } from "react";
-import { AuthContext, LeaguesContext } from "../../App";
-import { getCurrentSeason, getSeasonLength } from "../../../../shared";
+import { getSeasonLength } from "../../../../shared";
 import InitializeBankroll from "./InitializeBankroll";
 import { classes } from "../../constants/classes";
+import { AuthContext, LeaguesContext } from "../../context";
 
-export default function Bankroll() {
+interface Props {
+  bankrollExist: boolean;
+}
+
+export default function Bankroll({ bankrollExist }: Props) {
   const { auth } = useContext(AuthContext);
   const { cache } = useContext(LeaguesContext);
   const standing = cache.serieA.standings;
   const { seasonLength } = getSeasonLength(standing);
 
-  const bankrollExist =
-    auth?.initial_budget !== null && auth?.season === getCurrentSeason();
-
   const { bankroll } = classes;
 
   return (
     <>
-      {bankrollExist ? (
+      {bankrollExist && auth ? (
         <div className={bankroll.account}>
           <div className={bankroll.row}>
             Initial budget: {auth.initial_budget}€
@@ -26,7 +27,7 @@ export default function Bankroll() {
             Actual budget: {auth.current_budget}€
           </div>
           <div className={bankroll.row}>
-            Weekly budget: {auth.current_budget! / seasonLength}€
+            Weekly budget: {Math.round(auth.current_budget! / seasonLength)}€
           </div>
         </div>
       ) : (

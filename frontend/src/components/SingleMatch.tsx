@@ -2,9 +2,9 @@ import { useContext, useState } from "react";
 import { classes } from "../constants/classes";
 import { getMatchDate } from "../helpers/getLeagueData";
 import SingleMatchRow from "../ui/SingleMatchRow";
-import { AuthContext } from "../App";
 import UpdatePanel from "./admin/UpdatePanel";
 import type { Match } from "../../../shared";
+import { AuthContext } from "../context";
 
 export interface Props {
   match: Match;
@@ -13,9 +13,9 @@ export interface Props {
 export default function SingleMatch({ match }: Props) {
   const { away_score, away_team_name, home_score, home_team_name, match_date } =
     match;
-  const { logged } = useContext(AuthContext);
+  const { auth } = useContext(AuthContext);
   const [matchData, setMatchData] = useState<string | null>(null);
-  const isAdmin = logged === "admin";
+  const isAdmin = auth?.username === "admin";
 
   const aGoal = away_score === null ? "-" : away_score;
   const hGoal = home_score === null ? "-" : home_score;

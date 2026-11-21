@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../../App";
 import { classes } from "../../constants/classes";
 import logout from "../../api/handlers/logout";
+import { AuthContext } from "../../context";
 
 export default function AuthBtn() {
   const { auth, setAuth } = useContext(AuthContext);

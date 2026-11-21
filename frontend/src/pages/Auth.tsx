@@ -1,12 +1,12 @@
 import { useContext, useState, type SubmitEvent } from "react";
 import { authSchema, z } from "../../../shared";
 import authHandler from "../api/handlers/authHandler";
-import { AuthContext } from "../App";
 import { useNavigate } from "react-router-dom";
 import { useAuthErrors } from "../hooks/useAuthErrors";
 import type { AuthError } from "../typings/interfaces";
 import { errorCodes } from "../constants/errorCodes";
 import AuthEndpoint from "../ui/AuthEndpoint";
+import { AuthContext } from "../context";
 
 export default function Auth() {
   const [type, setType] = useState("login");

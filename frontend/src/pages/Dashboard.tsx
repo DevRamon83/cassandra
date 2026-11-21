@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { AuthContext } from "../App";
 import UserDashboard from "../components/dashboard/UserDashboard";
+import { AuthContext } from "../context";
 
 export default function Dashboard() {
   const { auth } = useContext(AuthContext);

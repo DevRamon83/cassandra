@@ -3,9 +3,9 @@ import { pages, tags } from "../../constants/pages";
 import AuthBtn from "./AuthBtn";
 import { useContext, useEffect } from "react";
 import checkAuth from "../../api/handlers/checkAuth";
-import { AuthContext } from "../../App";
 import type { PagesInterface } from "../../typings/interfaces";
 import DashboardBtn from "./DashboardBtn";
+import { AuthContext } from "../../context";
 
 export type PagesType = Record<string, PagesInterface>;
 
