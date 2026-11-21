@@ -1,3 +1,4 @@
+import { outcomes } from "../../../shared";
 import { classes } from "../constants/classes";
 
 interface Props {
@@ -17,8 +18,6 @@ export default function BetOutcomes({
   betHandler,
   activeUuids,
 }: Props) {
-  const outcomes = ["1", "X", "2", "UNDER", "OVER", "GOAL", "NOGOAL"];
-
   const handler = (matchId: string, outcome: string) => {
     const sameMarket = MARKETS.find((group) => group.includes(outcome)) ?? [];
     const isBlocked = sameMarket.some((opt) =>

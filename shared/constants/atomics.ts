@@ -55,3 +55,5 @@ export const endpoints = ["signup", "login"];
 
 export const matchResult = ["w", "d", "l"];
 export const matchPoints = [0, 1, 3];
+
+export const outcomes = ["1", "X", "2", "UNDER", "OVER", "GOAL", "NOGOAL"];
