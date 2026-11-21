@@ -1,4 +1,9 @@
-import { guards, errors, scopes, type SeasonSeed } from "../../shared/index.ts";
+import {
+  notAString,
+  errors,
+  scopes,
+  type SeasonSeed,
+} from "../../shared/index.ts";
 import type {
   GithubSeasonData,
   SingleMatch,
@@ -21,9 +26,9 @@ export const getTeams = (
   const keys = Object.keys(teams);
 
   for (const match of firstTenMatches) {
-    if (guards.notAString(match.team1, errors.seasonSeeding)) return null;
+    if (notAString(match.team1, errors.seasonSeeding)) return null;
 
-    if (guards.notAString(match.team2, errors.seasonSeeding)) return null;
+    if (notAString(match.team2, errors.seasonSeeding)) return null;
 
     if (!keys.includes(match.team1)) {
       console.error(
