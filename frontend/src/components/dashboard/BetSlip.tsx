@@ -1,20 +1,25 @@
-import { classes } from "../constants/classes";
-import Odds from "./Odds";
+import { classes } from "../../constants/classes";
+import type { BetSlipPool } from "../../typings/interfaces";
+import Odds from "../../ui/Odds";
 
 interface Props {
-  betPool: any[];
+  betSlipPool: BetSlipPool[];
   oddHandler: (uuid: string, value: string) => void;
   removeHandler: (uuid: string) => void;
 }
 
-export default function BetSlip({ betPool, oddHandler, removeHandler }: Props) {
+export default function BetSlip({
+  betSlipPool,
+  oddHandler,
+  removeHandler,
+}: Props) {
   const { bets } = classes;
   return (
     <div className={bets.betSlip}>
-      {betPool.map((match) => (
+      {betSlipPool.map((match) => (
         <div key={`${match.uuid}`} className={bets.row}>
           <div className={bets.rowElement}>
-            {match.home_team_name} Vs {match.away_team_name}:{" "}
+            {match.homeTeam} Vs {match.awayTeam}:{" "}
             {match.uuid.replace(`${match.id}-`, "")}
           </div>
           <Odds
@@ -25,6 +30,8 @@ export default function BetSlip({ betPool, oddHandler, removeHandler }: Props) {
           />
         </div>
       ))}
+
+      <div>test</div>
     </div>
   );
 }
