@@ -6,6 +6,9 @@ import { leagueSeasonValidator } from "../middlewares/leagueSeasonValidator";
 import { predictions } from "../controllers/predictions";
 import { allPredictions } from "../controllers/allPredictions";
 import { bankroll } from "../controllers/bankroll";
+import { betValidator } from "../middlewares/betValidator";
+import { newBet } from "../controllers/newBet";
+import { myBets } from "../controllers/myBets";
 
 const betsRoute = new Hono();
 
@@ -27,5 +30,7 @@ betsRoute.get(
 );
 
 betsRoute.post("/bankroll", tokensValidator, rotateToken, bankroll);
+betsRoute.post("/new", tokensValidator, rotateToken, betValidator, newBet);
+betsRoute.get("/myBets", tokensValidator, rotateToken, myBets);
 
 export default betsRoute;
