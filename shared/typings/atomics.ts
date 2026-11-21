@@ -33,3 +33,29 @@ export interface User {
   current_budget: number | null;
   season: string | null;
 }
+
+export interface BetData {
+  outcome: string;
+  odds: number;
+  matchId: string;
+}
+
+export interface SavedBetItem extends BetData {
+  won: boolean | null;
+  match: string;
+}
+
+export interface NewBet {
+  bonus: number;
+  stake: number;
+  bet: BetData[];
+}
+
+export interface SingleBet {
+  betId: string;
+  bonus: number;
+  stake: number;
+  season: string;
+  won: boolean | null;
+  items: SavedBetItem[];
+}
