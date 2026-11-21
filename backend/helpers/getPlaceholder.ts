@@ -11,10 +11,10 @@ const placeholdersHelper = (length: number, base: number) => {
   return string;
 };
 
-export const getPlaceholder = (data: unknown[][]): string => {
+export const getPlaceholder = (data: unknown[][], offset = 0): string => {
   return data
     .map((row, index) => {
-      const base = index * row.length;
+      const base = offset + index * row.length;
       return placeholdersHelper(row.length, base);
     })
     .join(",\n");
