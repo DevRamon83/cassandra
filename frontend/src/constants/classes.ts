@@ -71,6 +71,8 @@ export const classes = {
     betSlip: "bets__betSlip",
     row: "bets__betSlipsRow",
     rowElement: "bets__rowElement",
+    error: "bets__error",
+    betRecap: "bets__recap",
   },
   main: "main__content",
 };
