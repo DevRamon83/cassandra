@@ -28,3 +28,4 @@ export const notAdmin = "is not admin";
 export const login = "You must logged in";
 export const authAttack = "Identity mismatch";
 export const notANum = "not a number";
+export const invalidBet = "invalid bet data";
