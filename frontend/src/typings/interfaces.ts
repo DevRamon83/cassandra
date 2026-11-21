@@ -1,5 +1,5 @@
 import type { Dispatch, SetStateAction } from "react";
-import type { PredictionData, User } from "../../../shared";
+import type { leagues, PredictionData, SingleBet, User } from "../../../shared";
 
 export interface PagesInterface {
   url: string;
@@ -36,4 +36,21 @@ export interface PredictionContextType {
 export interface AuthContextType {
   auth: User | null;
   setAuth: React.Dispatch<React.SetStateAction<User | null>>;
+}
+
+type LeagueKey = (typeof leagues)[number];
+
+export type BetPool = Partial<Record<LeagueKey, Record<string, string>>>;
+
+export interface BetSlipPool {
+  uuid: string;
+  odds: string;
+  id: string;
+  homeTeam: string;
+  awayTeam: string;
+}
+
+export interface BetsContextType {
+  userBets: SingleBet[] | null;
+  setUserBets: React.Dispatch<React.SetStateAction<SingleBet[] | null>>;
 }

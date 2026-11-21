@@ -1,4 +1,4 @@
-import type { Rounds, Standings, User } from "../../../shared";
+import type { Rounds, SingleBet, Standings, User } from "../../../shared";
 import type { PredictionDB } from "./interfaces";
 
 export interface StandardResponse {
@@ -36,4 +36,19 @@ export interface PredictionsResponse {
   data: PredictionDB[];
   error: boolean;
   aborted: boolean;
+}
+
+export interface NewBetResponse {
+  status: number;
+  error: boolean;
+  errorMessage: string;
+  data: string;
+}
+
+export interface MyBetsResponse {
+  status: number;
+  error: boolean;
+  errorMessage: string;
+  aborted: boolean;
+  data: SingleBet[];
 }
