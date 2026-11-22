@@ -129,3 +129,72 @@
   align-items: flex-end;
   gap: 15px;
 }
+
+.bets__historyCard {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: fit-content;
+  gap: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px 15px;
+  flex-direction: column;
+}
+
+.bets__predictionRow {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 3px 0;
+}
+
+.bets__pending {
+  background-color: ivory;
+}
+
+.bets__won {
+  background-color: #c4fdc4;
+}
+
+.bets__lost {
+  background-color: #fdc4c4;
+}
+
+%bets__predictionOutcome {
+  width: 10px;
+  height: 10px;
+  border: 1px solid black;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.bets__predictionOutcome-pending {
+  @extend %bets__predictionOutcome, .bets__pending;
+}
+
+.bets__betData {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  padding: 10px 0 5px 0;
+}
+
+.bets__betData h4 {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.bets__payout {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.bets__historyContainer {
+  padding: 25px;
+}
+
+.bets__historyContainer select {
+  margin-bottom: 25px;
+}
