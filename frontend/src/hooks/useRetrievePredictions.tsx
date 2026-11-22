@@ -1,10 +1,18 @@
-import { useContext, useEffect, useState } from "react";
+import {
+  useContext,
+  useEffect,
+  useState,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
 import { leagues } from "../../../shared";
 import getPredictions from "../api/handlers/getPredictions";
 import { getPredictionsData } from "../helpers/getPredictionsData";
 import { LeaguesContext, PredictionContext } from "../context";
 
-export const useRetrievePredictions = () => {
+export const useRetrievePredictions = (
+  setReady: Dispatch<SetStateAction<string>>,
+) => {
   const [retry, setRetry] = useState(0);
 
   const { setPredictions } = useContext(PredictionContext);
@@ -28,6 +36,7 @@ export const useRetrievePredictions = () => {
 
       const context = getPredictionsData(cache, res.data);
       setPredictions(context);
+      setReady("ready");
     };
 
     predictions();
