@@ -1,8 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import {
+  useContext,
+  useEffect,
+  useState,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
 import { BetsContext } from "../context";
 import allBets from "../api/handlers/allBets";
 
-export const useUserBets = () => {
+export const useUserBets = (setReady: Dispatch<SetStateAction<string>>) => {
   const { userBets, setUserBets } = useContext(BetsContext);
   const [retry, setRetry] = useState(0);
 
@@ -21,6 +27,7 @@ export const useUserBets = () => {
       if (res.aborted) return;
 
       setUserBets(res.data);
+      setReady("ready");
     };
 
     fetchBets();
