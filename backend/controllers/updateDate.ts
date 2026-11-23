@@ -1,8 +1,8 @@
 import type { Context } from "hono";
 import { client } from "../db.ts";
-import { errors } from "../../shared/index.ts";
+import { errors, scopes } from "../../shared/index.ts";
 import { getBody } from "../helpers/getBody.ts";
-import { validIds } from "../helpers/overrides.ts";
+import { validIds } from "../helpers/matchValidators.ts";
 import { getUpdatedMatchTime } from "../helpers/getMatchData.ts";
 import { updateDateQuery } from "../queries/updateDateQuery.ts";
 import { handleErrorResponse } from "../helpers/handleErrorResponse.ts";
@@ -12,7 +12,8 @@ export const updateDate = async (c: Context) => {
     const body = await getBody(c);
     const status = { success: true, error: "" };
 
-    if (!validIds([body.id], status))
+    const scope = scopes.backend.updateDate;
+    if (!validIds([body.id], status, scope))
       return handleErrorResponse(c, "invalidId", 400, true);
 
     if (!body.match_date)
