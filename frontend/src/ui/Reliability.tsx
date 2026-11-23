@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction } from "react";
 import { classes } from "../constants/classes";
 
-const reliability = ["reliability", "low", "medium", "high"];
+const reliability = ["strength", "low", "medium", "high"];
 interface Props {
   setReliability: Dispatch<SetStateAction<string>>;
 }
