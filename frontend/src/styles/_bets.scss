@@ -1,3 +1,5 @@
+@use "./layout/breakpoints";
+
 .bets__container {
   background-color: white;
   border-top: 1px solid black;
@@ -17,11 +19,12 @@
   width: 100%;
   justify-content: space-evenly;
   padding: 15px 0;
+  border-bottom: 1px solid black;
 }
 
 .bets__flag {
-  width: 34px;
-  height: 24px;
+  width: 24px;
+  height: 18px;
   border: 1px solid black;
   border-radius: 5px;
   overflow: hidden;
@@ -29,6 +32,11 @@
   justify-content: center;
   align-items: center;
   padding: 0;
+
+  @include breakpoints.medium {
+    width: 34px;
+    height: 24px;
+  }
 }
 
 .bets__flag-active {
@@ -46,7 +54,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .bets__matchContainer-even {
@@ -59,11 +67,27 @@
   background-color: oldlace;
 }
 
+.bets__matchContainer-even h3,
+.bets__matchContainer-odd h3 {
+  font-size: 14px;
+
+  @include breakpoints.medium {
+    font-size: unset;
+  }
+}
+
 .bets__outcomeContainer {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 12px 5px;
+
+  @include breakpoints.medium {
+    flex-wrap: unset;
+    gap: unset;
+  }
 }
 
 .bets__outcome {
@@ -71,8 +95,11 @@
   width: fit-content;
   padding: 0 10px;
   background-color: ghostwhite;
-  font-weight: bold;
   border-radius: 5px;
+
+  @include breakpoints.medium {
+    font-weight: bold;
+  }
 }
 
 .bets__outcome-active {
@@ -103,22 +130,45 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-size: 14px;
-  width: fit-content;
+  font-size: 0.9em;
+  line-height: 1.6em;
+  width: inherit;
   text-transform: uppercase;
-  font-weight: bold;
+  padding-left: 10px;
+
+  @include breakpoints.medium {
+    width: 100%;
+    padding-left: unset;
+    font-weight: bold;
+    font-size: unset;
+    line-height: unset;
+  }
 }
 
 .bets__rowElement input {
-  margin-right: 25px;
+  width: 50%;
 }
 
 .bets__error {
-  font-weight: bold;
   color: red;
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
   gap: 15px;
   padding: 10px;
+  line-height: 1.6em;
+  font-size: 1em;
+  border-top: 1px solid black;
+  margin-top: 25px;
+
+  @include breakpoints.medium {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+.bets__error img {
+  height: 25px;
 }
 
 .bets__recap {
@@ -128,6 +178,41 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 15px;
+}
+
+.bets__recap h4 {
+  text-transform: uppercase;
+  border: 1px solid black;
+  display: flex;
+  width: fit-content;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 26px;
+  padding-left: 15px;
+  background-color: lime;
+  font-size: 0.8em;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.bets__recap h4 > span {
+  border-left: 1px solid black;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  background-color: whitesmoke;
+  margin-left: 15px;
+}
+
+.bets__recap input {
+  width: 90%;
+
+  @include breakpoints.medium {
+    width: unset;
+  }
 }
 
 .bets__historyCard {

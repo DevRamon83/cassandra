@@ -1,9 +1,17 @@
+@use "./layout/breakpoints";
+
 .tracker__main {
-  border: 1px solid black;
-  border-top: 0;
-  border-radius: 0 0 10px 10px;
+  border-width: 1px 0;
+  border-color: black;
+  border-style: solid;
+  border-radius: 0;
   padding-top: 25px;
   overflow: hidden;
+
+  @include breakpoints.medium {
+    border-width: 0 1px 1px 1px;
+    border-radius: 0 0 10px 10px;
+  }
 }
 
 .tracker__menuContainer {

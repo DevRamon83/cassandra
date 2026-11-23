@@ -1,3 +1,5 @@
+@use "./layout/breakpoints";
+
 .bankroll__initialize {
   border: 1px solid black;
   border-top: 0;
@@ -24,24 +26,40 @@
 }
 
 .bankroll__account {
-  border: 1px solid black;
-  border-top: 0;
+  border-width: 0;
+  border-color: black;
+  border-style: solid;
   display: flex;
   justify-content: space-between;
   background-color: white;
+  flex-direction: column;
+
+  @include breakpoints.medium {
+    border-width: 0 1px 1px 1px;
+    flex-direction: row;
+  }
 }
 
 .bankroll__row {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 33%;
   height: 35px;
   text-transform: uppercase;
-  font-weight: bold;
+  width: 100%;
+
+  @include breakpoints.medium {
+    width: 33%;
+    font-weight: bold;
+  }
 }
 
 .bankroll__row:nth-of-type(2) {
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  border-width: 1px 0;
+  border-color: black;
+  border-style: solid;
+
+  @include breakpoints.medium {
+    border-width: 0 1px;
+  }
 }

@@ -1,11 +1,19 @@
+@use "./layout/breakpoints";
+
 .predictions__view {
   display: flex;
   width: 100%;
   height: 30px;
-  border: 1px solid black;
+  border-width: 1px 0;
+  border-color: black;
+  border-style: solid;
   margin: 20px 0;
-  border-radius: 10px;
   overflow: hidden;
+
+  @include breakpoints.medium {
+    border-radius: 10px;
+    border-width: 1px;
+  }
 }
 
 .predictions__viewBtn {
@@ -26,9 +34,16 @@
 }
 
 .prediction__reliability {
-  width: 100%;
+  width: 98%;
   display: flex;
-  gap: 20px;
+  gap: 10px;
+  padding-left: 1%;
+
+  @include breakpoints.medium {
+    gap: 20px;
+    width: 100%;
+    padding-left: unset;
+  }
 }
 
 %reliability {
