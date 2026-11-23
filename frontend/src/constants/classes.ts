@@ -40,6 +40,7 @@ export const classes = {
     wait: "system__wait",
     refresh: "system__update",
     predictions: "system__update",
+    outcomes: "system__update",
   },
   predictions: {
     accuracy: "predictions__",
@@ -87,6 +88,7 @@ export const classes = {
   },
   dashboard: {
     greeting: "dashboard__greeting",
+    adminContainer: "dashboard__adminContainer",
   },
   main: "main__content",
 };

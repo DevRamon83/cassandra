@@ -89,7 +89,9 @@ export default function BetSlip({
             error={error}
           />
 
-          <button onClick={sendHandler}>{sendBtn}</button>
+          <button className={bets.sendBtn} onClick={sendHandler}>
+            {sendBtn}
+          </button>
           {error && (
             <div className={bets.error}>
               <img src="/error.svg" />
