@@ -21,7 +21,7 @@ export default function Odds({
         type="number"
         step="0.01"
         min="1"
-        placeholder="odds"
+        placeholder="Odds"
         value={value}
         onChange={(e) => oddHandler(uuid, e.target.value)}
       />

@@ -22,7 +22,7 @@ export default function NewBet() {
     const nextRound = cache[league].nextRound;
     const newMatch = {
       uuid: `${id}-${outcome}`,
-      odds: "1",
+      odds: "",
       id,
       homeTeam: cache[league].rounds[nextRound][id].home_team_name,
       awayTeam: cache[league].rounds[nextRound][id].away_team_name,
