@@ -6,6 +6,8 @@ import RefreshCache from "./admin/RefreshCache.tsx";
 import type { LeagueProps } from "../../../shared/index.ts";
 import Predictions from "./admin/Predictions.tsx";
 import { AuthContext, LeaguesContext } from "../context/index.ts";
+import UpdatePredictions from "./admin/UpdatePredictions.tsx";
+import { classes } from "../constants/classes.ts";
 
 export default function League({ league, season }: LeagueProps) {
   const { cache, setCache } = useContext(LeaguesContext);
@@ -19,10 +21,11 @@ export default function League({ league, season }: LeagueProps) {
   return (
     <>
       {isAdmin && (
-        <>
+        <div className={classes.dashboard.adminContainer}>
           <RefreshCache league={league} season={season} />
           <Predictions league={league} season={season} />
-        </>
+          <UpdatePredictions />
+        </div>
       )}
 
       {myLeague && positions.length !== 0 && (
