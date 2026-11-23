@@ -6,8 +6,8 @@ import { classes } from "../../constants/classes";
 import { defineBetStatus } from "../../helpers/betData";
 import BetItems from "../../ui/BetItems";
 import BetData from "../../ui/BetData";
-import BetFilter from "../../ui/BetFilter";
-import type { SingleBet } from "../../../../shared";
+import SelectOnChange from "../../ui/SelectOnChange";
+import { betFilter, type SingleBet } from "../../../../shared";
 
 export default function BetsHistory() {
   const [ready, setReady] = useState("wait");
@@ -38,7 +38,11 @@ export default function BetsHistory() {
           {userBets && userBets.length > 0 ? (
             <>
               <h2>Filter your bets</h2>
-              <BetFilter value={filter} setter={setFilter} />
+              <SelectOnChange
+                value={filter}
+                setter={setFilter}
+                data={betFilter}
+              />
               {filteredBets.map((bet) => (
                 <div
                   className={`${bets.historyCard} ${defineBetStatus(bet.won)}`}
