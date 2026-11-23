@@ -6,7 +6,7 @@ import newBet from "../../api/handlers/newBet";
 import { errors, validateBet } from "../../../../shared";
 import { AuthContext, BetsContext } from "../../context";
 import BetRecap from "../../ui/BetRecap";
-import { getMyBetData } from "../../helpers/betSlipsHelper";
+import { getMyBetData } from "../../helpers/getMyBetData";
 import { useInitializeBetSlips } from "../../hooks/useInitializeBetSlips";
 
 interface Props {
