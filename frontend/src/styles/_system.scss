@@ -1,11 +1,14 @@
 %system__btn {
-  padding: 5px 15px;
+  padding: 0 15px;
   display: flex;
   justify-content: center;
-  text-align: center;
+  align-items: center;
   width: fit-content;
+  height: 30px;
   border: 1px solid black;
-  border-radius: 10px;
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+  text-transform: uppercase;
   font-weight: bold;
 }
 
