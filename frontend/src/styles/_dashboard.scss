@@ -1,0 +1,10 @@
+@use "./layout/breakpoints";
+
+.dashboard__greeting {
+  padding-left: 25px;
+  margin: 0;
+
+  @include breakpoints.medium {
+    margin-top: 45px;
+  }
+}

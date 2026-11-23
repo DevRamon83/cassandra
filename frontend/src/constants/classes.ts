@@ -83,5 +83,8 @@ export const classes = {
     payout: "bets__payout",
     historyContainer: "bets__historyContainer",
   },
+  dashboard: {
+    greeting: "dashboard__greeting",
+  },
   main: "main__content",
 };

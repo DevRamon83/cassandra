@@ -7,6 +7,7 @@ import BetTracker from "./BetTracker";
 import { getCurrentSeason } from "../../../../shared";
 import { AuthContext, PredictionContext } from "../../context";
 import Spinner from "../../ui/Spinner";
+import { classes } from "../../constants/classes";
 
 export default function UserDashboard({ username }: { username: string }) {
   const { predictions } = useContext(PredictionContext);
@@ -19,7 +20,7 @@ export default function UserDashboard({ username }: { username: string }) {
     auth?.initial_budget !== null && auth?.season === getCurrentSeason();
   return (
     <>
-      <h1>Hi {username}</h1>
+      <h1 className={classes.dashboard.greeting}>Hi {username}</h1>
       {ready === "wait" ? (
         <Spinner />
       ) : (
