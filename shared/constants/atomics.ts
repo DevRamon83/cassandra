@@ -28,6 +28,7 @@ export const predictionsArray: string[] = [
   "prediction",
   "prediction_result",
   "prediction_accuracy",
+  "settled_at",
 ];
 
 export const leagues: string[] = [
@@ -57,3 +58,10 @@ export const matchResult = ["w", "d", "l"];
 export const matchPoints = [0, 1, 3];
 
 export const outcomes = ["1", "X", "2", "UNDER", "OVER", "GOAL", "NOGOAL"];
+
+export const betFilter = {
+  all: "All",
+  pending: "Pending",
+  won: "Won",
+  lost: "Lost",
+};
