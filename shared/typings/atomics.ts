@@ -23,6 +23,7 @@ export type PredictionData = {
   prediction: string | null;
   prediction_result: boolean | null;
   prediction_accuracy: string | null;
+  settled_at: number;
 };
 
 export interface User {
