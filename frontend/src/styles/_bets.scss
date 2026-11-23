@@ -134,14 +134,26 @@
   line-height: 1.6em;
   width: inherit;
   text-transform: uppercase;
-  padding-left: 10px;
+  padding: 5px 0 5px 10px;
 
   @include breakpoints.medium {
     width: 100%;
-    padding-left: unset;
     font-weight: bold;
     font-size: unset;
     line-height: unset;
+  }
+}
+
+.bets__stakeAndBonus {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 25px;
+
+  @include breakpoints.medium {
+    gap: unset;
+    flex-direction: row;
+    justify-content: space-evenly;
   }
 }
 
@@ -282,4 +294,16 @@
 
 .bets__historyContainer select {
   margin-bottom: 25px;
+}
+
+.bets__sendBtn {
+  padding: 5px 25px;
+  background-color: black;
+  width: fit-content;
+  text-transform: uppercase;
+  border-radius: 5px 0 0 5px;
+  align-self: flex-end;
+  margin-top: 25px;
+  font-weight: bold;
+  color: white;
 }

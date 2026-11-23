@@ -82,6 +82,8 @@ export const classes = {
     betData: "bets__betData",
     payout: "bets__payout",
     historyContainer: "bets__historyContainer",
+    sendBtn: "bets__sendBtn",
+    inputsContainer: "bets__stakeAndBonus",
   },
   dashboard: {
     greeting: "dashboard__greeting",

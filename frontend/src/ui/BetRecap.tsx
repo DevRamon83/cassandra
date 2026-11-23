@@ -27,22 +27,24 @@ export default function BetRecap({
         Odds <span>{totalOdds.toFixed(2)}</span>
       </h4>
 
-      <input
-        type="number"
-        step="1"
-        min="1"
-        placeholder="Stake"
-        value={stake}
-        onChange={(e) => setStake(e.target.value)}
-      />
-      <input
-        type="number"
-        step="1"
-        min="1"
-        placeholder="Multi Bet Bonus"
-        value={bonus}
-        onChange={(e) => setBonus(e.target.value)}
-      />
+      <div className={bets.inputsContainer}>
+        <input
+          type="number"
+          step="1"
+          min="1"
+          placeholder="Stake"
+          value={stake}
+          onChange={(e) => setStake(e.target.value)}
+        />
+        <input
+          type="number"
+          step="1"
+          min="1"
+          placeholder="Multi Bet Bonus"
+          value={bonus}
+          onChange={(e) => setBonus(e.target.value)}
+        />
+      </div>
       {potentialWin > 0 && !error && (
         <h4>
           Payout <span>{potentialWin.toFixed(2)}€</span>
