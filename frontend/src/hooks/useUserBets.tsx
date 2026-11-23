@@ -13,7 +13,7 @@ export const useUserBets = (setReady: Dispatch<SetStateAction<string>>) => {
   const [retry, setRetry] = useState(0);
 
   useEffect(() => {
-    if (userBets !== null) return;
+    if (userBets !== null) return setReady("ready");
     const controller = new AbortController();
 
     const fetchBets = async () => {
@@ -33,5 +33,5 @@ export const useUserBets = (setReady: Dispatch<SetStateAction<string>>) => {
     fetchBets();
 
     return () => controller.abort();
-  }, [retry]);
+  }, [retry, userBets]);
 };
