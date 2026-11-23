@@ -29,3 +29,6 @@ export const login = "You must logged in";
 export const authAttack = "Identity mismatch";
 export const notANum = "not a number";
 export const invalidBet = "invalid bet data";
+export const checkAgain = "Your bet is invalid, check it again";
+export const fillTheOdd = "You must fill all odds fields";
+export const invalidBudget = "`According to your budget the maximum stake is: ";
