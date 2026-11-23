@@ -46,7 +46,8 @@ CREATE TABLE predictions (
     match_id BIGINT REFERENCES matches(id) NOT NULL UNIQUE,
     prediction bet_prediction NOT NULL,
     prediction_result BOOLEAN DEFAULT NULL,
-    prediction_accuracy accuracy NOT NULL
+    prediction_accuracy accuracy NOT NULL,
+    settled_at BIGINT
 );
 
 -- 3. Performance optimization: Explicit index creation

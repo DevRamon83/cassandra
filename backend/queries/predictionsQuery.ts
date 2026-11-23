@@ -7,14 +7,20 @@ const preparePredictionsData = (predictions: PredictionData[]) => {
 
   for (let i = 0; i < predictions.length; i++) {
     const data = predictions[i];
-    const { match_id, prediction, prediction_result, prediction_accuracy } =
-      data;
+    const {
+      match_id,
+      prediction,
+      prediction_result,
+      prediction_accuracy,
+      settled_at,
+    } = data;
 
     matrix.push([
       Number(match_id),
       prediction,
       prediction_result,
       prediction_accuracy,
+      settled_at,
     ]);
   }
   return matrix;

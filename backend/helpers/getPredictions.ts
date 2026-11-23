@@ -184,6 +184,7 @@ export const getPredictions = (data: Data) => {
   const { map, roundToPredict } = data;
   const keys = Object.keys(roundToPredict);
   const predictionArray: PredictionData[] = [];
+  const date = Date.now();
 
   for (const key of keys) {
     const match = roundToPredict[key];
@@ -192,6 +193,7 @@ export const getPredictions = (data: Data) => {
       prediction: null,
       prediction_result: null,
       prediction_accuracy: null,
+      settled_at: date,
     };
     const homeTeam = match.home_team_name;
     const awayTeam = match.away_team_name;
