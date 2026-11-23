@@ -11,6 +11,7 @@ export const API_URLS = {
     bankroll: "/bankroll",
     new: "/new",
     myBets: "/myBets",
+    predictionsOutcomes: "/outcomes",
   },
   auth: {
     login: "/login",
