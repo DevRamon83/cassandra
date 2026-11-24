@@ -1,3 +1,4 @@
+import type { Match } from "../../shared/index.ts";
 import type { SingleMatch } from "../typings/GithubSeasonData.ts";
 import { dictionaryLeagueDefiner } from "./defineLeague.ts";
 import { DateTime } from "luxon";
@@ -112,4 +113,29 @@ export const getPoints = (home: string | null, away: string | null) => {
   const away_points = definePoints(away);
 
   return { home_points, away_points };
+};
+
+export const getMatchOutcomes = (match: Match) => {
+  const outcomes = [];
+  const { home_result, home_score, away_score } = match;
+  const invalidScore = home_score === null || away_score === null;
+  if (invalidScore || !home_result) return null;
+
+  if (home_result === "w") outcomes.push("1");
+  if (home_result === "d") outcomes.push("x");
+  if (home_result === "l") outcomes.push("2");
+
+  if (home_score + away_score / 2 > 2.5) {
+    outcomes.push("over");
+  } else {
+    outcomes.push("under");
+  }
+
+  if (!home_score || !away_score) {
+    outcomes.push("no_goal");
+  } else {
+    outcomes.push("goal");
+  }
+
+  return outcomes;
 };
