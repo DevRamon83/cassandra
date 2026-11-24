@@ -15,10 +15,17 @@ export default function PredictionCardsContainer({
 }: Props) {
   const { rounds } = classes;
 
+  const defineClass = (prediction: PredictionUI) => {
+    const outcome = prediction.prediction_result ? "won" : "lost";
+    return prediction.prediction_result === null
+      ? classes.predictions.card
+      : `${classes.predictions.card} ${classes.predictions.card}-${outcome}`;
+  };
+
   return (
     <div ref={refContainer} className={rounds.container}>
       {predictions.map((prediction) => (
-        <div className={classes.predictions.card} key={prediction.id}>
+        <div className={defineClass(prediction)} key={prediction.id}>
           <h4>{prediction.match}</h4>
           <h5>{getMatchDate(prediction.date).matchDate}</h5>
           <PredictionRow
