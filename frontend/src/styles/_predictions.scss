@@ -1,4 +1,5 @@
 @use "./layout/breakpoints";
+@use "./variables/colors";
 
 .predictions__view {
   display: flex;
@@ -81,7 +82,6 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 25px;
 }
 
 .predictions__cards h4 {
@@ -110,6 +110,14 @@
   background-color: ivory;
   flex-shrink: 0;
   margin: 0 10px;
+}
+
+.predictions__card-won {
+  background-color: colors.$won;
+}
+
+.predictions__card-lost {
+  background-color: colors.$lost;
 }
 
 .predictions__accuracyContainer {

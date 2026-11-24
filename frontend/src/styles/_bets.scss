@@ -1,4 +1,5 @@
 @use "./layout/breakpoints";
+@use "./variables/colors";
 
 .bets__container {
   background-color: white;
@@ -247,15 +248,15 @@
 }
 
 .bets__pending {
-  background-color: ivory;
+  background-color: colors.$pending;
 }
 
 .bets__won {
-  background-color: #c4fdc4;
+  background-color: colors.$won;
 }
 
 .bets__lost {
-  background-color: #fdc4c4;
+  background-color: colors.$lost;
 }
 
 %bets__predictionOutcome {
@@ -268,6 +269,14 @@
 
 .bets__predictionOutcome-pending {
   @extend %bets__predictionOutcome, .bets__pending;
+}
+
+.bets__predictionOutcome-won {
+  @extend %bets__predictionOutcome, .bets__won;
+}
+
+.bets__predictionOutcome-lost {
+  @extend %bets__predictionOutcome, .bets__lost;
 }
 
 .bets__betData {
