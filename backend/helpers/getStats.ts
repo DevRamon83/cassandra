@@ -1,4 +1,9 @@
-import { getNextRound, type Match, type Rounds } from "../../shared";
+import {
+  getCurrentSeason,
+  getNextRound,
+  type Match,
+  type Rounds,
+} from "../../shared";
 import { cacheHandler } from "../services/cacheHandler";
 import type { TeamsMap } from "../typings/atomics";
 
@@ -36,25 +41,33 @@ const statsMiner = (rounds: Rounds, gameWeek: number, teamsMap: TeamsMap) => {
   }
 };
 
-export const getStats = async (league: string, season: string) => {
+export const getStats = async (
+  teamsMap: TeamsMap,
+  leagues: string[],
+): Promise<{ error: boolean; map: TeamsMap | null }> => {
+  const league = leagues[0];
+  leagues.shift();
+  const season = getCurrentSeason();
   const { error, standings, rounds } = await cacheHandler(league, season);
 
-  if (error || !standings || !rounds)
-    return { error: true, map: null, roundToPredict: null };
+  if (error || !standings || !rounds) return { error: true, map: null };
 
   const nextGameWeek = getNextRound(standings);
   const roundToPredict = rounds[nextGameWeek];
   const matchIds = Object.keys(roundToPredict);
-  const teamsMap: TeamsMap = new Map();
 
   for (const id of matchIds) {
     const homeTeam = roundToPredict[id].home_team_name;
     const awayTeam = roundToPredict[id].away_team_name;
-    teamsMap.set(homeTeam, { home: true, GNG: [], UO: [] });
-    teamsMap.set(awayTeam, { home: false, GNG: [], UO: [] });
+    teamsMap.set(homeTeam, { home: true, GNG: [], UO: [], roundToPredict });
+    teamsMap.set(awayTeam, { home: false, GNG: [], UO: [], roundToPredict });
   }
 
   statsMiner(rounds, nextGameWeek, teamsMap);
 
-  return { error: false, map: teamsMap, roundToPredict };
+  if (leagues.length === 0) {
+    return { error: false, map: teamsMap };
+  } else {
+    return await getStats(teamsMap, leagues);
+  }
 };

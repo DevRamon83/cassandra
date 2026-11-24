@@ -23,7 +23,7 @@ export default function League({ league, season }: LeagueProps) {
       {isAdmin && (
         <div className={classes.dashboard.adminContainer}>
           <RefreshCache league={league} season={season} />
-          <Predictions league={league} season={season} />
+          <Predictions />
           <UpdatePredictions />
         </div>
       )}

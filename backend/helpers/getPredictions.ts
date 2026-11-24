@@ -4,7 +4,6 @@ import type { TeamsMap, TeamStats } from "../typings/atomics";
 interface Data {
   error: boolean;
   map: TeamsMap;
-  roundToPredict: Record<string, Match>;
 }
 
 type Outcome = {
@@ -180,16 +179,25 @@ const definePrediction = (homeData: TeamStats, awayData: TeamStats) => {
   return null;
 };
 
-export const getPredictions = (data: Data) => {
-  const { map, roundToPredict } = data;
-  const keys = Object.keys(roundToPredict);
+export const getPredictions = (map: TeamsMap) => {
+  const keys = [...map.keys()];
+  const ids = new Set();
+
   const predictionArray: PredictionData[] = [];
   const date = Date.now();
 
   for (const key of keys) {
-    const match = roundToPredict[key];
+    const teamData = map.get(key);
+    const match = Object.values(teamData!.roundToPredict).find(
+      (m) => m.home_team_name === key || m.away_team_name === key,
+    );
+
+    if (!match) return null;
+    if (ids.has(match.id)) continue;
+    ids.add(match.id);
+
     const predictionObj: PredictionData = {
-      match_id: key,
+      match_id: match.id,
       prediction: null,
       prediction_result: null,
       prediction_accuracy: null,

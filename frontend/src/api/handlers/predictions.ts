@@ -1,9 +1,8 @@
 import { API_URLS } from "../../constants/apiUrls.ts";
 import { fetchData } from "../fetchData.ts";
 import type { StandardResponse } from "../../typings/apiInterfaces.ts";
-import type { LeagueProps } from "../../../../shared/index.ts";
 
-const predictions = async (data: LeagueProps) => {
+const predictions = async () => {
   const { base, bet } = API_URLS;
   const apiUrl = base + bet.predictions;
 
@@ -13,7 +12,7 @@ const predictions = async (data: LeagueProps) => {
     apiUrl,
     method,
     credentials,
-    data,
+    null,
   );
 
   return response;

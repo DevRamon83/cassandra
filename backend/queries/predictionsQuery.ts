@@ -34,14 +34,10 @@ export const predictionQuery = (predictions: PredictionData[]) => {
   const placeholders = getPlaceholder(data);
 
   const sqlQuery = `
-    INSERT INTO predictions (${predictionsArray.join(", ")}) 
-    VALUES ${placeholders}
-    ON CONFLICT (match_id) 
-    DO UPDATE SET
-      ${getUpdateCondition("predictions", "prediction")},
-      ${getUpdateCondition("predictions", "prediction_result")},
-      ${getUpdateCondition("predictions", "prediction_accuracy")};
-  `;
+  INSERT INTO predictions (${predictionsArray.join(", ")}) 
+  VALUES ${placeholders}
+  ON CONFLICT (match_id) DO NOTHING;
+`;
 
   return {
     text: sqlQuery,

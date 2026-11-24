@@ -1,9 +1,8 @@
 import { useState } from "react";
-import type { LeagueProps } from "../../../../shared/index.ts";
 import { classes } from "../../constants/classes.ts";
 import predictions from "../../api/handlers/predictions.ts";
 
-export default function Predictions({ league, season }: LeagueProps) {
+export default function Predictions() {
   const { system } = classes;
 
   type StatusType = keyof typeof system;
@@ -13,7 +12,7 @@ export default function Predictions({ league, season }: LeagueProps) {
   const sendData = async () => {
     if (response !== "predictions") return;
     setResponse("wait");
-    const resp = await predictions({ league, season });
+    const resp = await predictions();
 
     if (resp.error) {
       setResponse("error");
