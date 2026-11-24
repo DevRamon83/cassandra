@@ -54,3 +54,5 @@ export interface BetsContextType {
   userBets: SingleBet[] | null;
   setUserBets: React.Dispatch<React.SetStateAction<SingleBet[] | null>>;
 }
+
+export type PredictionsMap = Map<number, PredictionUI[]>;
