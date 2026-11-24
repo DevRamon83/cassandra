@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, type Dispatch, type SetStateAction } from "react";
 import { classes } from "../constants/classes";
 import type { PredictionUI } from "../typings/interfaces";
 import Reliability from "./Reliability";
@@ -7,9 +7,17 @@ import PredictionCardsContainer from "./PredictionCardsContainer";
 
 interface Props {
   mapArray: PredictionUI[];
+  tabs: number[];
+  currentTab: number;
+  setCurrentTab: Dispatch<SetStateAction<number>>;
 }
 
-export default function PredictionCards({ mapArray }: Props) {
+export default function PredictionCards({
+  mapArray,
+  tabs,
+  currentTab,
+  setCurrentTab,
+}: Props) {
   const [reliability, setReliability] = useState("reliability");
   const refContainer = useRef<HTMLDivElement>(null);
   const scrollToRight = useHorizontalScroll("left", refContainer);
@@ -29,14 +37,28 @@ export default function PredictionCards({ mapArray }: Props) {
       {filteredPredictions.length === 0 ? (
         <h4>No predictions yet. Check back later!</h4>
       ) : (
-        <div className={rounds.wrapper}>
-          <button className={rounds.leftScroll} onClick={scrollToLeft} />
-          <PredictionCardsContainer
-            refContainer={refContainer}
-            predictions={filteredPredictions}
-          />
-          <button className={rounds.scrollRight} onClick={scrollToRight} />
-        </div>
+        <>
+          <div className={rounds.main}>
+            {tabs.map((tab, index) => (
+              <button
+                className={tab === currentTab ? rounds.current : rounds.tabs}
+                onClick={() => setCurrentTab(tabs[index])}
+                key={tab}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+
+          <div className={rounds.wrapper}>
+            <button className={rounds.leftScroll} onClick={scrollToLeft} />
+            <PredictionCardsContainer
+              refContainer={refContainer}
+              predictions={filteredPredictions}
+            />
+            <button className={rounds.scrollRight} onClick={scrollToRight} />
+          </div>
+        </>
       )}
     </>
   );
