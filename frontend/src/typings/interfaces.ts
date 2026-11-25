@@ -56,3 +56,14 @@ export interface BetsContextType {
 }
 
 export type PredictionsMap = Map<number, PredictionUI[]>;
+
+export type StatsCounts = {
+  goal: number;
+  noGoal: number;
+  under: number;
+  over: number;
+  allSame: {
+    gameWeeks: number[];
+    outcomes: string[];
+  };
+};
