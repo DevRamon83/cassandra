@@ -18,27 +18,24 @@ export default function PredictionCards({
   currentTab,
   setCurrentTab,
 }: Props) {
-  const [reliability, setReliability] = useState("reliability");
+  const [reliability, setReliability] = useState("strength");
   const refContainer = useRef<HTMLDivElement>(null);
   const scrollToRight = useHorizontalScroll("left", refContainer);
   const scrollToLeft = useHorizontalScroll("right", refContainer);
 
   const filteredPredictions =
-    reliability === "reliability"
+    reliability === "strength"
       ? mapArray
       : mapArray.filter((p) => p.prediction_accuracy === reliability);
 
   const { rounds } = classes;
   return (
     <>
-      <div className={classes.predictions.reliability}>
-        <Reliability setReliability={setReliability} />
-      </div>
       {filteredPredictions.length === 0 ? (
         <h4>No predictions yet. Check back later!</h4>
       ) : (
         <>
-          <div className={rounds.main}>
+          <div className={rounds.mainPredictions}>
             {tabs.map((tab, index) => (
               <button
                 className={tab === currentTab ? rounds.current : rounds.tabs}
@@ -51,6 +48,9 @@ export default function PredictionCards({
           </div>
 
           <div className={rounds.wrapper}>
+            <div className={classes.predictions.reliability}>
+              <Reliability setReliability={setReliability} />
+            </div>
             <button className={rounds.leftScroll} onClick={scrollToLeft} />
             <PredictionCardsContainer
               refContainer={refContainer}
