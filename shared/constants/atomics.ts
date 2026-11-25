@@ -65,3 +65,44 @@ export const betFilter = {
   won: "Won",
   lost: "Lost",
 };
+
+export const leaguesFilter = {
+  all: "all",
+  serieA: "serieA",
+  liga: "liga",
+  bundesliga: "bundesliga",
+  ligue1: "ligue1",
+  premier: "premier",
+};
+
+export const toleranceFilter = {
+  "0": "0",
+  "1": "1",
+  "2": "2",
+};
+
+export const marketsFilter = {
+  "under/over": "under/over",
+  "goal/nogoal": "goal/nogoal",
+};
+
+export const predictionsFilter = {
+  all: "all",
+  "under/over": "under/over",
+  "goal/nogoal": "goal/nogoal",
+};
+
+export const OUTCOME_COLORS = {
+  won: "#22c55e",
+  lost: "#ef4444",
+  pending: "ivory",
+  goal: "gold",
+  nogoal: "dimgray",
+  under: "black",
+  over: "#FF6B00",
+};
+
+export const MARKET_OUTCOMES: Record<string, string[]> = {
+  "under/over": ["under", "over"],
+  "goal/nogoal": ["goal", "no_goal"],
+};
