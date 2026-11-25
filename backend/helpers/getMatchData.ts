@@ -125,7 +125,7 @@ export const getMatchOutcomes = (match: Match) => {
   if (home_result === "d") outcomes.push("x");
   if (home_result === "l") outcomes.push("2");
 
-  if (home_score + away_score / 2 > 2.5) {
+  if (home_score + away_score > 2.5) {
     outcomes.push("over");
   } else {
     outcomes.push("under");
