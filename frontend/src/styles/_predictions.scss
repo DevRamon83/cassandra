@@ -1,33 +1,6 @@
 @use "./layout/breakpoints";
 @use "./variables/colors";
 
-.predictions__view {
-  display: flex;
-  width: 100%;
-  height: 30px;
-  border-width: 1px 0;
-  border-color: black;
-  border-style: solid;
-  margin: 20px 0;
-  overflow: hidden;
-
-  @include breakpoints.medium {
-    border-radius: 10px;
-    border-width: 1px;
-  }
-}
-
-.predictions__viewBtn {
-  display: flex;
-  width: 50%;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
-  color: white;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
 .predictions__viewBtn-active {
   @extend .predictions__viewBtn;
   background-color: white;

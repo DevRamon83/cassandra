@@ -48,8 +48,6 @@ export const classes = {
     cards: "predictions__cards",
     card: "predictions__card",
     reliability: "prediction__reliability",
-    view: "predictions__view",
-    viewBtn: "predictions__viewBtn",
   },
   bankroll: {
     initialize: "bankroll__initialize",
