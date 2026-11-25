@@ -7,10 +7,12 @@ export const classes = {
     wrapper: "rounds__wrapper",
     leftScroll: "rounds__scroller-left",
     container: "rounds__container",
+    predictions: "rounds__container-predictions",
     scrollRight: "rounds__scroller-right",
     current: "rounds__current",
     tabs: "rounds__tabs",
     main: "rounds__main",
+    mainPredictions: "rounds__main-predictions",
   },
   standings: {
     main: "standings__main",
@@ -87,6 +89,19 @@ export const classes = {
   dashboard: {
     greeting: "dashboard__greeting",
     adminContainer: "dashboard__adminContainer",
+  },
+  stats: {
+    filtersContainer: "stats__filtersContainer",
+    filter: "stats__filter",
+    leaguesChart: "stats__leaguesChart",
+    legendContainer: "stats__legendContainer",
+    legend: "stats__legend",
+    base: "stats__",
+    allCharts: "stats__allCharts",
+    predictionsChart: "stats__predictions",
+    predictionsContainer: "stats__predictionsContainer",
+    leaguesContainer: "stats__leaguesContainer",
+    anomalyCard: "stats__anomalyCard",
   },
   main: "main__content",
 };

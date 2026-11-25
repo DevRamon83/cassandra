@@ -1,12 +1,6 @@
 @use "./layout/breakpoints";
 @use "./variables/colors";
 
-.predictions__viewBtn-active {
-  @extend .predictions__viewBtn;
-  background-color: white;
-  color: black;
-}
-
 .prediction__reliability {
   width: 98%;
   display: flex;
@@ -16,7 +10,6 @@
   @include breakpoints.medium {
     gap: 20px;
     width: 100%;
-    padding-left: unset;
   }
 }
 
@@ -24,7 +17,8 @@
   width: fit-content;
   padding: 5px 20px;
   border: 1px solid black;
-  border-radius: 5px;
+  border-top: 0;
+  border-radius: 0 0 5px 5px;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 12px;

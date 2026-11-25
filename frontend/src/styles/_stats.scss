@@ -1,0 +1,181 @@
+@use "./variables/colors";
+
+.stats__filtersContainer {
+  display: flex;
+  border: 1px solid black;
+  border-bottom: 1px solid lightgray;
+  justify-content: space-evenly;
+  border-top: 0;
+}
+
+.stats__filter {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid lightgray;
+  padding: 0 15px 15px 15px;
+  background-color: white;
+  width: 25%;
+}
+
+.stats__filter:nth-of-type(4) {
+  border-right: 0;
+}
+
+%accuracyLegend {
+  width: 15px;
+  height: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.stats__goal {
+  @extend %accuracyLegend;
+  background-color: colors.$goal;
+}
+
+.stats__nogoal {
+  @extend %accuracyLegend;
+  background-color: colors.$nogoal;
+}
+
+.stats__under {
+  @extend %accuracyLegend;
+  background-color: colors.$under;
+}
+
+.stats__over {
+  @extend %accuracyLegend;
+  background-color: colors.$over;
+}
+
+.stats__won {
+  @extend %accuracyLegend;
+  background-color: colors.$won;
+}
+
+.stats__lost {
+  @extend %accuracyLegend;
+  background-color: colors.$lost;
+}
+
+.stats__legendContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-left: 15px;
+}
+
+.stats__legend {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+  height: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.stats__allCharts {
+  display: flex;
+  border: 1px solid black;
+  border-top: 0;
+  width: 100%;
+  background-color: ghostwhite;
+  flex-wrap: wrap;
+}
+
+%chart {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stats__leaguesContainer {
+  @extend %chart;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stats__leaguesChart {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stats__predictionsContainer {
+  @extend %chart;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stats__predictionsContainer h4,
+.stats__leaguesContainer h4 {
+  width: 100%;
+  padding-left: 50px;
+}
+
+.stats__predictions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stats__anomalies {
+  width: 100%;
+  border-top: 1px solid lightgray;
+  margin-top: 25px;
+  background-color: #f3f3ff;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 25px 25px 25px;
+  gap: 15px;
+}
+
+.stats__anomalies h4 {
+  width: 100%;
+}
+
+.stats__anomalyCard {
+  display: flex;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: fit-content;
+  font-size: 14px;
+  height: 26px;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  overflow: hidden;
+  margin-right: 15px;
+}
+
+%anomaly {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background-color: gainsboro;
+}
+
+.stats__outcome {
+  @extend %anomaly;
+  padding: 0 15px;
+  background-color: mediumspringgreen;
+  color: black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.stats__round {
+  @extend %anomaly;
+  padding: 0 10px;
+}
+
+.stats__frequency {
+  @extend %anomaly;
+  padding: 0 10px;
+}
