@@ -6,7 +6,7 @@ const allBets = async (signal: AbortSignal) => {
   const { base, bet } = API_URLS;
   const apiUrl = base + bet.myBets;
 
-  const method = "GET";
+  const method = "PATCH";
   const credentials = "include";
   const response = await fetchData<MyBetsResponse>(
     apiUrl,

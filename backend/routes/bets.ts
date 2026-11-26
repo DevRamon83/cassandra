@@ -39,7 +39,7 @@ betsRoute.post(
 
 betsRoute.post("/bankroll", tokensValidator, rotateToken, bankroll);
 betsRoute.post("/new", tokensValidator, rotateToken, betValidator, newBet);
-betsRoute.get("/myBets", tokensValidator, rotateToken, myBets);
+betsRoute.patch("/my_bets", tokensValidator, rotateToken, myBets);
 betsRoute.get("/cassandra_bets", tokensValidator, rotateToken, cassandraBets);
 
 export default betsRoute;

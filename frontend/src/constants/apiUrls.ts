@@ -10,7 +10,7 @@ export const API_URLS = {
     predictions: "/predictions",
     bankroll: "/bankroll",
     new: "/new",
-    myBets: "/myBets",
+    myBets: "/my_bets",
     predictionsOutcomes: "/outcomes",
     cassandra: "/cassandra_bets",
   },
