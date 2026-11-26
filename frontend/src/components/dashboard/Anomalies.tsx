@@ -1,10 +1,10 @@
-import { classes } from "../constants/classes";
-import type { StatsCounts } from "../typings/interfaces";
+import { leagues } from "../../../../shared";
+import { classes } from "../../constants/classes";
+import type { StatsCounts } from "../../typings/interfaces";
 
 interface Props {
-  anomalies: number;
   league: string;
-  data: StatsCounts;
+  data: Record<string, StatsCounts>;
   tolerance: number;
 }
 
@@ -19,12 +19,20 @@ const detailsHeader = (anomalies: number, league: string) => {
   return `${anomalies} ${anomalies === 1 ? "anomaly" : "anomalies"} found in ${league}:`;
 };
 
-export default function Anomalies({
-  anomalies,
-  league,
-  data,
-  tolerance,
-}: Props) {
+export default function Anomalies({ league, data, tolerance }: Props) {
+  const getAllAnomalies = () => {
+    let anomalies = 0;
+    leagues.forEach((league) => {
+      const anomaliesLength = data[league].allSame.outcomes.length;
+      anomalies += anomaliesLength;
+    });
+
+    return anomalies;
+  };
+
+  const anomalies =
+    league === "all" ? getAllAnomalies() : data[league].allSame.outcomes.length;
+
   const someAnomalies = league === "all" && anomalies > 0;
   const anomaliesInLeague = league !== "all" && anomalies > 0;
 
@@ -34,23 +42,23 @@ export default function Anomalies({
   const { stats } = classes;
 
   return (
-    <div className="stats__anomalies">
+    <div className={stats.anomalies}>
       {anomalies === 0 && <h4>{zeroHeader}</h4>}
       {someAnomalies && <h4>{someAnomaliesHeader(anomalies)}</h4>}
       {anomaliesInLeague && (
         <>
           <h4>{detailsHeader(anomalies, league)}</h4>
 
-          {data.allSame.gameWeeks.map((gameWeek, index) => (
+          {data[league].allSame.gameWeeks.map((gameWeek, index) => (
             <div
               className={stats.anomalyCard}
-              key={`${gameWeek}_${data.allSame.outcomes[index]}`}
+              key={`${gameWeek}_${data[league].allSame.outcomes[index]}`}
             >
-              <div className="stats__round">ROUND {gameWeek}</div>
-              <div className="stats__outcome">
-                {data.allSame.outcomes[index]}
+              <div className={stats.round}>ROUND {gameWeek}</div>
+              <div className={stats.outcome}>
+                {data[league].allSame.outcomes[index]}
               </div>
-              <div className="stats__frequency">
+              <div className={stats.frequency}>
                 {matchesForRound - tolerance}/{matchesForRound}
               </div>
             </div>
