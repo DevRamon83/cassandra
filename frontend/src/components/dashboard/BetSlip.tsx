@@ -3,7 +3,7 @@ import { classes } from "../../constants/classes";
 import type { BetSlipPool } from "../../typings/interfaces";
 import Odds from "../../ui/Odds";
 import newBet from "../../api/handlers/newBet";
-import { errors, validateBet } from "../../../../shared";
+import { errors, validateBet, type SingleBet } from "../../../../shared";
 import { AuthContext, BetsContext } from "../../context";
 import BetRecap from "../../ui/BetRecap";
 import { getMyBetData } from "../../helpers/getMyBetData";
@@ -15,6 +15,8 @@ interface Props {
   removeHandler: (uuid: string) => void;
   weeks: number;
   setBetSlipPool: Dispatch<SetStateAction<BetSlipPool[]>>;
+  cassandraBet: SingleBet[];
+  setCopyBet: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function BetSlip({
@@ -23,6 +25,8 @@ export default function BetSlip({
   removeHandler,
   setBetSlipPool,
   weeks,
+  cassandraBet,
+  setCopyBet,
 }: Props) {
   const { bets } = classes;
   const { auth } = useContext(AuthContext);
@@ -61,8 +65,32 @@ export default function BetSlip({
     handlerReset("send", "", true);
   };
 
+  const copyBet = () => {
+    setCopyBet(true);
+    const data: BetSlipPool[] = [];
+    const bet = cassandraBet[0];
+
+    bet.items.forEach((item) => {
+      const [homeTeam, awayTeam] = item.match.split(" Vs ");
+      const obj: BetSlipPool = {
+        uuid: `${item.matchId}-${item.outcome}`,
+        odds: item.odds.toFixed(2),
+        id: item.matchId,
+        homeTeam,
+        awayTeam,
+      };
+      data.push(obj);
+    });
+    setBetSlipPool(data);
+  };
+
   return (
     <div className={bets.betSlip}>
+      {betSlipPool.length === 0 && (
+        <button className={bets.copyBtn} onClick={copyBet}>
+          Copy Cassandra's bet
+        </button>
+      )}
       {betSlipPool.map((match) => (
         <div key={`${match.uuid}`} className={bets.row}>
           <div className={bets.rowElement}>

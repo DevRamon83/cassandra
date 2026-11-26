@@ -1,16 +1,22 @@
 import { useContext, useState } from "react";
 import { classes } from "../../constants/classes";
 import useAvailableToBet from "../../hooks/useAvailableToBet";
-import { leagues } from "../../../../shared";
-import AvailableToBet from "../../ui/AvailableToBet";
+import { leagues, type SingleBet } from "../../../../shared";
 import BetSlip from "./BetSlip";
 import type { BetSlipPool } from "../../typings/interfaces";
 import { LeaguesContext } from "../../context";
+import BetLeagueMenu from "../../ui/BetLeagueMenu";
+import BetOutcomes from "./BetOutcomes";
 
-export default function NewBet() {
+interface Props {
+  cassandraBet: SingleBet[];
+}
+
+export default function NewBet({ cassandraBet }: Props) {
   const [league, setLeague] = useState(leagues[0]);
   const { cache } = useContext(LeaguesContext);
   const weeks = 38 - cache[league].nextRound;
+  const [copyBet, setCopyBet] = useState(false);
 
   const [betSlipPool, setBetSlipPool] = useState<BetSlipPool[]>([]);
 
@@ -43,26 +49,44 @@ export default function NewBet() {
     setBetSlipPool((prev) => prev.filter((m) => m.uuid !== uuid));
   };
 
+  const resetCopyBet = () => {
+    setBetSlipPool([]);
+    setCopyBet(false);
+  };
+
   return (
-    <>
-      <div className={bets.container}>
-        <AvailableToBet
+    <div className={bets.container}>
+      <div className={bets.selection}>
+        <BetLeagueMenu
           leagues={leagues}
           league={league}
           setLeague={setLeague}
-          availableIds={availableIds}
-          availableMatches={availableMatches}
-          betHandler={betHandler}
-          activeUuids={activeUuids}
         />
-        <BetSlip
-          betSlipPool={betSlipPool}
-          oddHandler={oddHandler}
-          removeHandler={removeHandler}
-          setBetSlipPool={setBetSlipPool}
-          weeks={weeks}
-        />
+        {availableIds.map((matchId, index) => (
+          <div
+            className={`${bets.match}${index % 2 !== 0 ? "-odd" : "-even"}`}
+            key={matchId}
+          >
+            <h3>{availableMatches[league]![matchId]}</h3>
+            <BetOutcomes
+              matchId={matchId}
+              betHandler={betHandler}
+              activeUuids={activeUuids}
+              copyBet={copyBet}
+              resetCopyBet={resetCopyBet}
+            />
+          </div>
+        ))}
       </div>
-    </>
+      <BetSlip
+        betSlipPool={betSlipPool}
+        oddHandler={oddHandler}
+        removeHandler={removeHandler}
+        setBetSlipPool={setBetSlipPool}
+        weeks={weeks}
+        cassandraBet={cassandraBet}
+        setCopyBet={setCopyBet}
+      />
+    </div>
   );
 }
