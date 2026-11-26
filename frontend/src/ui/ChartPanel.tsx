@@ -1,15 +1,22 @@
-import Chart from "./Chart";
 import { classes } from "../constants/classes";
 import { OUTCOME_COLORS as colors } from "../../../shared";
 import Legend from "./Legend";
+import PieChart from "./PieChart";
+import DonutChart from "./DonutChart";
 
 interface Props {
-  market: string;
+  market?: string;
   percentage: number;
   caller: string;
+  balance?: string;
 }
 
-export default function ChartPanel({ market, percentage, caller }: Props) {
+export default function ChartPanel({
+  market,
+  percentage,
+  caller,
+  balance,
+}: Props) {
   const { stats } = classes;
   let firstColor: string = colors.lost;
   let secondColor: string = colors.won;
@@ -19,7 +26,7 @@ export default function ChartPanel({ market, percentage, caller }: Props) {
   if (caller === "league") {
     firstColor = market === "over" ? colors.under : colors.nogoal;
     secondColor = market === "over" ? colors.over : colors.goal;
-    firstLabel = market;
+    firstLabel = market!;
     secondLabel = market === "goal" ? "nogoal" : "under";
   }
 
@@ -28,11 +35,20 @@ export default function ChartPanel({ market, percentage, caller }: Props) {
 
   return (
     <div className={myClass}>
-      <Chart
-        winPercentage={percentage}
-        firstColor={firstColor}
-        secondColor={secondColor}
-      />
+      {caller === "cassandra" ? (
+        <DonutChart
+          winPercentage={percentage}
+          firstColor={firstColor}
+          secondColor={secondColor}
+          centerText={balance!}
+        />
+      ) : (
+        <PieChart
+          winPercentage={percentage}
+          firstColor={firstColor}
+          secondColor={secondColor}
+        />
+      )}
       <div className={stats.legendContainer}>
         <Legend market={firstLabel} percentage={percentage} />
         <Legend market={secondLabel} percentage={100 - percentage} />
