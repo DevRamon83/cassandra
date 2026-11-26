@@ -4,7 +4,7 @@ interface PieProps {
   secondColor: string;
 }
 
-export default function Chart({
+export default function PieChart({
   winPercentage,
   firstColor,
   secondColor,
