@@ -37,21 +37,25 @@ export default function BetsHistory() {
         <>
           {userBets && userBets.length > 0 ? (
             <>
-              <h2>Filter your bets</h2>
-              <SelectOnChange
-                value={filter}
-                setter={setFilter}
-                data={betFilter}
-              />
-              {filteredBets.map((bet) => (
-                <div
-                  className={`${bets.historyCard} ${defineBetStatus(bet.won)}`}
-                  key={bet.betId}
-                >
-                  <BetItems bet={bet} />
-                  <BetData bet={bet} />
-                </div>
-              ))}
+              <div className={bets.filter}>
+                <h2>Filter your bets</h2>
+                <SelectOnChange
+                  value={filter}
+                  setter={setFilter}
+                  data={betFilter}
+                />
+              </div>
+              <div className={bets.cards}>
+                {filteredBets.map((bet) => (
+                  <div
+                    className={`${bets.historyCard} ${defineBetStatus(bet.won)}`}
+                    key={bet.betId}
+                  >
+                    <BetItems bet={bet} />
+                    <BetData bet={bet} />
+                  </div>
+                ))}
+              </div>
             </>
           ) : (
             <div>Do your first bet</div>

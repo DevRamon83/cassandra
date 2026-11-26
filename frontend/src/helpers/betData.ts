@@ -10,5 +10,6 @@ export const defineBetStatus = (betStatus: boolean | null) => {
 export const definePayout = (bet: SingleBet) => {
   const odds: number[] = bet.items.map((bet) => Number(bet.odds));
   const totalOdds = odds.reduce((acc, odd) => acc * odd, 1);
-  return totalOdds * bet.stake + bet.bonus;
+  const payout = totalOdds * bet.stake + bet.bonus;
+  return payout.toFixed(2);
 };

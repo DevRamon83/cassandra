@@ -13,7 +13,6 @@ export default function UpdatePredictions() {
     if (response !== "outcomes") return;
     setResponse("wait");
     const resp = await predictionsOutcomes();
-    console.log(resp);
 
     if (resp.error) {
       setResponse("error");
