@@ -33,6 +33,7 @@
   justify-content: center;
   align-items: center;
   padding: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
   @include breakpoints.medium {
     width: 34px;
@@ -97,6 +98,7 @@
   padding: 0 10px;
   background-color: ghostwhite;
   border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 
   @include breakpoints.medium {
     font-weight: bold;
@@ -115,6 +117,7 @@
   flex-direction: column;
   height: 500px;
   overflow: scroll;
+  padding-bottom: 35px;
 }
 
 .bets__betSlipsRow {
@@ -158,8 +161,10 @@
   }
 }
 
-.bets__rowElement input {
+.bets__rowElement input,
+.bets__stakeAndBonus input {
   width: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .bets__error {
@@ -206,6 +211,7 @@
   font-size: 0.8em;
   border-radius: 5px;
   overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .bets__recap h4 > span {
@@ -238,6 +244,8 @@
   border-radius: 5px;
   padding: 10px 15px;
   flex-direction: column;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .bets__predictionRow {
@@ -248,15 +256,15 @@
 }
 
 .bets__pending {
-  background-color: colors.$pending;
+  border: 2px solid gold;
 }
 
 .bets__won {
-  background-color: colors.$won;
+  border: 2px solid colors.$won;
 }
 
 .bets__lost {
-  background-color: colors.$lost;
+  border: 2px solid colors.$lost;
 }
 
 %bets__predictionOutcome {
@@ -268,15 +276,18 @@
 }
 
 .bets__predictionOutcome-pending {
-  @extend %bets__predictionOutcome, .bets__pending;
+  @extend %bets__predictionOutcome;
+  background-color: gold;
 }
 
 .bets__predictionOutcome-won {
-  @extend %bets__predictionOutcome, .bets__won;
+  @extend %bets__predictionOutcome;
+  background-color: colors.$won;
 }
 
 .bets__predictionOutcome-lost {
-  @extend %bets__predictionOutcome, .bets__lost;
+  @extend %bets__predictionOutcome;
+  background-color: colors.$lost;
 }
 
 .bets__betData {
@@ -299,10 +310,8 @@
 
 .bets__historyContainer {
   padding: 25px;
-}
-
-.bets__historyContainer select {
-  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
 }
 
 .bets__sendBtn {
@@ -315,4 +324,75 @@
   margin-top: 25px;
   font-weight: bold;
   color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.bets__cards {
+  display: flex;
+  gap: 45px;
+}
+
+.bets__filter {
+  display: flex;
+  justify-content: flex-start;
+  gap: 25px;
+  align-items: center;
+  height: 50px;
+  margin: 0 0 25px 25px;
+}
+
+.bets__filter select {
+  width: 200px;
+  margin-top: 2px;
+}
+
+.bets__copyAlert {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bets__copyAlert h3 {
+  margin: 5px 0;
+  text-decoration: underline;
+  color: crimson;
+}
+
+.bets__copyAlert h4 {
+  margin: 5px 0;
+}
+
+.bets__alertBtnsContainer {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.bets__alertBtn {
+  border: 1px solid black;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 45px;
+  height: 18px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.bets__copyBtn {
+  margin-top: 40px;
+  border: 1px solid black;
+  background-color: chartreuse;
+  color: black;
+  border-radius: 5px;
+  width: 50%;
+  height: 40px;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-left: 25%;
 }

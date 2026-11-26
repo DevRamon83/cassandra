@@ -2,7 +2,7 @@
 @use "./variables/colors";
 
 .prediction__reliability {
-  width: 98%;
+  width: fit-content;
   display: flex;
   gap: 10px;
   padding-left: 1%;
@@ -15,10 +15,10 @@
 
 %reliability {
   width: fit-content;
-  padding: 5px 20px;
+  padding: 4px 10px;
   border: 1px solid black;
-  border-top: 0;
-  border-radius: 0 0 5px 5px;
+  border-bottom: 0;
+  border-radius: 5px 5px 0 0;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 12px;
@@ -76,15 +76,16 @@
   overflow: hidden;
   background-color: ivory;
   flex-shrink: 0;
-  margin: 0 10px;
+  margin: 0 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.65);
 }
 
 .predictions__card-won {
-  background-color: colors.$won;
+  background-color: mintcream;
 }
 
 .predictions__card-lost {
-  background-color: colors.$lost;
+  background-color: mistyrose;
 }
 
 .predictions__accuracyContainer {

@@ -17,6 +17,12 @@
   width: 25%;
 }
 
+.stats__filter select {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  width: 80%;
+  margin: -5px 0 0 10px;
+}
+
 .stats__filter:nth-of-type(4) {
   border-right: 0;
 }
@@ -86,10 +92,15 @@
 }
 
 %chart {
-  width: 50%;
+  width: 33%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+%chart svg {
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .stats__leaguesContainer {
@@ -152,6 +163,7 @@
   font-weight: bold;
   overflow: hidden;
   margin-right: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 %anomaly {

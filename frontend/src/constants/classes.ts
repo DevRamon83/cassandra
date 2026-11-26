@@ -85,6 +85,12 @@ export const classes = {
     historyContainer: "bets__historyContainer",
     sendBtn: "bets__sendBtn",
     inputsContainer: "bets__stakeAndBonus",
+    filter: "bets__filter",
+    cards: "bets__cards",
+    alert: "bets__copyAlert",
+    btnsContainer: "bets__alertBtnsContainer",
+    alertBtn: "bets__alertBtn",
+    copyBtn: "bets__copyBtn",
   },
   dashboard: {
     greeting: "dashboard__greeting",
@@ -102,6 +108,10 @@ export const classes = {
     predictionsContainer: "stats__predictionsContainer",
     leaguesContainer: "stats__leaguesContainer",
     anomalyCard: "stats__anomalyCard",
+    anomalies: "stats__anomalies",
+    round: "stats__round",
+    outcome: "stats__outcome",
+    frequency: "stats__frequency",
   },
   main: "main__content",
 };

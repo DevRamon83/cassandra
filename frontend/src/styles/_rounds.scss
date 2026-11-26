@@ -22,9 +22,15 @@
   justify-content: flex-start;
 
   @include breakpoints.medium {
-    width: 90%;
+    width: 80%;
     margin: 5vh 0 -1px 5%;
   }
+}
+
+.rounds__container-predictions h2 {
+  color: white;
+  text-transform: uppercase;
+  text-decoration: underline;
 }
 
 .rounds__wrapper {
@@ -60,16 +66,12 @@
     border-radius: 10px 0 0 10px;
     background-color: dimgray;
     overflow: hidden;
-    align-items: flex-start;
-    margin: 35px 0;
+    align-items: center;
   }
 }
 
 .rounds__container-predictions {
   @extend .rounds__container;
-  @include breakpoints.medium {
-    margin: 22px 0;
-  }
 }
 
 .rounds__scroller {
