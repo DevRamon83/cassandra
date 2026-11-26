@@ -88,8 +88,10 @@ export const marketsFilter = {
 
 export const predictionsFilter = {
   all: "all",
-  "under/over": "under/over",
-  "goal/nogoal": "goal/nogoal",
+  under: "under",
+  over: "over",
+  goal: "goal",
+  nogoal: "nogoal",
 };
 
 export const OUTCOME_COLORS = {
@@ -100,9 +102,4 @@ export const OUTCOME_COLORS = {
   nogoal: "dimgray",
   under: "black",
   over: "#FF6B00",
-};
-
-export const MARKET_OUTCOMES: Record<string, string[]> = {
-  "under/over": ["under", "over"],
-  "goal/nogoal": ["goal", "no_goal"],
 };
