@@ -24,6 +24,7 @@ export default function PredictionCardsContainer({
 
   return (
     <div ref={refContainer} className={rounds.predictions}>
+      {predictions.length === 0 && <h2>No predictions available!</h2>}
       {predictions.map((prediction) => (
         <div className={defineClass(prediction)} key={prediction.id}>
           <h4>{prediction.match}</h4>
