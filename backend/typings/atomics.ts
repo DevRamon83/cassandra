@@ -32,3 +32,5 @@ export interface predictionDB extends PredictionData {
 }
 
 export type PredictionMatrix = [boolean, string][];
+
+export type UpdateBetsMatrix = [string, boolean, number][];
