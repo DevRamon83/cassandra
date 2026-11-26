@@ -9,6 +9,7 @@ import { betValidator } from "../middlewares/betValidator";
 import { newBet } from "../controllers/newBet";
 import { myBets } from "../controllers/myBets";
 import { updatePredictions } from "../controllers/updatePredictions";
+import { cassandraBets } from "../controllers/cassandraBets";
 
 const betsRoute = new Hono();
 
@@ -39,5 +40,6 @@ betsRoute.post(
 betsRoute.post("/bankroll", tokensValidator, rotateToken, bankroll);
 betsRoute.post("/new", tokensValidator, rotateToken, betValidator, newBet);
 betsRoute.get("/myBets", tokensValidator, rotateToken, myBets);
+betsRoute.get("/cassandra_bets", tokensValidator, rotateToken, cassandraBets);
 
 export default betsRoute;
