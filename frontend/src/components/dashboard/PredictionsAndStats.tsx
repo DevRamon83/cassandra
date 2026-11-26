@@ -3,12 +3,17 @@ import type { PredictionsMap, PredictionUI } from "../../typings/interfaces";
 import { classes } from "../../constants/classes";
 import PredictionCards from "../../ui/PredictionCards";
 import Stats from "./Stats";
+import type { SingleBet } from "../../../../shared";
 
 interface Props {
   predictions: PredictionUI[];
+  cassandraBets: SingleBet[];
 }
 
-export default function ShowPredictions({ predictions }: Props) {
+export default function PredictionsAndStats({
+  predictions,
+  cassandraBets,
+}: Props) {
   const predictionsMap: PredictionsMap = new Map();
 
   predictions.forEach((prediction) => {
@@ -37,7 +42,7 @@ export default function ShowPredictions({ predictions }: Props) {
           />
         )}
       </div>
-      <Stats allPredictions={predictions} />
+      <Stats allPredictions={predictions} cassandraBets={cassandraBets} />
     </>
   );
 }
