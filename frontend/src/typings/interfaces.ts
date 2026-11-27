@@ -1,5 +1,11 @@
 import type { Dispatch, SetStateAction } from "react";
-import type { leagues, PredictionData, SingleBet, User } from "../../../shared";
+import type {
+  leagues,
+  Match,
+  PredictionData,
+  SingleBet,
+  User,
+} from "../../../shared";
 
 export interface PagesInterface {
   url: string;
@@ -62,8 +68,20 @@ export type StatsCounts = {
   noGoal: number;
   under: number;
   over: number;
-  allSame: {
+  allSame?: {
     gameWeeks: number[];
     outcomes: string[];
   };
+};
+
+export interface TeamMatches {
+  home: Match[];
+  away: Match[];
+  all: Match[];
+}
+
+export type PredictionsData = {
+  myPrediction: PredictionUI[];
+  homeRatio: Record<string, number>;
+  awayRatio: Record<string, number>;
 };
