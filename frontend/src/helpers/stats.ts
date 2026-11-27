@@ -1,5 +1,5 @@
 import type { Match } from "../../../shared";
-import type { StatsCounts } from "../typings/interfaces";
+import type { PredictionUI, StatsCounts } from "../typings/interfaces";
 
 const gameWeekOutcomes = (
   round: Record<string, Match>,
@@ -48,6 +48,8 @@ const gameWeekOutcomes = (
   const checkValue = howManyMatch - tolerance;
 
   const addAnomaly = (outcome: string) => {
+    if (!stats.allSame) return;
+
     stats.allSame.outcomes.push(outcome);
     stats.allSame.gameWeeks.push(gameWeek);
   };
@@ -60,6 +62,22 @@ const gameWeekOutcomes = (
   if (homeWin === checkValue) addAnomaly("1");
   if (awayWin === checkValue) addAnomaly("2");
   if (draw === checkValue) addAnomaly("X");
+};
+
+const definePercentages = (stats: StatsCounts) => {
+  const playedMatches = stats.goal + stats.noGoal;
+  const goalPC = Math.round((stats.goal / playedMatches) * 100);
+  const noGoalPC = 100 - goalPC;
+  const underPC = Math.round((stats.under / playedMatches) * 100);
+  const overPC = 100 - underPC;
+
+  return {
+    goal: goalPC,
+    under: underPC,
+    noGoal: noGoalPC,
+    over: overPC,
+    allSame: stats.allSame,
+  };
 };
 
 export const workOnLeague = (
@@ -78,21 +96,104 @@ export const workOnLeague = (
     gameWeekOutcomes(round, stats, tolerance);
   }
 
-  const playedMatches = stats.goal + stats.noGoal;
-  const goalPC = Math.round((stats.goal / playedMatches) * 100);
-  const noGoalPC = 100 - goalPC;
-  const underPC = Math.round((stats.under / playedMatches) * 100);
-  const overPC = 100 - underPC;
-
-  return {
-    goal: goalPC,
-    under: underPC,
-    noGoal: noGoalPC,
-    over: overPC,
-    allSame: stats.allSame,
-  };
+  return definePercentages(stats);
 };
 
 export const wonPercentage = (won: number, length: number) => {
   return Math.round((won / length) * 100);
+};
+
+export const workOnTeam = (
+  rounds: Record<string, Record<string, Match>>,
+  team: string,
+  nextRound: number,
+) => {
+  const home: Match[] = [];
+  const away: Match[] = [];
+  const all: Match[] = [];
+  let currentRound = 1;
+
+  while (currentRound < nextRound) {
+    const myRound = rounds[currentRound.toString()];
+    const roundKeys = Object.keys(myRound);
+    roundKeys.forEach((key) => {
+      const match = myRound[key];
+      const { home_team_name, away_team_name } = match;
+      const isMine = home_team_name === team || away_team_name === team;
+      if (isMine) {
+        away_team_name === team ? away.push(match) : home.push(match);
+        all.push(match);
+      }
+    });
+    currentRound += 1;
+  }
+
+  return { home, away, all };
+};
+
+const tailConverter = (tail: string) => {
+  if (tail === "all") return 0;
+  if (tail === "three") return 3;
+  return 5;
+};
+
+export const dataTeam = (array: Match[], tail: string, view: string) => {
+  const stats: StatsCounts = {
+    goal: 0,
+    noGoal: 0,
+    under: 0,
+    over: 0,
+  };
+  if (view === "overview") return stats;
+
+  const length = tailConverter(tail);
+  const matches = length === 0 ? array : array.slice(-length);
+
+  for (const match of matches) {
+    const obj = { 1: match };
+    gameWeekOutcomes(obj, stats, 0);
+  }
+
+  return definePercentages(stats);
+};
+
+export const matchFinder = (round: Record<string, Match>, team: string) => {
+  const matches = Object.values(round);
+  for (const match of matches) {
+    if (match.away_team_name === team || match.home_team_name === team)
+      return match;
+  }
+  return null;
+};
+
+export const getPredictionRatio = (predictions: PredictionUI[]) => {
+  const total = predictions.length;
+  const won = predictions.filter((prediction) => prediction.prediction_result);
+  const winRate = (won.length / total) * 100;
+
+  return { total, winRate };
+};
+
+export const predictionsHistory = (
+  predictions: PredictionUI[],
+  league: string,
+  homeTeam: string,
+  awayTeam: string,
+) => {
+  const homePredictions = [];
+  const awayPredictions = [];
+
+  const leaguePredictions = predictions.filter(
+    (prediction) =>
+      prediction.league === league && prediction.prediction_result !== null,
+  );
+
+  for (const prediction of leaguePredictions) {
+    const isMyHomeTeam = prediction.match.includes(homeTeam);
+    const isMyAwayTeam = prediction.match.includes(awayTeam);
+    isMyHomeTeam && homePredictions.push(prediction);
+    isMyAwayTeam && awayPredictions.push(prediction);
+  }
+
+  return { homePredictions, awayPredictions };
 };
