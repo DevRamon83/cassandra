@@ -94,6 +94,12 @@ export const predictionsFilter = {
   nogoal: "nogoal",
 };
 
+export const tailFilter = {
+  all: "all",
+  three: "last three",
+  five: "last five",
+};
+
 export const OUTCOME_COLORS = {
   won: "#22c55e",
   lost: "#ef4444",
