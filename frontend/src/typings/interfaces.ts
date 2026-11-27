@@ -81,7 +81,6 @@ export interface TeamMatches {
 }
 
 export type PredictionsData = {
-  myPrediction: PredictionUI[];
   homeRatio: Record<string, number>;
   awayRatio: Record<string, number>;
 };

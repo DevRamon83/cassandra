@@ -336,24 +336,3 @@
 .stats__matchPrediction img {
   @extend %logoPrediction;
 }
-
-.stats__prediction-low {
-  height: 26px;
-  width: 26px;
-  background-color: colors.$low;
-  margin-left: 15px;
-}
-
-.stats__prediction-medium {
-  height: 26px;
-  width: 26px;
-  background-color: colors.$medium;
-  margin-left: 15px;
-}
-
-.stats__prediction-high {
-  height: 26px;
-  width: 26px;
-  background-color: colors.$high;
-  margin-left: 15px;
-}

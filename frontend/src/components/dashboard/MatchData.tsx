@@ -30,10 +30,7 @@ export default function MatchData({ league, team, allPredictions }: Props) {
   }, [league, team]);
 
   const predictionsData: PredictionsData = useMemo(() => {
-    if (!matchData) return { myPrediction: [], homeRatio: {}, awayRatio: {} };
-    const myPrediction = allPredictions
-      .filter((prediction) => prediction.prediction_result === null)
-      .filter((current) => current.match_id === matchData.id);
+    if (!matchData) return { homeRatio: {}, awayRatio: {} };
 
     const { homePredictions, awayPredictions } = predictionsHistory(
       allPredictions,
@@ -45,7 +42,7 @@ export default function MatchData({ league, team, allPredictions }: Props) {
     const homeRatio = getPredictionRatio(homePredictions);
     const awayRatio = getPredictionRatio(awayPredictions);
 
-    return { myPrediction, homeRatio, awayRatio };
+    return { homeRatio, awayRatio };
   }, [matchData, league]);
 
   const teamsFallback = { away_team_name: "", home_team_name: "" };
@@ -54,7 +51,7 @@ export default function MatchData({ league, team, allPredictions }: Props) {
 
   const date = matchData?.match_date ?? "2026-11-29T16:30:00.000Z";
   const { matchDate, time } = getMatchDate(date);
-  const { myPrediction, homeRatio, awayRatio } = predictionsData;
+  const { homeRatio, awayRatio } = predictionsData;
 
   const { stats } = classes;
 
@@ -67,22 +64,6 @@ export default function MatchData({ league, team, allPredictions }: Props) {
         </div>
         <div className={stats.matchRow}>
           <div className={stats.matchTag}>{matchDate}</div> {time}
-        </div>
-        <div>
-          {myPrediction.length > 0 ? (
-            <>
-              <div className={stats.matchPrediction}>
-                <img src="/logo.svg" /> {myPrediction[0].prediction}
-                <div
-                  className={`stats__prediction-${myPrediction[0].prediction_accuracy}`}
-                />
-              </div>
-            </>
-          ) : (
-            <div className={stats.zeroPrediction}>
-              No prediction for this match
-            </div>
-          )}
         </div>
       </div>
       <div className={stats.stackedContainer}>
