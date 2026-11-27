@@ -22,7 +22,7 @@ const useAvailableToBet = () => {
         const m = matches[key];
         if (Date.parse(m.match_date) > now) {
           result[leagueKey][m.id] =
-            `${m.home_team_name} Vs ${m.away_team_name}`;
+            `${m.home_team_name} vs ${m.away_team_name}`;
         }
       }
     }

@@ -71,7 +71,7 @@ export default function BetSlip({
     const bet = cassandraBet[0];
 
     bet.items.forEach((item) => {
-      const [homeTeam, awayTeam] = item.match.split(" Vs ");
+      const [homeTeam, awayTeam] = item.match.split(" vs ");
       const obj: BetSlipPool = {
         uuid: `${item.matchId}-${item.outcome}`,
         odds: item.odds.toFixed(2),
@@ -94,7 +94,7 @@ export default function BetSlip({
       {betSlipPool.map((match) => (
         <div key={`${match.uuid}`} className={bets.row}>
           <div className={bets.rowElement}>
-            {match.homeTeam} Vs {match.awayTeam}:{" "}
+            {match.homeTeam} vs {match.awayTeam}:{" "}
             {match.uuid.replace(`${match.id}-`, "")}
           </div>
           <Odds

@@ -35,7 +35,7 @@ export default function UpdateDate({ match, closeHandler }: Props) {
     <>
       <div>
         <h3>
-          {match.home_team_name} Vs {match.away_team_name}
+          {match.home_team_name} vs {match.away_team_name}
         </h3>
         <form className={classes.match.updateForm} onSubmit={handleSubmit}>
           <Input

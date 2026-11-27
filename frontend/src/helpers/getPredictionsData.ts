@@ -28,7 +28,7 @@ export const getPredictionsData = (
     if (!match) continue;
 
     const matchData = {
-      match: `${match.home_team_name} Vs ${match.away_team_name}`,
+      match: `${match.home_team_name} vs ${match.away_team_name}`,
       league: match.league,
       gameWeek: match.game_week,
       date: match.match_date,

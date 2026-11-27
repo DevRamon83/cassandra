@@ -22,7 +22,7 @@ export const formatUserBets = (rows: any[]): SingleBet[] => {
       odds: Number(row.odds),
       outcome: row.prediction,
       won: row.item_won,
-      match: `${row.home_team_name} Vs ${row.away_team_name}`,
+      match: `${row.home_team_name} vs ${row.away_team_name}`,
     });
   }
 
