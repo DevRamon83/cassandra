@@ -31,17 +31,17 @@
 
 .prediction__reliability-low {
   @extend %reliability;
-  background-color: crimson;
+  background-color: colors.$low;
 }
 
 .prediction__reliability-medium {
   @extend %reliability;
-  background-color: gold;
+  background-color: colors.$medium;
 }
 
 .prediction__reliability-high {
   @extend %reliability;
-  background-color: lime;
+  background-color: colors.$high;
 }
 
 .predictions__cards {
@@ -114,15 +114,15 @@
 
 .predictions__low {
   @extend %prediction;
-  background-color: crimson;
+  background-color: colors.$low;
 }
 
 .predictions__medium {
   @extend %prediction;
-  background-color: gold;
+  background-color: colors.$medium;
 }
 
 .predictions__high {
   @extend %prediction;
-  background-color: lime;
+  background-color: colors.$high;
 }

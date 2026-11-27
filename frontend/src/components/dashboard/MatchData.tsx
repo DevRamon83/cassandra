@@ -60,18 +60,18 @@ export default function MatchData({ league, team, allPredictions }: Props) {
 
   return (
     <div className={stats.matchData}>
-      <div className="stats__nextMatch">
-        <div className="stats__matchRow">
-          <div className="stats__matchTag">Next match</div>
+      <div className={stats.nextMatch}>
+        <div className={stats.matchRow}>
+          <div className={stats.matchTag}>Next match</div>
           {home_team_name.substring(0, 7)} vs {away_team_name.substring(0, 7)}
         </div>
-        <div className="stats__matchRow">
-          <div className="stats__matchTag">{matchDate}</div> {time}
+        <div className={stats.matchRow}>
+          <div className={stats.matchTag}>{matchDate}</div> {time}
         </div>
         <div>
           {myPrediction.length > 0 ? (
             <>
-              <div className="stats__matchPrediction">
+              <div className={stats.matchPrediction}>
                 <img src="/logo.svg" /> {myPrediction[0].prediction}
                 <div
                   className={`stats__prediction-${myPrediction[0].prediction_accuracy}`}
@@ -79,7 +79,7 @@ export default function MatchData({ league, team, allPredictions }: Props) {
               </div>
             </>
           ) : (
-            <div className="stats__matchRow-zeroPrediction">
+            <div className={stats.zeroPrediction}>
               No prediction for this match
             </div>
           )}
